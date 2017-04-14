@@ -1,0 +1,52 @@
+*// Ataques e defesas // *
+
+	- ataques = ataquePersonagem + ataqueEquipamento + valorAtributos
+	- defesas = defesaPersonagem + defesaEquipamento + valorAtributos
+	- acordoAtaque = (acordoPersonagem + acordoEquipamento)/2
+	- acordoDefesa = (acordoPersonagem + acordoEquipamento)/2
+
+
+*// Mecânica *// 
+
+	1 - Como funciona a Luta
+	- Se hp(default = 1000) == 0 {jogo terminado} se não {jogo continua com decrease ((ataqueInimigo*(resultDado*100))/defesaPropria) no life}
+	- Se life adversidade == 0 {posses} se não {jogo continua com decrease ((ataqueProprio*(resultDado*100))/defesaInimigo)no life inimigo}
+	- dado volta a ser jogado / escapar selecionado}
+
+	2 - Como funciona a Fuga
+	- Se especialização fuga*resultDado > contraFuga {fuga realizada} se não {jogo continua com decrease ((ataqueInimigo*(resultDado*100))/defesaPropria) no life}
+	- Jogo dá opção para lutar ou tentar escapar novamente
+
+
+
+*// Regras Gerais *//
+
+	- No início do jogo, são dados 20 pontos de combate, e 20 de atributos
+	- Quando se upa, se ganha 5 pontos para dar increase na especialização, 2 para combate
+
+*// Atributos e Especializações *//
+
+	Ps.: valorAtributos = (a1*valorDado + a2*valorDado + ... + an*valorDado)/n
+	     cada atributo abaixo custa a quantidade de pontos correspondente que ele dá 	
+
+	- agilidade +1 dano /+1 fuga
+	- conhecimento +1 negociação / +1 dano	
+	- blefe +1 negociação / +1 dano
+	- força +1 dano
+	- furtividade +1 defesa / +1 dano / +1 fuga
+	- inteligência +1 defesa / +1 dano / +1 negociação
+	- lábia +1 negociação
+	- percepção +1 dano
+	- resistência +1 defesa
+	- sobrevivência +1 defesa
+	- vontade +1 dano / +1 defesa / +1 negociação / +1 fuga
+
+*// Atributos de Combate *//
+
+	- negociação
+	- defesa
+	- dano
+	- fuga
+
+
+
