@@ -48,6 +48,5 @@ INSERT INTO `nyte`.`tbl_area_corpo` (area_corpo) VALUES ('Anel Esquerdo');
 INSERT INTO `nyte`.`tbl_area_corpo` (area_corpo) VALUES ('Braço Direito');
 INSERT INTO `nyte`.`tbl_area_corpo` (area_corpo) VALUES ('Braço Esquerdo');
 INSERT INTO `nyte`.`tbl_area_corpo` (area_corpo) VALUES ('Peitoral');
-INSERT INTO `nyte`.`tbl_area_corpo` (area_corpo) VALUES ('Pé Direito');
-INSERT INTO `nyte`.`tbl_area_corpo` (area_corpo) VALUES ('Pé Esquerdo');
+INSERT INTO `nyte`.`tbl_area_corpo` (area_corpo) VALUES ('Pé');
 
