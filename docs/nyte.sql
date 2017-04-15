@@ -12,17 +12,24 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema nyte
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `nyte` DEFAULT CHARACTER SET utf8 ;
--- -----------------------------------------------------
--- Schema nyte
--- -----------------------------------------------------
 USE `nyte` ;
 
 -- -----------------------------------------------------
 -- Table `nyte`.`tbl_povoado`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_povoado` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `nyte`.`tbl_especie`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nyte`.`tbl_especie` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `especie` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -31,18 +38,25 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_personagem`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_personagem` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_povoado` INT NOT NULL,
   `altura` FLOAT NOT NULL,
   `peso` FLOAT NOT NULL,
   `idade` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `lvl` INT NOT NULL,
-  PRIMARY KEY (`id`, `id_povoado`),
+  `tbl_especie_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `id_povoado`, `tbl_especie_id`),
   INDEX `fk_tbl_personagem_tbl_povoado1_idx` (`id_povoado` ASC),
+  INDEX `fk_tbl_personagem_tbl_especie1_idx` (`tbl_especie_id` ASC),
   CONSTRAINT `fk_tbl_personagem_tbl_povoado1`
     FOREIGN KEY (`id_povoado`)
     REFERENCES `nyte`.`tbl_povoado` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_personagem_tbl_especie1`
+    FOREIGN KEY (`tbl_especie_id`)
+    REFERENCES `nyte`.`tbl_especie` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -52,7 +66,7 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_adversidade`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_adversidade` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `hp` INT NOT NULL,
   `id_personagem` INT NOT NULL,
@@ -71,7 +85,7 @@ COMMENT = 'rouba: o que rouba quando ganha\nposses: o que dá quando morre';
 -- Table `nyte`.`tbl_dialogo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_dialogo` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `texto` VARCHAR(1000) NOT NULL,
   `id_dialogo_anterior` INT NULL,
   `id_proximo_dialogo` INT NULL,
@@ -90,7 +104,7 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_jogador`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_jogador` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_personagem` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`, `id_personagem`),
@@ -107,7 +121,7 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_save_game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_save_game` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_dialogo_checkpoint` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `id_jogador` INT NOT NULL,
@@ -131,7 +145,7 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_area_corpo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_area_corpo` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `area_corpo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
@@ -142,7 +156,7 @@ COMMENT = 'área do corpo onde o item será equipado';
 -- Table `nyte`.`tbl_item`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_item` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `equipado` TINYINT NOT NULL,
   `id_personagem` INT NOT NULL,
@@ -168,7 +182,7 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_tipo_combate`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_tipo_combate` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -178,8 +192,8 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_atributo_combate`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_atributo_combate` (
-  `id` INT NOT NULL,
-  `atributo` VARCHAR(45) NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `atributo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -188,7 +202,7 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_combate_personagem`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_combate_personagem` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_tipo_combate` INT NOT NULL,
   `id_atributo_combate` INT NOT NULL,
   `valor` INT NOT NULL,
@@ -219,7 +233,7 @@ ENGINE = InnoDB;
 -- Table `nyte`.`tbl_atributo_especializacao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_atributo_especializacao` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `atributo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
@@ -230,7 +244,7 @@ COMMENT = 'atributos de especialização. agilidade, conhecimento, blefe...';
 -- Table `nyte`.`tbl_atributo_especializacao_combate`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_atributo_especializacao_combate` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_personagem` INT NOT NULL,
   `valor_melhoria` INT NOT NULL,
   `id_atributo_combate` INT NOT NULL,
@@ -262,7 +276,7 @@ COMMENT = 'valor de increase/decrease que especializações/atributos dão ao va
 -- Table `nyte`.`tbl_caracteristica_item_combate`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_caracteristica_item_combate` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_item` INT NOT NULL,
   `valor` INT NOT NULL,
   `id_atributo_combate` INT NOT NULL,
