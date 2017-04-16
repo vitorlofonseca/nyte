@@ -158,21 +158,38 @@ COMMENT = 'área do corpo onde o item será equipado';
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_item` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
+  `valor` VARCHAR(45) NOT NULL,
+  `id_area_corpo` INT NOT NULL,
+  PRIMARY KEY (`id`, `id_area_corpo`),
+  INDEX `fk_tbl_item_tbl_area_corpo1_idx` (`id_area_corpo` ASC),
+  CONSTRAINT `fk_tbl_item_tbl_area_corpo1`
+    FOREIGN KEY (`id_area_corpo`)
+    REFERENCES `nyte`.`tbl_area_corpo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `nyte`.`tbl_item_personagem`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nyte`.`tbl_item_personagem` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `equipado` TINYINT NOT NULL,
   `id_personagem` INT NOT NULL,
-  `custo` FLOAT NOT NULL,
-  `id_area_corpo` INT NOT NULL,
-  PRIMARY KEY (`id`, `id_personagem`, `id_area_corpo`),
+  `id_item` INT NOT NULL,
+  `arma_reserva` TINYINT NOT NULL,
+  PRIMARY KEY (`id`, `id_personagem`, `id_item`),
   INDEX `fk_tbl_item_tbl_personagem1_idx` (`id_personagem` ASC),
-  INDEX `fk_tbl_item_tbl_area_corpo1_idx` (`id_area_corpo` ASC),
+  INDEX `fk_tbl_item_personagem_tbl_item1_idx` (`id_item` ASC),
   CONSTRAINT `fk_tbl_item_tbl_personagem1`
     FOREIGN KEY (`id_personagem`)
     REFERENCES `nyte`.`tbl_personagem` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tbl_item_tbl_area_corpo1`
-    FOREIGN KEY (`id_area_corpo`)
-    REFERENCES `nyte`.`tbl_area_corpo` (`id`)
+  CONSTRAINT `fk_tbl_item_personagem_tbl_item1`
+    FOREIGN KEY (`id_item`)
+    REFERENCES `nyte`.`tbl_item` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -277,20 +294,20 @@ COMMENT = 'valor de increase/decrease que especializações/atributos dão ao va
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_caracteristica_item_combate` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_item` INT NOT NULL,
   `valor` INT NOT NULL,
   `id_atributo_combate` INT NOT NULL,
-  PRIMARY KEY (`id`, `id_item`, `id_atributo_combate`),
-  INDEX `fk_tbl_caracteristica_combate_tbl_item1_idx` (`id_item` ASC),
+  `id_item` INT NOT NULL,
+  PRIMARY KEY (`id`, `id_atributo_combate`, `id_item`),
   INDEX `fk_tbl_caracteristica_combate_tbl_combate_personagem1_idx` (`id_atributo_combate` ASC),
-  CONSTRAINT `fk_tbl_caracteristica_combate_tbl_item1`
-    FOREIGN KEY (`id_item`)
-    REFERENCES `nyte`.`tbl_item` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_tbl_caracteristica_item_combate_tbl_item1_idx` (`id_item` ASC),
   CONSTRAINT `fk_tbl_caracteristica_combate_tbl_combate_personagem1`
     FOREIGN KEY (`id_atributo_combate`)
     REFERENCES `nyte`.`tbl_combate_personagem` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tbl_caracteristica_item_combate_tbl_item1`
+    FOREIGN KEY (`id_item`)
+    REFERENCES `nyte`.`tbl_item` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
