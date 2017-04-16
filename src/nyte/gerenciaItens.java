@@ -5,11 +5,17 @@
  */
 package nyte;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.event.TreeSelectionEvent;
+
 /**
  *
  * @author vitorlofonseca
  */
-public class gerenciaItens extends javax.swing.JFrame {
+public class gerenciaItens extends javax.swing.JFrame{
 
     /**
      * Creates new form gerenciaItens
@@ -27,290 +33,593 @@ public class gerenciaItens extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        btnCabecaEquipado = new javax.swing.JButton();
+        btnPescocoEquipado = new javax.swing.JButton();
+        btnPeitoralEquipado = new javax.swing.JButton();
+        btnBracoDireitoEquipado = new javax.swing.JButton();
+        btnBracoEsquerdoEquipado = new javax.swing.JButton();
+        btnCinturaoEquipado = new javax.swing.JButton();
+        btnPernaDireitaEquipado = new javax.swing.JButton();
+        btnPernaEsquerdaEquipado = new javax.swing.JButton();
+        btnBotaEquipado = new javax.swing.JButton();
+        btnAnelDireitoEquipado = new javax.swing.JButton();
+        btnAnelEsquerdoEquipado = new javax.swing.JButton();
+        lblInfoItemTitulo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnEquiparCabeca = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        selectItemCabeca = new javax.swing.JComboBox<>();
+        btnEquiparPescoco = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        btnEquiparPeitoral = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        btnEquiparBracoDireito = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        btnEquiparBracoEsquerdo = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        btnEquiparCinturao = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        btnEquiparAnelEsquerdo = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        btnEquiparAnelDireito = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        btnEquiparPernaDireita = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox<>();
+        btnEquiparPernaEsquerda = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jComboBox10 = new javax.swing.JComboBox<>();
+        btnEquiparBota = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBox11 = new javax.swing.JComboBox<>();
+        btnEquiparArma = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jComboBox12 = new javax.swing.JComboBox<>();
+        btnEquiparArmaReserva = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBox13 = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        btnBotaEquipado1 = new javax.swing.JButton();
+        btnArmaEquipada = new javax.swing.JButton();
+        btnArmaReserva = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(790, 450));
+        setMinimumSize(new java.awt.Dimension(1000, 650));
         setPreferredSize(new java.awt.Dimension(660, 600));
+        setResizable(false);
         setSize(new java.awt.Dimension(660, 600));
         getContentPane().setLayout(null);
 
-        jLabel2.setText("Arma Equipada: ");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 40, 102, 15);
-
-        jLabel3.setText("Arma Reserva: ");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(230, 100, 100, 15);
-
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Itens");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Cabeça");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Capacete 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Capacete 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Capacete 3");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Capacete 4");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Pescoço");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cordão 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cordão 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cordão 3");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cordão 4");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Peitoral");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Armadura 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Armadura 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Armadura 3");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Armadura 4");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Braço Direito");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Braçadeira 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Braçadeira 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Braçadeira 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Braço Esquerdo");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Braçadeira 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Braçadeira 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Braçadeira 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mão Direita");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Anel 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Anel 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Anel 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mão Esquerda");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Anel 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Anel 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Anel 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Cinto");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cinturão 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cinturão 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cinturão 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Perna Direita");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Perneira 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Perneira 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Perneira 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Perna Esquerda");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Perneira 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Perneira 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Perneira 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Bota");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Bota 1");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Bota 2");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Bota 3");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane2.setViewportView(jTree1);
-
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(30, 30, 180, 360);
-
-        jButton1.setText("Capacete X");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCabecaEquipado.setText("Capacete X");
+        btnCabecaEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCabecaEquipadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(530, 40, 110, 25);
+        getContentPane().add(btnCabecaEquipado);
+        btnCabecaEquipado.setBounds(660, 90, 110, 25);
 
-        jButton2.setText("Cordão X");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPescocoEquipado.setText("Cordão X");
+        btnPescocoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPescocoEquipadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(540, 80, 100, 25);
+        getContentPane().add(btnPescocoEquipado);
+        btnPescocoEquipado.setBounds(670, 140, 100, 25);
 
-        jButton3.setText("Arma Y");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(340, 100, 80, 25);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(210, 80, 230, 60);
-
-        jButton4.setText("Arma X");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnPeitoralEquipado.setText("Malha X");
+        btnPeitoralEquipado.setToolTipText("");
+        btnPeitoralEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnPeitoralEquipadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(340, 40, 80, 25);
+        getContentPane().add(btnPeitoralEquipado);
+        btnPeitoralEquipado.setBounds(680, 200, 90, 25);
 
-        jButton5.setText("Malha X");
-        jButton5.setToolTipText("");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnBracoDireitoEquipado.setText("Braçadeira X");
+        btnBracoDireitoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnBracoDireitoEquipadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(550, 150, 90, 25);
+        getContentPane().add(btnBracoDireitoEquipado);
+        btnBracoDireitoEquipado.setBounds(570, 250, 120, 25);
 
-        jButton6.setText("Braçadeira X");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnBracoEsquerdoEquipado.setText("Braçadeira X");
+        btnBracoEsquerdoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnBracoEsquerdoEquipadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(440, 200, 120, 25);
+        getContentPane().add(btnBracoEsquerdoEquipado);
+        btnBracoEsquerdoEquipado.setBounds(750, 250, 130, 25);
 
-        jButton7.setText("Braçadeira X");
-        getContentPane().add(jButton7);
-        jButton7.setBounds(620, 200, 130, 25);
+        btnCinturaoEquipado.setText("Cinto X");
+        btnCinturaoEquipado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCinturaoEquipadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCinturaoEquipado);
+        btnCinturaoEquipado.setBounds(670, 310, 90, 25);
 
-        jButton8.setText("Cinto X");
-        getContentPane().add(jButton8);
-        jButton8.setBounds(540, 260, 90, 25);
+        btnPernaDireitaEquipado.setText("Perneira Y");
+        btnPernaDireitaEquipado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPernaDireitaEquipadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPernaDireitaEquipado);
+        btnPernaDireitaEquipado.setBounds(620, 410, 100, 25);
 
-        jButton9.setText("Perneira Y");
-        getContentPane().add(jButton9);
-        jButton9.setBounds(490, 360, 100, 25);
+        btnPernaEsquerdaEquipado.setText("Perneira X");
+        btnPernaEsquerdaEquipado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPernaEsquerdaEquipadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPernaEsquerdaEquipado);
+        btnPernaEsquerdaEquipado.setBounds(720, 410, 100, 25);
 
-        jButton10.setText("Perneira X");
-        getContentPane().add(jButton10);
-        jButton10.setBounds(590, 360, 100, 25);
+        btnBotaEquipado.setText("BotaX");
+        btnBotaEquipado.setToolTipText("");
+        btnBotaEquipado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBotaEquipadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBotaEquipado);
+        btnBotaEquipado.setBounds(660, 530, 110, 25);
 
-        jButton11.setText("BotaX");
-        jButton11.setToolTipText("");
-        getContentPane().add(jButton11);
-        jButton11.setBounds(530, 480, 110, 25);
+        btnAnelDireitoEquipado.setText("Anel Y");
+        btnAnelDireitoEquipado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnelDireitoEquipadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAnelDireitoEquipado);
+        btnAnelDireitoEquipado.setBounds(570, 340, 80, 25);
 
-        jButton13.setText("Anel Y");
-        getContentPane().add(jButton13);
-        jButton13.setBounds(440, 290, 80, 25);
+        btnAnelEsquerdoEquipado.setText("Anel X");
+        btnAnelEsquerdoEquipado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnelEsquerdoEquipadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAnelEsquerdoEquipado);
+        btnAnelEsquerdoEquipado.setBounds(770, 340, 80, 25);
 
-        jButton14.setText("Anel X");
-        getContentPane().add(jButton14);
-        jButton14.setBounds(640, 290, 80, 25);
-
-        jLabel1.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corpo.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(360, 0, 510, 570);
-
-        jLabel4.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        jLabel4.setText("Informações Malha X");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(230, 160, 180, 16);
+        lblInfoItemTitulo.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        lblInfoItemTitulo.setText("Informações Malha X");
+        getContentPane().add(lblInfoItemTitulo);
+        lblInfoItemTitulo.setBounds(380, 240, 180, 16);
 
         jLabel5.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(230, 190, 120, 110);
+        jLabel5.setBounds(380, 270, 120, 110);
 
-        jButton12.setText("Cancelar");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12);
-        jButton12.setBounds(90, 460, 140, 50);
+        getContentPane().add(btnCancelar);
+        btnCancelar.setBounds(400, 510, 150, 50);
 
-        jButton15.setText("Salvar");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton15);
-        jButton15.setBounds(280, 460, 150, 50);
+        getContentPane().add(btnSalvar);
+        btnSalvar.setBounds(400, 430, 150, 50);
+
+        btnEquiparCabeca.setText("Equipar");
+        btnEquiparCabeca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparCabecaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparCabeca);
+        btnEquiparCabeca.setBounds(260, 60, 90, 25);
+
+        jLabel6.setText("Cabeça");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(80, 70, 70, 15);
+
+        selectItemCabeca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capacete 1", "Capacete 2", "Capacete 3", "Capacete 4" }));
+        selectItemCabeca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectItemCabecaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(selectItemCabeca);
+        selectItemCabeca.setBounds(150, 60, 110, 25);
+
+        btnEquiparPescoco.setText("Equipar");
+        btnEquiparPescoco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparPescocoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparPescoco);
+        btnEquiparPescoco.setBounds(260, 100, 90, 25);
+
+        jLabel7.setText("Pescoço");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(80, 110, 70, 15);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cordão 1", "Cordão 2", "Cordão 3", "Cordão 4" }));
+        getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(150, 100, 110, 25);
+
+        btnEquiparPeitoral.setText("Equipar");
+        btnEquiparPeitoral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparPeitoralActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparPeitoral);
+        btnEquiparPeitoral.setBounds(260, 140, 90, 25);
+
+        jLabel8.setText("Peitoral");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(80, 150, 70, 15);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malha 1", "Malha 2", "Malha 3", "Colete 1", "Colete 2", "Colete 3", " " }));
+        getContentPane().add(jComboBox3);
+        jComboBox3.setBounds(150, 140, 110, 25);
+
+        btnEquiparBracoDireito.setText("Equipar");
+        btnEquiparBracoDireito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparBracoDireitoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparBracoDireito);
+        btnEquiparBracoDireito.setBounds(260, 180, 90, 25);
+
+        jLabel9.setText("Braço Direito");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(50, 190, 100, 15);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Braçadeira 1", "Braçadeira 2", "Braçadeira 3" }));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox4);
+        jComboBox4.setBounds(150, 180, 110, 25);
+
+        btnEquiparBracoEsquerdo.setText("Equipar");
+        btnEquiparBracoEsquerdo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparBracoEsquerdoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparBracoEsquerdo);
+        btnEquiparBracoEsquerdo.setBounds(260, 220, 90, 25);
+
+        jLabel10.setText("Braço Esquerdo");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(40, 230, 110, 15);
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Braçadeira 1", "Braçadeira 2", "Braçadeira 3", " " }));
+        getContentPane().add(jComboBox5);
+        jComboBox5.setBounds(150, 220, 110, 25);
+
+        btnEquiparCinturao.setText("Equipar");
+        btnEquiparCinturao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparCinturaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparCinturao);
+        btnEquiparCinturao.setBounds(260, 260, 90, 25);
+
+        jLabel11.setText("Cinturão");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(80, 270, 70, 15);
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cinturão 1", "Cinturão 2", "Cinturão 3" }));
+        getContentPane().add(jComboBox6);
+        jComboBox6.setBounds(150, 260, 110, 25);
+
+        btnEquiparAnelEsquerdo.setText("Equipar");
+        btnEquiparAnelEsquerdo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparAnelEsquerdoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparAnelEsquerdo);
+        btnEquiparAnelEsquerdo.setBounds(260, 300, 90, 25);
+
+        jLabel12.setText("Anel Esquerdo");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(40, 310, 110, 15);
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
+        getContentPane().add(jComboBox7);
+        jComboBox7.setBounds(150, 300, 110, 25);
+
+        btnEquiparAnelDireito.setText("Equipar");
+        btnEquiparAnelDireito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparAnelDireitoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparAnelDireito);
+        btnEquiparAnelDireito.setBounds(260, 340, 90, 25);
+
+        jLabel13.setText("Anel Direito");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(60, 350, 90, 15);
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
+        getContentPane().add(jComboBox8);
+        jComboBox8.setBounds(150, 340, 110, 25);
+
+        btnEquiparPernaDireita.setText("Equipar");
+        btnEquiparPernaDireita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparPernaDireitaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparPernaDireita);
+        btnEquiparPernaDireita.setBounds(260, 380, 90, 25);
+
+        jLabel14.setText("Perna Direita");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(50, 390, 100, 15);
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perneira 1", "Perneira 2", "Perneira 3", " " }));
+        getContentPane().add(jComboBox9);
+        jComboBox9.setBounds(150, 380, 110, 25);
+
+        btnEquiparPernaEsquerda.setText("Equipar");
+        btnEquiparPernaEsquerda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparPernaEsquerdaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparPernaEsquerda);
+        btnEquiparPernaEsquerda.setBounds(260, 420, 90, 25);
+
+        jLabel15.setText("Perna Esquerda");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(40, 430, 110, 15);
+
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perneira 1", "Perneira 2", "Perneira 3" }));
+        getContentPane().add(jComboBox10);
+        jComboBox10.setBounds(150, 420, 110, 25);
+
+        btnEquiparBota.setText("Equipar");
+        btnEquiparBota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparBotaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparBota);
+        btnEquiparBota.setBounds(260, 460, 90, 25);
+
+        jLabel16.setText("Bota");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(100, 470, 50, 15);
+
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Calçado 1", "Calçado 2", "Calçado 3", "Calçado 4" }));
+        getContentPane().add(jComboBox11);
+        jComboBox11.setBounds(150, 460, 110, 25);
+
+        btnEquiparArma.setText("Equipar");
+        btnEquiparArma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparArmaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparArma);
+        btnEquiparArma.setBounds(260, 500, 90, 25);
+
+        jLabel17.setText("Arma Equipada");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(40, 510, 110, 15);
+
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arco", "Fuzil", "Espada", "Adaga" }));
+        getContentPane().add(jComboBox12);
+        jComboBox12.setBounds(150, 500, 110, 25);
+
+        btnEquiparArmaReserva.setText("Equipar");
+        btnEquiparArmaReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEquiparArmaReservaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquiparArmaReserva);
+        btnEquiparArmaReserva.setBounds(260, 540, 90, 25);
+
+        jLabel18.setText("Arma Reserva");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(50, 550, 100, 15);
+
+        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arco", "Fuzil", "Espada", "Adaga" }));
+        getContentPane().add(jComboBox13);
+        jComboBox13.setBounds(150, 540, 110, 25);
+
+        jLabel19.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        jLabel19.setText("Informações Personagem");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(380, 60, 180, 16);
+
+        jLabel20.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(380, 90, 120, 110);
+
+        btnBotaEquipado1.setText("BotaX");
+        btnBotaEquipado1.setToolTipText("");
+        getContentPane().add(btnBotaEquipado1);
+        btnBotaEquipado1.setBounds(660, 530, 110, 25);
+
+        btnArmaEquipada.setText("Arma Equipada");
+        btnArmaEquipada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArmaEquipadaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnArmaEquipada);
+        btnArmaEquipada.setBounds(800, 450, 120, 25);
+
+        btnArmaReserva.setText("Arma Reserva");
+        btnArmaReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArmaReservaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnArmaReserva);
+        btnArmaReserva.setBounds(800, 500, 120, 25);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corpo.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(490, 80, 350, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCabecaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCabecaEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnCabecaEquipado.getText());
+    }//GEN-LAST:event_btnCabecaEquipadoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnPescocoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPescocoEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnPescocoEquipado.getText());
+    }//GEN-LAST:event_btnPescocoEquipadoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnPeitoralEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeitoralEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnPeitoralEquipado.getText());
+    }//GEN-LAST:event_btnPeitoralEquipadoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnBracoDireitoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBracoDireitoEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnBracoDireitoEquipado.getText());
+    }//GEN-LAST:event_btnBracoDireitoEquipadoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         
-    }//GEN-LAST:event_jButton15ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnEquiparCabecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparCabecaActionPerformed
+        System.out.println(selectItemCabeca.getSelectedItem());
+    }//GEN-LAST:event_btnEquiparCabecaActionPerformed
+
+    private void btnEquiparPescocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparPescocoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparPescocoActionPerformed
+
+    private void btnEquiparPeitoralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparPeitoralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparPeitoralActionPerformed
+
+    private void btnEquiparBracoDireitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparBracoDireitoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparBracoDireitoActionPerformed
+
+    private void btnEquiparBracoEsquerdoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparBracoEsquerdoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparBracoEsquerdoActionPerformed
+
+    private void btnEquiparCinturaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparCinturaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparCinturaoActionPerformed
+
+    private void btnEquiparAnelEsquerdoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparAnelEsquerdoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparAnelEsquerdoActionPerformed
+
+    private void btnEquiparAnelDireitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparAnelDireitoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparAnelDireitoActionPerformed
+
+    private void btnEquiparPernaDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparPernaDireitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparPernaDireitaActionPerformed
+
+    private void btnEquiparPernaEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparPernaEsquerdaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparPernaEsquerdaActionPerformed
+
+    private void btnEquiparBotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparBotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparBotaActionPerformed
+
+    private void btnEquiparArmaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparArmaReservaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparArmaReservaActionPerformed
+
+    private void btnEquiparArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparArmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEquiparArmaActionPerformed
+
+    private void selectItemCabecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectItemCabecaActionPerformed
+        
+    }//GEN-LAST:event_selectItemCabecaActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void btnBracoEsquerdoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBracoEsquerdoEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnBracoEsquerdoEquipado.getText());
+    }//GEN-LAST:event_btnBracoEsquerdoEquipadoActionPerformed
+
+    private void btnCinturaoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinturaoEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnCinturaoEquipado.getText());
+    }//GEN-LAST:event_btnCinturaoEquipadoActionPerformed
+
+    private void btnAnelDireitoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnelDireitoEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnAnelDireitoEquipado.getText());
+    }//GEN-LAST:event_btnAnelDireitoEquipadoActionPerformed
+
+    private void btnAnelEsquerdoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnelEsquerdoEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnAnelEsquerdoEquipado.getText());
+    }//GEN-LAST:event_btnAnelEsquerdoEquipadoActionPerformed
+
+    private void btnPernaDireitaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPernaDireitaEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnPernaDireitaEquipado.getText());
+    }//GEN-LAST:event_btnPernaDireitaEquipadoActionPerformed
+
+    private void btnPernaEsquerdaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPernaEsquerdaEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnPernaEsquerdaEquipado.getText());
+    }//GEN-LAST:event_btnPernaEsquerdaEquipadoActionPerformed
+
+    private void btnArmaEquipadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmaEquipadaActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnArmaEquipada.getText());
+    }//GEN-LAST:event_btnArmaEquipadaActionPerformed
+
+    private void btnBotaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBotaEquipadoActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnBotaEquipado.getText());
+    }//GEN-LAST:event_btnBotaEquipadoActionPerformed
+
+    private void btnArmaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmaReservaActionPerformed
+        lblInfoItemTitulo.setText("Informações "+btnArmaReserva.getText());
+    }//GEN-LAST:event_btnArmaReservaActionPerformed
+        
+    
     /**
      * @param args the command line arguments
      */
@@ -347,28 +656,66 @@ public class gerenciaItens extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btnAnelDireitoEquipado;
+    private javax.swing.JButton btnAnelEsquerdoEquipado;
+    private javax.swing.JButton btnArmaEquipada;
+    private javax.swing.JButton btnArmaReserva;
+    private javax.swing.JButton btnBotaEquipado;
+    private javax.swing.JButton btnBotaEquipado1;
+    private javax.swing.JButton btnBracoDireitoEquipado;
+    private javax.swing.JButton btnBracoEsquerdoEquipado;
+    private javax.swing.JButton btnCabecaEquipado;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCinturaoEquipado;
+    private javax.swing.JButton btnEquiparAnelDireito;
+    private javax.swing.JButton btnEquiparAnelEsquerdo;
+    private javax.swing.JButton btnEquiparArma;
+    private javax.swing.JButton btnEquiparArmaReserva;
+    private javax.swing.JButton btnEquiparBota;
+    private javax.swing.JButton btnEquiparBracoDireito;
+    private javax.swing.JButton btnEquiparBracoEsquerdo;
+    private javax.swing.JButton btnEquiparCabeca;
+    private javax.swing.JButton btnEquiparCinturao;
+    private javax.swing.JButton btnEquiparPeitoral;
+    private javax.swing.JButton btnEquiparPernaDireita;
+    private javax.swing.JButton btnEquiparPernaEsquerda;
+    private javax.swing.JButton btnEquiparPescoco;
+    private javax.swing.JButton btnPeitoralEquipado;
+    private javax.swing.JButton btnPernaDireitaEquipado;
+    private javax.swing.JButton btnPernaEsquerdaEquipado;
+    private javax.swing.JButton btnPescocoEquipado;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> jComboBox10;
+    private javax.swing.JComboBox<String> jComboBox11;
+    private javax.swing.JComboBox<String> jComboBox12;
+    private javax.swing.JComboBox<String> jComboBox13;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTree jTree1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblInfoItemTitulo;
+    private javax.swing.JComboBox<String> selectItemCabeca;
     // End of variables declaration//GEN-END:variables
+    
 }
