@@ -7,6 +7,8 @@ package nyte;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.event.TreeSelectionEvent;
@@ -15,12 +17,12 @@ import javax.swing.event.TreeSelectionEvent;
  *
  * @author vitorlofonseca
  */
-public class gerenciaItens extends javax.swing.JFrame{
+public class GerenciaItens extends javax.swing.JFrame{
 
     /**
      * Creates new form gerenciaItens
      */
-    public gerenciaItens() {
+    public GerenciaItens() {
         initComponents();
     }
 
@@ -96,7 +98,6 @@ public class gerenciaItens extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 650));
-        setPreferredSize(new java.awt.Dimension(660, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(660, 600));
         getContentPane().setLayout(null);
@@ -516,7 +517,7 @@ public class gerenciaItens extends javax.swing.JFrame{
     }//GEN-LAST:event_btnBracoDireitoEquipadoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+        this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -576,7 +577,7 @@ public class gerenciaItens extends javax.swing.JFrame{
     }//GEN-LAST:event_btnEquiparArmaActionPerformed
 
     private void selectItemCabecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectItemCabecaActionPerformed
-        
+        lblInfoItemTitulo.setText("Informações "+selectItemCabeca.getSelectedItem());
     }//GEN-LAST:event_selectItemCabecaActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
@@ -618,7 +619,7 @@ public class gerenciaItens extends javax.swing.JFrame{
     private void btnArmaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmaReservaActionPerformed
         lblInfoItemTitulo.setText("Informações "+btnArmaReserva.getText());
     }//GEN-LAST:event_btnArmaReservaActionPerformed
-        
+    
     
     /**
      * @param args the command line arguments
@@ -637,22 +638,24 @@ public class gerenciaItens extends javax.swing.JFrame{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(gerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(gerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(gerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(gerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new gerenciaItens().setVisible(true);
+                new GerenciaItens().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

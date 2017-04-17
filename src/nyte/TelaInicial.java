@@ -5,18 +5,16 @@
  */
 package nyte;
 
-import java.util.Random;
-
 /**
  *
  * @author vitorlofonseca
  */
-public class dialogo extends javax.swing.JFrame {
+public class TelaInicial extends javax.swing.JFrame {
 
     /**
-     * Creates new form dialogo
+     * Creates new form telaInicial
      */
-    public dialogo() {
+    public TelaInicial() {
         initComponents();
     }
 
@@ -29,40 +27,42 @@ public class dialogo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblDado = new javax.swing.JLabel();
-        lancarDado = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1000, 650));
-        getContentPane().setLayout(null);
 
-        lblDado.setFont(new java.awt.Font("Cantarell", 1, 72)); // NOI18N
-        lblDado.setText("-");
-        lblDado.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lblDado.setAlignmentY(0.2F);
-        getContentPane().add(lblDado);
-        lblDado.setBounds(820, 40, 130, 80);
-
-        lancarDado.setText("Lançar Dado");
-        lancarDado.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("foi");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lancarDadoActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(lancarDado);
-        lancarDado.setBounds(820, 140, 130, 70);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jButton1)
+                .addContainerGap(224, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jButton1)
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lancarDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lancarDadoActionPerformed
-             
-        Random random = new Random();
-        int resultDado = random.nextInt(6)+1;
-        
-        //impressão do resultado
-        lblDado.setText(Integer.toString(resultDado));
-    }//GEN-LAST:event_lancarDadoActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        GerenciaItens g = new GerenciaItens();
+        g.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,26 +81,30 @@ public class dialogo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dialogo().setVisible(true);
+                new TelaInicial().setVisible(true);
             }
         });
     }
+    
+    private void onCLick(){
+        System.out.println("asd");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton lancarDado;
-    private javax.swing.JLabel lblDado;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
