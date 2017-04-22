@@ -17,14 +17,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JList;
 
 /**
  *
  * @author vitorlofonseca
  */
-public class admGerenciaItens extends javax.swing.JFrame {
+public class AdmGerenciaItens extends javax.swing.JFrame {
         
     private HashMap itens;
     private Connection conn;
@@ -32,7 +32,7 @@ public class admGerenciaItens extends javax.swing.JFrame {
     /**
      * Creates new form admGerenciaItens
      */
-    public admGerenciaItens() throws SQLException, ClassNotFoundException {
+    public AdmGerenciaItens() throws SQLException, ClassNotFoundException {
         
         initComponents();
         
@@ -61,7 +61,27 @@ public class admGerenciaItens extends javax.swing.JFrame {
                 JList list = (JList)evt.getSource();
                 if (evt.getClickCount() == 2) {
                     int index = list.locationToIndex(evt.getPoint());
-                    System.out.println(listaItens.getSelectedValue());
+                    
+                    Item itemEdicao = null;
+                    try {
+                        itemEdicao = ItemDAO.getItemPorNome(conn, listaItens.getSelectedValue());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    AdmGerenciaItem telaGerenciaItem = null;
+                    try {
+                        telaGerenciaItem = new AdmGerenciaItem(itemEdicao, conn);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    telaGerenciaItem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    telaGerenciaItem.setVisible(true);
                 }
             }
         });
@@ -79,7 +99,9 @@ public class admGerenciaItens extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         listaItens = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        btnAdicionarItem = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 650));
@@ -95,23 +117,61 @@ public class admGerenciaItens extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaItens);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 100, 900, 470);
+        jScrollPane1.setBounds(30, 70, 770, 420);
 
-        jButton1.setText("Adicionar Item");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionarItem.setText("Adicionar Item");
+        btnAdicionarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAdicionarItemActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(820, 60, 130, 25);
+        getContentPane().add(btnAdicionarItem);
+        btnAdicionarItem.setBounds(820, 70, 130, 25);
+
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(380, 500, 150, 60);
+
+        jLabel1.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        jLabel1.setText("Gerência de Itens");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 30, 230, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
+        
+        Connection conn = null;
+        try {
+            conn = Connect.conectar();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        AdmGerenciaItem telaGerenciaItem = null;
+        try {
+            telaGerenciaItem = new AdmGerenciaItem(conn);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        telaGerenciaItem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        telaGerenciaItem.setVisible(true);
+    }//GEN-LAST:event_btnAdicionarItemActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -130,32 +190,35 @@ public class admGerenciaItens extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(admGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdmGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(admGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdmGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(admGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdmGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(admGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdmGerenciaItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new admGerenciaItens().setVisible(true);
+                    new AdmGerenciaItens().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(admGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(admGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAdicionarItem;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listaItens;
     // End of variables declaration//GEN-END:variables

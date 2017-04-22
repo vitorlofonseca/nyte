@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `nyte`.`tbl_item` (
   `nome` VARCHAR(45) NOT NULL,
   `valor` VARCHAR(45) NOT NULL,
   `id_area_corpo` INT NOT NULL,
-  PRIMARY KEY (`id`, `id_area_corpo`),
+  PRIMARY KEY (`id`, `id_area_corpo`, `nome`),
   INDEX `fk_tbl_item_tbl_area_corpo1_idx` (`id_area_corpo` ASC),
   CONSTRAINT `fk_tbl_item_tbl_area_corpo1`
     FOREIGN KEY (`id_area_corpo`)
@@ -196,16 +196,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `nyte`.`tbl_tipo_combate`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nyte`.`tbl_tipo_combate` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `tipo` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `nyte`.`tbl_atributo_combate`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_atributo_combate` (
@@ -220,19 +210,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nyte`.`tbl_combate_personagem` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `id_tipo_combate` INT NOT NULL,
   `id_atributo_combate` INT NOT NULL,
   `valor` INT NOT NULL,
   `id_personagem` INT NOT NULL,
-  PRIMARY KEY (`id`, `id_tipo_combate`, `id_atributo_combate`, `id_personagem`),
-  INDEX `fk_tbl_combate_tbl_tipo_combate1_idx` (`id_tipo_combate` ASC),
+  PRIMARY KEY (`id`, `id_atributo_combate`, `id_personagem`),
   INDEX `fk_tbl_combate_tbl_atributo_combate1_idx` (`id_atributo_combate` ASC),
   INDEX `fk_tbl_combate_personagem_tbl_personagem1_idx` (`id_personagem` ASC),
-  CONSTRAINT `fk_tbl_combate_tbl_tipo_combate1`
-    FOREIGN KEY (`id_tipo_combate`)
-    REFERENCES `nyte`.`tbl_tipo_combate` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_tbl_combate_tbl_atributo_combate1`
     FOREIGN KEY (`id_atributo_combate`)
     REFERENCES `nyte`.`tbl_atributo_combate` (`id`)

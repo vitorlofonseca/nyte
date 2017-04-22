@@ -51,7 +51,7 @@ public class AreaCorpoDAO {
             areaCorpoTemp.setAreaCorpo(rs.getString("area_corpo"));
             areaCorpoTemp.setId(rs.getInt("id"));
             
-            areasCorpo.put (rs.getInt("id"), areaCorpoTemp);
+            areasCorpo.put(rs.getInt("id"), areaCorpoTemp);
         }
 
         return areasCorpo;
