@@ -5,8 +5,8 @@
  */
 package DAO;
 
-import Classes.AreaCorpo;
-import Classes.Item;
+import Model.AreaCorpo;
+import Model.Item;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,13 +19,14 @@ import java.util.HashMap;
  */
 public class ItemDAO {
     
-    public static HashMap getItens(Connection conn) throws SQLException, ClassNotFoundException{           
+    public static HashMap getItens() throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
         
         java.sql.Statement st = conn.createStatement();
-        st.executeQuery("select * from tbl_item");
-        ResultSet rs = st.getResultSet();
+        ResultSet rs = st.executeQuery("select * from tbl_item;");
 
-        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo(conn);
+        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
         
         HashMap<Integer,Item> itens = new HashMap<Integer,Item>();
 
@@ -46,15 +47,17 @@ public class ItemDAO {
     }
     
     
-    public static Item getItemPorNome(Connection conn, String nome) throws SQLException, ClassNotFoundException{           
+    public static Item getItemPorNome(String nome) throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
         
         java.sql.Statement st = conn.createStatement();
-        st.executeQuery("select * from tbl_item where nome like '"+nome+"'");
-        ResultSet rs = st.getResultSet();
+        ResultSet rs = st.executeQuery("select * from tbl_item where nome like '"+nome+"';");
         
-        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo(conn);
+        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
 
         Item item = new Item();
+        
         //Lista os alunos no console
         while (rs.next()) {
 
@@ -63,6 +66,8 @@ public class ItemDAO {
             item.setNome(rs.getString("nome"));
             item.setValor(rs.getFloat("valor"));
         }
+        
+        conn.close();
 
         return item;
     }

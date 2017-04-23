@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package ControllerView;
 
-import Classes.Item;
+import Model.Item;
 import DAO.Connect;
 import DAO.ItemDAO;
 import java.awt.event.MouseAdapter;
@@ -36,8 +36,7 @@ public class AdmGerenciaItens extends javax.swing.JFrame {
         
         initComponents();
         
-        Connection conn = Connect.conectar();
-        this.itens = ItemDAO.getItens(conn);        
+        this.itens = ItemDAO.getItens();        
         String[] itensString = new String[this.itens.size()];
         
         int i=0;
@@ -64,7 +63,7 @@ public class AdmGerenciaItens extends javax.swing.JFrame {
                     
                     Item itemEdicao = null;
                     try {
-                        itemEdicao = ItemDAO.getItemPorNome(conn, listaItens.getSelectedValue());
+                        itemEdicao = ItemDAO.getItemPorNome(listaItens.getSelectedValue());
                     } catch (SQLException ex) {
                         Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {

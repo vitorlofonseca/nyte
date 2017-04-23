@@ -14,7 +14,6 @@ import java.sql.SQLException;
  */
 public class testeDAO {
     public static void main(String args[]) throws SQLException, ClassNotFoundException {
-        Connection conn = Connect.conectar();
-        ItemDAO.getItemPorNome(conn, "Arco oBathame");
+        ItemDAO.getItemPorNome("Arco oBathame");
     }
 }

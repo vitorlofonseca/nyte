@@ -20,12 +20,13 @@ public class Connect {
     public static Connection conectar() throws ClassNotFoundException, SQLException{
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://52.33.82.146/nyte", "USUARIO", "SENHA");
-            System.out.println("Conectado com sucesso");
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection("jdbc:sqlite:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/database/nyte.sqlite");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        
+        System.out.println("Conectado com sucesso");
             
         return connection;
     }

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package ControllerView;
 
-import Classes.AreaCorpo;
-import Classes.Item;
+import Model.AreaCorpo;
+import Model.Item;
 import DAO.AreaCorpoDAO;
 import DAO.Connect;
 import java.awt.List;
@@ -31,7 +31,7 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
     public AdmGerenciaItem(Connection conn) throws SQLException, ClassNotFoundException {
         initComponents();
         
-        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo(conn);
+        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
         
         int i=0;
         String[] areasString = new String[areasCorpo.size()];
@@ -59,7 +59,7 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
         
         tituloTela.setText(item.getNome());
         
-        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo(conn);
+        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
         
         int i=0;
         String[] areasString = new String[areasCorpo.size()];

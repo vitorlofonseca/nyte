@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package ControllerView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,8 +46,6 @@ public class GerenciaItens extends javax.swing.JFrame{
         btnBotaEquipado = new javax.swing.JButton();
         btnAnelDireitoEquipado = new javax.swing.JButton();
         btnAnelEsquerdoEquipado = new javax.swing.JButton();
-        lblInfoItemTitulo = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnEquiparCabeca = new javax.swing.JButton();
@@ -89,12 +87,20 @@ public class GerenciaItens extends javax.swing.JFrame{
         btnEquiparArmaReserva = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jComboBox13 = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         btnBotaEquipado1 = new javax.swing.JButton();
         btnArmaEquipada = new javax.swing.JButton();
         btnArmaReserva = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblInfoItemTitulo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 650));
@@ -109,7 +115,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnCabecaEquipado);
-        btnCabecaEquipado.setBounds(660, 90, 110, 25);
+        btnCabecaEquipado.setBounds(710, 90, 110, 25);
 
         btnPescocoEquipado.setText("Cordão X");
         btnPescocoEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +124,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnPescocoEquipado);
-        btnPescocoEquipado.setBounds(670, 140, 100, 25);
+        btnPescocoEquipado.setBounds(710, 140, 100, 25);
 
         btnPeitoralEquipado.setText("Malha X");
         btnPeitoralEquipado.setToolTipText("");
@@ -128,7 +134,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnPeitoralEquipado);
-        btnPeitoralEquipado.setBounds(680, 200, 90, 25);
+        btnPeitoralEquipado.setBounds(730, 200, 90, 25);
 
         btnBracoDireitoEquipado.setText("Braçadeira X");
         btnBracoDireitoEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +143,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnBracoDireitoEquipado);
-        btnBracoDireitoEquipado.setBounds(570, 250, 120, 25);
+        btnBracoDireitoEquipado.setBounds(620, 250, 120, 25);
 
         btnBracoEsquerdoEquipado.setText("Braçadeira X");
         btnBracoEsquerdoEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +152,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnBracoEsquerdoEquipado);
-        btnBracoEsquerdoEquipado.setBounds(750, 250, 130, 25);
+        btnBracoEsquerdoEquipado.setBounds(800, 250, 130, 25);
 
         btnCinturaoEquipado.setText("Cinto X");
         btnCinturaoEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +161,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnCinturaoEquipado);
-        btnCinturaoEquipado.setBounds(670, 310, 90, 25);
+        btnCinturaoEquipado.setBounds(720, 310, 90, 25);
 
         btnPernaDireitaEquipado.setText("Perneira Y");
         btnPernaDireitaEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +170,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnPernaDireitaEquipado);
-        btnPernaDireitaEquipado.setBounds(620, 410, 100, 25);
+        btnPernaDireitaEquipado.setBounds(670, 410, 100, 25);
 
         btnPernaEsquerdaEquipado.setText("Perneira X");
         btnPernaEsquerdaEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +179,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnPernaEsquerdaEquipado);
-        btnPernaEsquerdaEquipado.setBounds(720, 410, 100, 25);
+        btnPernaEsquerdaEquipado.setBounds(770, 410, 100, 25);
 
         btnBotaEquipado.setText("BotaX");
         btnBotaEquipado.setToolTipText("");
@@ -183,7 +189,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnBotaEquipado);
-        btnBotaEquipado.setBounds(660, 530, 110, 25);
+        btnBotaEquipado.setBounds(710, 530, 110, 25);
 
         btnAnelDireitoEquipado.setText("Anel Y");
         btnAnelDireitoEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +198,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnAnelDireitoEquipado);
-        btnAnelDireitoEquipado.setBounds(570, 340, 80, 25);
+        btnAnelDireitoEquipado.setBounds(620, 340, 80, 25);
 
         btnAnelEsquerdoEquipado.setText("Anel X");
         btnAnelEsquerdoEquipado.addActionListener(new java.awt.event.ActionListener() {
@@ -201,16 +207,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnAnelEsquerdoEquipado);
-        btnAnelEsquerdoEquipado.setBounds(770, 340, 80, 25);
-
-        lblInfoItemTitulo.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo.setText("Informações Malha X");
-        getContentPane().add(lblInfoItemTitulo);
-        lblInfoItemTitulo.setBounds(380, 240, 180, 16);
-
-        jLabel5.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(380, 270, 120, 110);
+        btnAnelEsquerdoEquipado.setBounds(820, 340, 80, 25);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -461,19 +458,10 @@ public class GerenciaItens extends javax.swing.JFrame{
         getContentPane().add(jComboBox13);
         jComboBox13.setBounds(150, 540, 110, 25);
 
-        jLabel19.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        jLabel19.setText("Informações Personagem");
-        getContentPane().add(jLabel19);
-        jLabel19.setBounds(380, 60, 180, 16);
-
-        jLabel20.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
-        getContentPane().add(jLabel20);
-        jLabel20.setBounds(380, 90, 120, 110);
-
         btnBotaEquipado1.setText("BotaX");
         btnBotaEquipado1.setToolTipText("");
         getContentPane().add(btnBotaEquipado1);
-        btnBotaEquipado1.setBounds(660, 530, 110, 25);
+        btnBotaEquipado1.setBounds(710, 530, 110, 25);
 
         btnArmaEquipada.setText("Arma Equipada");
         btnArmaEquipada.addActionListener(new java.awt.event.ActionListener() {
@@ -482,7 +470,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnArmaEquipada);
-        btnArmaEquipada.setBounds(800, 450, 120, 25);
+        btnArmaEquipada.setBounds(850, 450, 120, 25);
 
         btnArmaReserva.setText("Arma Reserva");
         btnArmaReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -491,11 +479,44 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnArmaReserva);
-        btnArmaReserva.setBounds(800, 500, 120, 25);
+        btnArmaReserva.setBounds(850, 500, 120, 25);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corpo.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(490, 80, 350, 520);
+        jLabel1.setBounds(600, 60, 380, 540);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(590, 50, 390, 530);
+
+        lblInfoItemTitulo.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        lblInfoItemTitulo.setText("Informações Malha X");
+        getContentPane().add(lblInfoItemTitulo);
+        lblInfoItemTitulo.setBounds(380, 240, 147, 16);
+
+        jLabel5.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(380, 270, 109, 114);
+
+        jLabel19.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        jLabel19.setText("Informações Personagem");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(380, 60, 177, 20);
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(380, 90, 109, 120);
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(370, 50, 210, 170);
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(370, 230, 210, 170);
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(370, 410, 210, 170);
+        getContentPane().add(jPanel5);
+        jPanel5.setBounds(20, 50, 340, 530);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/armadura.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1020, 620);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -711,12 +732,18 @@ public class GerenciaItens extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblInfoItemTitulo;
     private javax.swing.JComboBox<String> selectItemCabeca;
     // End of variables declaration//GEN-END:variables

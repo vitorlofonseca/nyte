@@ -32,14 +32,14 @@
 	- agilidade +1 dano /+1 fuga
 	- conhecimento +1 negociação / +1 dano	
 	- blefe +1 negociação / +1 dano
-	- força +1 dano
-	- furtividade +1 defesa / +1 dano / +1 fuga
-	- inteligência +1 defesa / +1 dano / +1 negociação
-	- lábia +1 negociação
+	- força +1 dano / + 1 fuga
+	- furtividade +1 defesa / +1 fuga
+	- inteligência +1 dano / +1 negociação
+	- lábia +2 negociação
 	- percepção +1 dano
-	- resistência +1 defesa
-	- sobrevivência +1 defesa
-	- vontade +1 dano / +1 defesa / +1 negociação / +1 fuga
+	- resistência +2 defesa
+	- sobrevivência +1 defesa / +1 fuga
+	- vontade +1 dano / +1 fuga
 
 *// Atributos de Combate *//
 

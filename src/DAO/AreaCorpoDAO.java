@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Classes.AreaCorpo;
+import Model.AreaCorpo;
 import com.sun.javafx.collections.MappingChange.Map;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,14 +18,15 @@ import java.util.HashMap;
  */
 public class AreaCorpoDAO {
     
-    public static AreaCorpo getAreaCorpo(int id, Connection conn) throws SQLException{
+    public static AreaCorpo getAreaCorpo(int id) throws SQLException, ClassNotFoundException{
+        
+        Connection conn = Connect.conectar();
         
         AreaCorpo areaCorpo = new AreaCorpo();
  
         //Executa a query de seleção
         java.sql.Statement st = conn.createStatement();
-        st.executeQuery("select * from tbl_area_corpo where id="+id);
-        ResultSet rs = st.getResultSet();
+        ResultSet rs = st.executeQuery("select * from tbl_area_corpo where id="+id);
 
         //Lista os alunos no console
         while (rs.next()) {
@@ -36,11 +37,12 @@ public class AreaCorpoDAO {
         return areaCorpo;
     }
     
-    public static HashMap getAreasCorpo(Connection conn) throws SQLException, ClassNotFoundException{           
+    public static HashMap getAreasCorpo() throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
         
         java.sql.Statement st = conn.createStatement();
-        st.executeQuery("select * from tbl_area_corpo");
-        ResultSet rs = st.getResultSet();
+        ResultSet rs = st.executeQuery("select * from tbl_area_corpo");
 
         HashMap<Integer,AreaCorpo> areasCorpo = new HashMap<Integer,AreaCorpo>();
 
