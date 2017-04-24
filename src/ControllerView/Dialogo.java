@@ -60,11 +60,12 @@ public class Dialogo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         paneDialogo = new javax.swing.JScrollPane();
         lblDialogo = new javax.swing.JLabel();
-        btnTelaInicial = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
         barHp = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         lblCaixaDialogo = new javax.swing.JLabel();
-        btnGerenciarItens1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 650));
@@ -77,7 +78,7 @@ public class Dialogo extends javax.swing.JFrame {
         lblDado.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblDado.setAlignmentY(0.2F);
         getContentPane().add(lblDado);
-        lblDado.setBounds(70, 40, 130, 80);
+        lblDado.setBounds(550, 327, 130, 73);
 
         btnLancarDado.setText("Lançar Dado");
         btnLancarDado.addActionListener(new java.awt.event.ActionListener() {
@@ -86,11 +87,11 @@ public class Dialogo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLancarDado);
-        btnLancarDado.setBounds(70, 140, 130, 70);
+        btnLancarDado.setBounds(550, 430, 130, 70);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mestreMagos.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/narrador.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(670, 200, 260, 420);
+        jLabel1.setBounds(10, 150, 440, 490);
 
         paneDialogo.setToolTipText("");
         paneDialogo.setName(""); // NOI18N
@@ -99,18 +100,18 @@ public class Dialogo extends javax.swing.JFrame {
         paneDialogo.setViewportView(lblDialogo);
 
         getContentPane().add(paneDialogo);
-        paneDialogo.setBounds(320, 90, 380, 140);
+        paneDialogo.setBounds(350, 40, 380, 140);
 
-        btnTelaInicial.setText("Menu Inicial");
-        btnTelaInicial.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTelaInicialActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnTelaInicial);
-        btnTelaInicial.setBounds(250, 520, 150, 50);
+        getContentPane().add(btnVoltar);
+        btnVoltar.setBounds(780, 550, 150, 50);
         getContentPane().add(barHp);
-        barHp.setBounds(350, 310, 330, 30);
+        barHp.setBounds(420, 220, 330, 30);
 
         jLabel2.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel2.setText("HP: ");
@@ -119,16 +120,13 @@ public class Dialogo extends javax.swing.JFrame {
 
         lblCaixaDialogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caixaDialogo.png"))); // NOI18N
         getContentPane().add(lblCaixaDialogo);
-        lblCaixaDialogo.setBounds(250, 0, 600, 350);
+        lblCaixaDialogo.setBounds(300, -50, 600, 350);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(550, 330, 130, 90);
 
-        btnGerenciarItens1.setText("Gerenciar Itens");
-        btnGerenciarItens1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerenciarItens1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnGerenciarItens1);
-        btnGerenciarItens1.setBounds(60, 520, 150, 50);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/jornada.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 1030, 620);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -142,15 +140,9 @@ public class Dialogo extends javax.swing.JFrame {
         lblDado.setText(Integer.toString(resultDado));
     }//GEN-LAST:event_btnLancarDadoActionPerformed
 
-    private void btnTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaInicialActionPerformed
-        this.setVisible(false);
-        TelaInicial telaInicial = new TelaInicial();
-        telaInicial.setVisible(true);
-    }//GEN-LAST:event_btnTelaInicialActionPerformed
-
-    private void btnGerenciarItens1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarItens1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGerenciarItens1ActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,11 +185,12 @@ public class Dialogo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barHp;
-    private javax.swing.JButton btnGerenciarItens1;
     private javax.swing.JButton btnLancarDado;
-    private javax.swing.JButton btnTelaInicial;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCaixaDialogo;
     private javax.swing.JLabel lblDado;
     private javax.swing.JLabel lblDialogo;

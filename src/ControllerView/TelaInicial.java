@@ -28,9 +28,9 @@ public class TelaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        btnSair = new javax.swing.JToggleButton();
+        btnNovoJogo = new javax.swing.JToggleButton();
+        btnCarregarJogo = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,22 +43,32 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 50, 380, 90);
 
-        jToggleButton1.setText("Sair");
-        getContentPane().add(jToggleButton1);
-        jToggleButton1.setBounds(500, 270, 230, 70);
-
-        jToggleButton2.setText("Novo Jogo");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton2);
-        jToggleButton2.setBounds(500, 50, 230, 70);
+        getContentPane().add(btnSair);
+        btnSair.setBounds(500, 270, 230, 70);
 
-        jToggleButton3.setText("Carregar Jogo");
-        getContentPane().add(jToggleButton3);
-        jToggleButton3.setBounds(500, 160, 230, 70);
+        btnNovoJogo.setText("Novo Jogo");
+        btnNovoJogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoJogoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNovoJogo);
+        btnNovoJogo.setBounds(500, 50, 230, 70);
+
+        btnCarregarJogo.setText("Carregar Jogo");
+        btnCarregarJogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarregarJogoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCarregarJogo);
+        btnCarregarJogo.setBounds(500, 160, 230, 70);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mountain.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -68,9 +78,21 @@ public class TelaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void btnNovoJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoJogoActionPerformed
+        NovoJogo novoJogo = new NovoJogo();
+        this.setVisible(false);
+        novoJogo.setVisible(true);
+    }//GEN-LAST:event_btnNovoJogoActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnCarregarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarJogoActionPerformed
+        CarregarJogo carregarJogo = new CarregarJogo();
+        this.setVisible(false);
+        carregarJogo.setVisible(true);
+    }//GEN-LAST:event_btnCarregarJogoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,10 +135,10 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnCarregarJogo;
+    private javax.swing.JToggleButton btnNovoJogo;
+    private javax.swing.JToggleButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 }

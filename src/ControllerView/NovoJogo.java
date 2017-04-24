@@ -83,7 +83,7 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        btnVoltarTelaInicial = new javax.swing.JToggleButton();
         jLabel25 = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
@@ -293,14 +293,14 @@ public class NovoJogo extends javax.swing.JFrame {
         getContentPane().add(jToggleButton1);
         jToggleButton1.setBounds(850, 410, 130, 50);
 
-        jToggleButton3.setText("Voltar");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltarTelaInicial.setText("Voltar");
+        btnVoltarTelaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                btnVoltarTelaInicialActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton3);
-        jToggleButton3.setBounds(680, 410, 130, 50);
+        getContentPane().add(btnVoltarTelaInicial);
+        btnVoltarTelaInicial.setBounds(680, 410, 130, 50);
 
         jLabel25.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
         jLabel25.setText("Novo Personagem");
@@ -322,9 +322,11 @@ public class NovoJogo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    private void btnVoltarTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarTelaInicialActionPerformed
+        TelaInicial telaInicial = new TelaInicial();
+        this.setVisible(false);
+        telaInicial.setVisible(true);
+    }//GEN-LAST:event_btnVoltarTelaInicialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,6 +364,7 @@ public class NovoJogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnVoltarTelaInicial;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -413,7 +416,6 @@ public class NovoJogo extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JLabel lblBackground;
     private java.awt.Panel panel2;
     private java.awt.Panel panelEspecializacoes;
