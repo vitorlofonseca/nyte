@@ -141,7 +141,9 @@ public class Dialogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLancarDadoActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        
+        MenuIntermediario menuIntermediario = new MenuIntermediario();
+        menuIntermediario.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**

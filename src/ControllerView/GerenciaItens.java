@@ -538,6 +538,8 @@ public class GerenciaItens extends javax.swing.JFrame{
     }//GEN-LAST:event_btnBracoDireitoEquipadoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        MenuIntermediario menuIntermediario = new MenuIntermediario();
+        menuIntermediario.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
