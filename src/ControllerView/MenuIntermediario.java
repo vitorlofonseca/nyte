@@ -48,11 +48,11 @@ public class MenuIntermediario extends javax.swing.JFrame {
 
         jButton1.setText("Salvar Jogo");
         getContentPane().add(jButton1);
-        jButton1.setBounds(400, 90, 120, 40);
+        jButton1.setBounds(370, 90, 150, 40);
 
         btnArmario.setText("Taverna");
         getContentPane().add(btnArmario);
-        btnArmario.setBounds(30, 220, 120, 40);
+        btnArmario.setBounds(30, 220, 150, 40);
 
         btnTelaInicial.setText("Voltar Menu");
         btnTelaInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -61,16 +61,16 @@ public class MenuIntermediario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnTelaInicial);
-        btnTelaInicial.setBounds(400, 220, 120, 40);
+        btnTelaInicial.setBounds(370, 220, 150, 40);
 
-        btnGerenciaItens.setText("Armário");
+        btnGerenciaItens.setText("Equipamentos");
         btnGerenciaItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGerenciaItensActionPerformed(evt);
             }
         });
         getContentPane().add(btnGerenciaItens);
-        btnGerenciaItens.setBounds(30, 90, 120, 40);
+        btnGerenciaItens.setBounds(30, 90, 150, 40);
 
         btnDialogo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnDialogo.setText("Voltar Jornada!");
