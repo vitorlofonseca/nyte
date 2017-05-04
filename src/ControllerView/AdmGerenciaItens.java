@@ -8,6 +8,9 @@ package ControllerView;
 import Model.Item;
 import DAO.Connect;
 import DAO.ItemDAO;
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -35,6 +38,14 @@ public class AdmGerenciaItens extends javax.swing.JFrame {
     public AdmGerenciaItens() throws SQLException, ClassNotFoundException {
         
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
         
         this.itens = ItemDAO.getItens();        
         String[] itensString = new String[this.itens.size()];

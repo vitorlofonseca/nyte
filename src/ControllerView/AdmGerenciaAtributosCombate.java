@@ -5,6 +5,10 @@
  */
 package ControllerView;
 
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+
 /**
  *
  * @author vitorlofonseca
@@ -16,6 +20,14 @@ public class AdmGerenciaAtributosCombate extends javax.swing.JFrame {
      */
     public AdmGerenciaAtributosCombate() {
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
     }
 
     /**

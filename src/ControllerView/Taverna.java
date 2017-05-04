@@ -5,17 +5,31 @@
  */
 package ControllerView;
 
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+
 /**
  *
  * @author vitorlofonseca
  */
 public class Taverna extends javax.swing.JFrame {
+    
+    private String caller;
 
     /**
      * Creates new form Taverna
      */
     public Taverna() {
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
     }
 
     /**
@@ -46,8 +60,11 @@ public class Taverna extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         lblInfoItemTitulo4 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,14 +163,22 @@ public class Taverna extends javax.swing.JFrame {
 
         jPanel5.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Taverna");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Dinheiro:");
         jPanel5.add(jLabel2);
-        jLabel2.setBounds(10, 10, 360, 50);
+        jLabel2.setBounds(20, 0, 130, 50);
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("¨1,000,000");
+        jPanel5.add(jLabel7);
+        jLabel7.setBounds(150, 0, 130, 50);
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(40, 30, 290, 70);
+        jPanel5.setBounds(660, 40, 290, 50);
 
         jPanel7.setLayout(null);
 
@@ -165,6 +190,17 @@ public class Taverna extends javax.swing.JFrame {
         getContentPane().add(jPanel7);
         jPanel7.setBounds(780, 130, 170, 50);
 
+        jPanel8.setLayout(null);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Taverna");
+        jPanel8.add(jLabel4);
+        jLabel4.setBounds(10, 10, 360, 50);
+
+        getContentPane().add(jPanel8);
+        jPanel8.setBounds(40, 30, 290, 70);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/taverna.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, -10, 1010, 640);
@@ -173,11 +209,30 @@ public class Taverna extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuIntermediarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuIntermediarioActionPerformed
-        // TODO add your handling code here:
+        if(this.caller == "MenuIntermediario"){
+            MenuIntermediario menuIntermediario = new MenuIntermediario();
+            menuIntermediario.setVisible(true);
+        } 
+        
+        else if(this.caller == "NovoJogo"){
+            NovoJogo novoJogo = new NovoJogo();
+            novoJogo.setVisible(true);
+        }
+        
+        this.setVisible(false);
     }//GEN-LAST:event_btnMenuIntermediarioActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
-        // TODO add your handling code here:
+        if(this.caller == "MenuIntermediario"){
+            MenuIntermediario menuIntermediario = new MenuIntermediario();
+            menuIntermediario.setVisible(true);
+        } 
+        
+        else if(this.caller == "NovoJogo"){
+            NovoJogo novoJogo = new NovoJogo();
+            novoJogo.setVisible(true);
+        }
+        this.setVisible(false);
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     /**
@@ -215,6 +270,16 @@ public class Taverna extends javax.swing.JFrame {
         });
     }
 
+    public String getCaller() {
+        return caller;
+    }
+    
+    public void setCaller(String caller) {
+        this.caller = caller;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnMenuIntermediario;
@@ -222,8 +287,10 @@ public class Taverna extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel3;
@@ -231,6 +298,7 @@ public class Taverna extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton2;

@@ -6,6 +6,9 @@
 package ControllerView;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -21,6 +24,14 @@ public class Dialogo extends javax.swing.JFrame {
      */
     public Dialogo() {
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
         
         String txtPuroDialogo = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
         
@@ -134,7 +145,7 @@ public class Dialogo extends javax.swing.JFrame {
     private void btnLancarDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancarDadoActionPerformed
              
         Random random = new Random();
-        int resultDado = random.nextInt(6)+1;
+        int resultDado = random.nextInt(20)+1;
         
         //impressão do resultado
         lblDado.setText(Integer.toString(resultDado));

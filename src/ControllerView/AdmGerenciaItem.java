@@ -9,7 +9,10 @@ import Model.AreaCorpo;
 import Model.Item;
 import DAO.AreaCorpoDAO;
 import DAO.Connect;
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
 import java.awt.List;
+import java.awt.Point;
 import java.security.KeyStore.Entry.Attribute;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -30,6 +33,14 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
      */
     public AdmGerenciaItem(Connection conn) throws SQLException, ClassNotFoundException {
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
         
         HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
         

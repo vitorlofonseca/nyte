@@ -5,6 +5,9 @@
  */
 package ControllerView;
 
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -24,6 +27,14 @@ public class GerenciaItens extends javax.swing.JFrame{
      */
     public GerenciaItens() {
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
     }
 
     /**
@@ -247,7 +258,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(selectItemCabeca);
-        selectItemCabeca.setBounds(150, 60, 110, 25);
+        selectItemCabeca.setBounds(150, 60, 110, 24);
 
         btnEquiparPescoco.setText("Equipar");
         btnEquiparPescoco.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +275,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cordão 1", "Cordão 2", "Cordão 3", "Cordão 4" }));
         getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(150, 100, 110, 25);
+        jComboBox2.setBounds(150, 100, 110, 24);
 
         btnEquiparPeitoral.setText("Equipar");
         btnEquiparPeitoral.addActionListener(new java.awt.event.ActionListener() {
@@ -281,7 +292,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malha 1", "Malha 2", "Malha 3", "Colete 1", "Colete 2", "Colete 3", " " }));
         getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(150, 140, 110, 25);
+        jComboBox3.setBounds(150, 140, 110, 24);
 
         btnEquiparBracoDireito.setText("Equipar");
         btnEquiparBracoDireito.addActionListener(new java.awt.event.ActionListener() {
@@ -303,7 +314,7 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(jComboBox4);
-        jComboBox4.setBounds(150, 180, 110, 25);
+        jComboBox4.setBounds(150, 180, 110, 24);
 
         btnEquiparBracoEsquerdo.setText("Equipar");
         btnEquiparBracoEsquerdo.addActionListener(new java.awt.event.ActionListener() {
@@ -320,7 +331,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Braçadeira 1", "Braçadeira 2", "Braçadeira 3", " " }));
         getContentPane().add(jComboBox5);
-        jComboBox5.setBounds(150, 220, 110, 25);
+        jComboBox5.setBounds(150, 220, 110, 24);
 
         btnEquiparCinturao.setText("Equipar");
         btnEquiparCinturao.addActionListener(new java.awt.event.ActionListener() {
@@ -337,7 +348,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cinturão 1", "Cinturão 2", "Cinturão 3" }));
         getContentPane().add(jComboBox6);
-        jComboBox6.setBounds(150, 260, 110, 25);
+        jComboBox6.setBounds(150, 260, 110, 24);
 
         btnEquiparAnelEsquerdo.setText("Equipar");
         btnEquiparAnelEsquerdo.addActionListener(new java.awt.event.ActionListener() {
@@ -354,7 +365,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
         getContentPane().add(jComboBox7);
-        jComboBox7.setBounds(150, 300, 110, 25);
+        jComboBox7.setBounds(150, 300, 110, 24);
 
         btnEquiparAnelDireito.setText("Equipar");
         btnEquiparAnelDireito.addActionListener(new java.awt.event.ActionListener() {
@@ -371,7 +382,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
         getContentPane().add(jComboBox8);
-        jComboBox8.setBounds(150, 340, 110, 25);
+        jComboBox8.setBounds(150, 340, 110, 24);
 
         btnEquiparPernaDireita.setText("Equipar");
         btnEquiparPernaDireita.addActionListener(new java.awt.event.ActionListener() {
@@ -388,7 +399,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perneira 1", "Perneira 2", "Perneira 3", " " }));
         getContentPane().add(jComboBox9);
-        jComboBox9.setBounds(150, 380, 110, 25);
+        jComboBox9.setBounds(150, 380, 110, 24);
 
         btnEquiparPernaEsquerda.setText("Equipar");
         btnEquiparPernaEsquerda.addActionListener(new java.awt.event.ActionListener() {
@@ -405,7 +416,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perneira 1", "Perneira 2", "Perneira 3" }));
         getContentPane().add(jComboBox10);
-        jComboBox10.setBounds(150, 420, 110, 25);
+        jComboBox10.setBounds(150, 420, 110, 24);
 
         btnEquiparBota.setText("Equipar");
         btnEquiparBota.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +433,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Calçado 1", "Calçado 2", "Calçado 3", "Calçado 4" }));
         getContentPane().add(jComboBox11);
-        jComboBox11.setBounds(150, 460, 110, 25);
+        jComboBox11.setBounds(150, 460, 110, 24);
 
         btnEquiparArma.setText("Equipar");
         btnEquiparArma.addActionListener(new java.awt.event.ActionListener() {
@@ -439,7 +450,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arco", "Fuzil", "Espada", "Adaga" }));
         getContentPane().add(jComboBox12);
-        jComboBox12.setBounds(150, 500, 110, 25);
+        jComboBox12.setBounds(150, 500, 110, 24);
 
         btnEquiparArmaReserva.setText("Equipar");
         btnEquiparArmaReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -456,7 +467,7 @@ public class GerenciaItens extends javax.swing.JFrame{
 
         jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arco", "Fuzil", "Espada", "Adaga" }));
         getContentPane().add(jComboBox13);
-        jComboBox13.setBounds(150, 540, 110, 25);
+        jComboBox13.setBounds(150, 540, 110, 24);
 
         btnBotaEquipado1.setText("BotaX");
         btnBotaEquipado1.setToolTipText("");
@@ -488,23 +499,23 @@ public class GerenciaItens extends javax.swing.JFrame{
         jPanel1.setBounds(590, 50, 390, 530);
 
         lblInfoItemTitulo.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo.setText("Informações Malha X");
+        lblInfoItemTitulo.setText("Malha X");
         getContentPane().add(lblInfoItemTitulo);
-        lblInfoItemTitulo.setBounds(380, 240, 147, 16);
+        lblInfoItemTitulo.setBounds(380, 240, 66, 18);
 
         jLabel5.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(380, 270, 109, 114);
+        jLabel5.setBounds(380, 270, 114, 94);
 
         jLabel19.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        jLabel19.setText("Informações Personagem");
+        jLabel19.setText("Personagem");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(380, 60, 177, 20);
+        jLabel19.setBounds(380, 60, 190, 20);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(380, 90, 109, 120);
+        jLabel20.setBounds(380, 90, 114, 120);
         getContentPane().add(jPanel2);
         jPanel2.setBounds(370, 50, 210, 170);
         getContentPane().add(jPanel3);
@@ -544,7 +555,9 @@ public class GerenciaItens extends javax.swing.JFrame{
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
+        MenuIntermediario menuIntermediario = new MenuIntermediario();
+        menuIntermediario.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEquiparCabecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparCabecaActionPerformed

@@ -5,7 +5,10 @@
  */
 package ControllerView;
 
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Point;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,6 +22,14 @@ public class NovoJogo extends javax.swing.JFrame {
      */
     public NovoJogo() {
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
     }
 
     /**
@@ -81,8 +92,8 @@ public class NovoJogo extends javax.swing.JFrame {
         jSpinner16 = new javax.swing.JSpinner();
         jLabel29 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnTaverna = new javax.swing.JToggleButton();
+        btnSalvar = new javax.swing.JToggleButton();
         btnVoltarTelaInicial = new javax.swing.JToggleButton();
         jLabel25 = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
@@ -107,7 +118,7 @@ public class NovoJogo extends javax.swing.JFrame {
 
         jLabel1.setText("Agilidade");
         panelEspecializacoes.add(jLabel1);
-        jLabel1.setBounds(10, 50, 58, 15);
+        jLabel1.setBounds(10, 50, 66, 15);
 
         jLabel2.setText("Conhecimento");
         panelEspecializacoes.add(jLabel2);
@@ -134,57 +145,57 @@ public class NovoJogo extends javax.swing.JFrame {
         panelEspecializacoes.add(jLabel13);
         jLabel13.setBounds(20, 10, 180, 20);
         panelEspecializacoes.add(jSpinner1);
-        jSpinner1.setBounds(120, 200, 60, 26);
+        jSpinner1.setBounds(120, 200, 60, 20);
 
         jLabel14.setText("Restantes:");
         panelEspecializacoes.add(jLabel14);
         jLabel14.setBounds(200, 150, 80, 15);
         panelEspecializacoes.add(jSpinner2);
-        jSpinner2.setBounds(120, 50, 60, 26);
+        jSpinner2.setBounds(120, 50, 60, 20);
         panelEspecializacoes.add(jSpinner3);
-        jSpinner3.setBounds(120, 80, 60, 26);
+        jSpinner3.setBounds(120, 80, 60, 20);
         panelEspecializacoes.add(jSpinner4);
-        jSpinner4.setBounds(120, 110, 60, 26);
+        jSpinner4.setBounds(120, 110, 60, 20);
         panelEspecializacoes.add(jSpinner5);
-        jSpinner5.setBounds(120, 140, 60, 26);
+        jSpinner5.setBounds(120, 140, 60, 20);
         panelEspecializacoes.add(jSpinner6);
-        jSpinner6.setBounds(120, 170, 60, 26);
+        jSpinner6.setBounds(120, 170, 60, 20);
 
         jLabel15.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
         jLabel15.setText("20");
         jLabel15.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panelEspecializacoes.add(jLabel15);
-        jLabel15.setBounds(230, 170, 40, 40);
+        jLabel15.setBounds(230, 170, 50, 40);
 
         jLabel16.setText("Lábia");
         panelEspecializacoes.add(jLabel16);
         jLabel16.setBounds(10, 230, 90, 15);
         panelEspecializacoes.add(jSpinner7);
-        jSpinner7.setBounds(120, 230, 60, 26);
+        jSpinner7.setBounds(120, 230, 60, 20);
 
         jLabel17.setText("Percepção");
         panelEspecializacoes.add(jLabel17);
         jLabel17.setBounds(10, 260, 90, 15);
         panelEspecializacoes.add(jSpinner8);
-        jSpinner8.setBounds(120, 260, 60, 26);
+        jSpinner8.setBounds(120, 260, 60, 20);
 
         jLabel18.setText("Resistência");
         panelEspecializacoes.add(jLabel18);
         jLabel18.setBounds(10, 290, 90, 15);
         panelEspecializacoes.add(jSpinner9);
-        jSpinner9.setBounds(120, 290, 60, 26);
+        jSpinner9.setBounds(120, 290, 60, 20);
 
         jLabel19.setText("Sobrevivência");
         panelEspecializacoes.add(jLabel19);
         jLabel19.setBounds(10, 320, 100, 15);
         panelEspecializacoes.add(jSpinner10);
-        jSpinner10.setBounds(120, 320, 60, 26);
+        jSpinner10.setBounds(120, 320, 60, 20);
 
         jLabel20.setText("Vontade");
         panelEspecializacoes.add(jLabel20);
         jLabel20.setBounds(10, 350, 90, 15);
         panelEspecializacoes.add(jSpinner11);
-        jSpinner11.setBounds(120, 350, 60, 26);
+        jSpinner11.setBounds(120, 350, 60, 20);
 
         getContentPane().add(panelEspecializacoes);
         panelEspecializacoes.setBounds(350, 100, 300, 390);
@@ -195,33 +206,33 @@ public class NovoJogo extends javax.swing.JFrame {
         panel2.add(jLabel6);
         jLabel6.setBounds(20, 50, 40, 15);
         panel2.add(jTextField3);
-        jTextField3.setBounds(70, 50, 210, 25);
+        jTextField3.setBounds(70, 50, 210, 19);
         panel2.add(jTextField6);
-        jTextField6.setBounds(70, 90, 210, 25);
+        jTextField6.setBounds(70, 90, 210, 19);
 
         jLabel7.setText("Idade");
         panel2.add(jLabel7);
-        jLabel7.setBounds(20, 90, 36, 15);
+        jLabel7.setBounds(20, 90, 40, 15);
 
         jLabel8.setText("Tipo");
         panel2.add(jLabel8);
-        jLabel8.setBounds(20, 130, 29, 15);
+        jLabel8.setBounds(20, 130, 30, 15);
         panel2.add(jTextField7);
-        jTextField7.setBounds(70, 170, 210, 25);
+        jTextField7.setBounds(70, 170, 210, 19);
 
         jLabel9.setText("Altura");
         panel2.add(jLabel9);
-        jLabel9.setBounds(20, 180, 39, 15);
+        jLabel9.setBounds(20, 180, 43, 15);
         panel2.add(jTextField8);
-        jTextField8.setBounds(70, 210, 210, 25);
+        jTextField8.setBounds(70, 210, 210, 19);
 
         jLabel10.setText("Peso");
         panel2.add(jLabel10);
-        jLabel10.setBounds(20, 220, 33, 15);
+        jLabel10.setBounds(20, 220, 35, 15);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panel2.add(jComboBox2);
-        jComboBox2.setBounds(70, 130, 210, 25);
+        jComboBox2.setBounds(70, 130, 210, 24);
 
         jLabel12.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel12.setText("Dados");
@@ -235,7 +246,7 @@ public class NovoJogo extends javax.swing.JFrame {
 
         jLabel21.setText("Agilidade");
         panelEspecializacoes1.add(jLabel21);
-        jLabel21.setBounds(10, 50, 58, 15);
+        jLabel21.setBounds(10, 50, 66, 15);
 
         jLabel22.setText("Conhecimento");
         panelEspecializacoes1.add(jLabel22);
@@ -253,19 +264,19 @@ public class NovoJogo extends javax.swing.JFrame {
         panelEspecializacoes1.add(jLabel28);
         jLabel28.setBounds(200, 80, 80, 15);
         panelEspecializacoes1.add(jSpinner13);
-        jSpinner13.setBounds(120, 50, 60, 26);
+        jSpinner13.setBounds(120, 50, 60, 20);
         panelEspecializacoes1.add(jSpinner14);
-        jSpinner14.setBounds(120, 90, 60, 26);
+        jSpinner14.setBounds(120, 90, 60, 20);
         panelEspecializacoes1.add(jSpinner15);
-        jSpinner15.setBounds(120, 130, 60, 26);
+        jSpinner15.setBounds(120, 130, 60, 20);
         panelEspecializacoes1.add(jSpinner16);
-        jSpinner16.setBounds(120, 170, 60, 26);
+        jSpinner16.setBounds(120, 170, 60, 20);
 
         jLabel29.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
         jLabel29.setText("20");
         jLabel29.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panelEspecializacoes1.add(jLabel29);
-        jLabel29.setBounds(230, 100, 40, 40);
+        jLabel29.setBounds(230, 100, 50, 40);
 
         jLabel35.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel35.setText("Combate");
@@ -275,23 +286,23 @@ public class NovoJogo extends javax.swing.JFrame {
         getContentPane().add(panelEspecializacoes1);
         panelEspecializacoes1.setBounds(680, 100, 300, 220);
 
-        jToggleButton2.setText("Taverna");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnTaverna.setText("Taverna");
+        btnTaverna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                btnTavernaActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton2);
-        jToggleButton2.setBounds(20, 410, 300, 50);
+        getContentPane().add(btnTaverna);
+        btnTaverna.setBounds(20, 410, 300, 50);
 
-        jToggleButton1.setText("Salvar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1);
-        jToggleButton1.setBounds(850, 410, 130, 50);
+        getContentPane().add(btnSalvar);
+        btnSalvar.setBounds(850, 410, 130, 50);
 
         btnVoltarTelaInicial.setText("Voltar");
         btnVoltarTelaInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -314,13 +325,18 @@ public class NovoJogo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        MenuIntermediario menuIntermediario = new MenuIntermediario();
+        menuIntermediario.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void btnTavernaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTavernaActionPerformed
+        Taverna taverna = new Taverna();
+        taverna.setVisible(true);
+        taverna.setCaller("NovoJogo");
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTavernaActionPerformed
 
     private void btnVoltarTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarTelaInicialActionPerformed
         TelaInicial telaInicial = new TelaInicial();
@@ -364,6 +380,8 @@ public class NovoJogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnSalvar;
+    private javax.swing.JToggleButton btnTaverna;
     private javax.swing.JToggleButton btnVoltarTelaInicial;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
@@ -414,8 +432,6 @@ public class NovoJogo extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel lblBackground;
     private java.awt.Panel panel2;
     private java.awt.Panel panelEspecializacoes;

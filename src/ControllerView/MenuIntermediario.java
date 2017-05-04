@@ -5,6 +5,10 @@
  */
 package ControllerView;
 
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
+
 /**
  *
  * @author vitorlofonseca
@@ -16,6 +20,14 @@ public class MenuIntermediario extends javax.swing.JFrame {
      */
     public MenuIntermediario() {
         initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
     }
 
     /**
@@ -28,7 +40,7 @@ public class MenuIntermediario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSalvarJogo = new javax.swing.JButton();
         btnArmario = new javax.swing.JButton();
         btnTelaInicial = new javax.swing.JButton();
         btnGerenciaItens = new javax.swing.JButton();
@@ -46,11 +58,21 @@ public class MenuIntermediario extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(160, 10, 400, 50);
 
-        jButton1.setText("Salvar Jogo");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(370, 90, 150, 40);
+        btnSalvarJogo.setText("Salvar Jogo");
+        btnSalvarJogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarJogoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalvarJogo);
+        btnSalvarJogo.setBounds(370, 90, 150, 40);
 
         btnArmario.setText("Taverna");
+        btnArmario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArmarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnArmario);
         btnArmario.setBounds(30, 220, 150, 40);
 
@@ -72,8 +94,8 @@ public class MenuIntermediario extends javax.swing.JFrame {
         getContentPane().add(btnGerenciaItens);
         btnGerenciaItens.setBounds(30, 90, 150, 40);
 
-        btnDialogo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnDialogo.setText("Voltar Jornada!");
+        btnDialogo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnDialogo.setText("Jornada!");
         btnDialogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDialogoActionPerformed(evt);
@@ -106,6 +128,19 @@ public class MenuIntermediario extends javax.swing.JFrame {
         gerenciaItens.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnGerenciaItensActionPerformed
+
+    private void btnArmarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmarioActionPerformed
+        Taverna taverna = new Taverna();
+        taverna.setVisible(true);
+        taverna.setCaller("MenuIntermediario");
+        this.setVisible(false);
+    }//GEN-LAST:event_btnArmarioActionPerformed
+
+    private void btnSalvarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarJogoActionPerformed
+        SalvarJogo salvarJogo = new SalvarJogo();
+        salvarJogo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSalvarJogoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,8 +181,8 @@ public class MenuIntermediario extends javax.swing.JFrame {
     private javax.swing.JButton btnArmario;
     private javax.swing.JButton btnDialogo;
     private javax.swing.JButton btnGerenciaItens;
+    private javax.swing.JButton btnSalvarJogo;
     private javax.swing.JButton btnTelaInicial;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
