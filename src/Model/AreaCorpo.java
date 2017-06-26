@@ -17,6 +17,7 @@ public class AreaCorpo {
     public AreaCorpo() {
     }
     
+    
     public int getId() {
         return id;
     }

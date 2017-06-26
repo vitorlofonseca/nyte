@@ -16,6 +16,11 @@ public class Item {
     private float valor;
     private AreaCorpo areaCorpo;
 
+    public Item() {
+    }
+    
+    
+
     public int getId() {
         return id;
     }

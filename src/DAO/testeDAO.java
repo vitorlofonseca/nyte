@@ -5,6 +5,10 @@
  */
 package DAO;
 
+import Model.Personagem;
+import Model.Especie;
+import Model.Jogador;
+import Model.Povoado;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -14,6 +18,15 @@ import java.sql.SQLException;
  */
 public class testeDAO {
     public static void main(String args[]) throws SQLException, ClassNotFoundException {
-        ItemDAO.getItemPorNome("Arco oBathame");
+        
+        Personagem personagem = PersonagemDAO.getPersonagemPorID(2);
+        
+        Jogador jogador = new Jogador();
+        
+        jogador.setNome("Player Teste");
+        jogador.setPersonagem(personagem);
+        
+        JogadorDAO.incluirJogador(jogador);
+        
     }
 }

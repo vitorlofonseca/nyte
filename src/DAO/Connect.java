@@ -19,14 +19,21 @@ public class Connect {
     
     public static Connection conectar() throws ClassNotFoundException, SQLException{
         
-        try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/database/nyte.sqlite");
-        } catch (Exception e) {
+        try
+        {
+           Class.forName("org.sqlite.JDBC");
+        
+        // Não precisa alterar mais nada   
+        connection = DriverManager.getConnection("jdbc:sqlite:src/DAO/database/nyte.sqlite");
+        
+       
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
         
-        System.out.println("Conectado com sucesso");
+      
             
         return connection;
     }
