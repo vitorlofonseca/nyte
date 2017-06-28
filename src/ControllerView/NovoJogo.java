@@ -5,11 +5,19 @@
  */
 package ControllerView;
 
+import DAO.EspecieDAO;
+import Model.Especie;
+import Model.Personagem;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
-import java.awt.Image;
 import java.awt.Point;
-import javax.swing.ImageIcon;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,8 +28,10 @@ public class NovoJogo extends javax.swing.JFrame {
     /**
      * Creates new form NovoJogo
      */
-    public NovoJogo() {
+    public NovoJogo() throws SQLException, ClassNotFoundException {
         initComponents();
+        
+        this.carregarSelect();
         
         Dimension windowSize = getSize();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -70,15 +80,15 @@ public class NovoJogo extends javax.swing.JFrame {
         jSpinner11 = new javax.swing.JSpinner();
         panel2 = new java.awt.Panel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtIdade = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtAltura = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtPeso = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        selectTipo = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         panelEspecializacoes1 = new java.awt.Panel();
         jLabel21 = new javax.swing.JLabel();
@@ -205,10 +215,10 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel6.setText("Nome");
         panel2.add(jLabel6);
         jLabel6.setBounds(20, 50, 40, 15);
-        panel2.add(jTextField3);
-        jTextField3.setBounds(70, 50, 210, 19);
-        panel2.add(jTextField6);
-        jTextField6.setBounds(70, 90, 210, 19);
+        panel2.add(txtNome);
+        txtNome.setBounds(70, 50, 210, 19);
+        panel2.add(txtIdade);
+        txtIdade.setBounds(70, 90, 210, 19);
 
         jLabel7.setText("Idade");
         panel2.add(jLabel7);
@@ -217,22 +227,28 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel8.setText("Tipo");
         panel2.add(jLabel8);
         jLabel8.setBounds(20, 130, 30, 15);
-        panel2.add(jTextField7);
-        jTextField7.setBounds(70, 170, 210, 19);
+
+        txtAltura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAlturaActionPerformed(evt);
+            }
+        });
+        panel2.add(txtAltura);
+        txtAltura.setBounds(70, 170, 210, 19);
 
         jLabel9.setText("Altura");
         panel2.add(jLabel9);
-        jLabel9.setBounds(20, 180, 43, 15);
-        panel2.add(jTextField8);
-        jTextField8.setBounds(70, 210, 210, 19);
+        jLabel9.setBounds(20, 170, 43, 15);
+        panel2.add(txtPeso);
+        txtPeso.setBounds(70, 210, 210, 19);
 
         jLabel10.setText("Peso");
         panel2.add(jLabel10);
-        jLabel10.setBounds(20, 220, 35, 15);
+        jLabel10.setBounds(20, 210, 35, 15);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panel2.add(jComboBox2);
-        jComboBox2.setBounds(70, 130, 210, 24);
+        selectTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panel2.add(selectTipo);
+        selectTipo.setBounds(70, 130, 210, 24);
 
         jLabel12.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel12.setText("Dados");
@@ -320,12 +336,59 @@ public class NovoJogo extends javax.swing.JFrame {
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/castelo.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 0, 1010, 650);
+        lblBackground.setBounds(0, 10, 1010, 650);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void carregarSelect() throws SQLException, ClassNotFoundException{
+        
+        HashMap especiesPersonagem = EspecieDAO.getEspecies();
+        
+        int i=0;
+        String[] especiesPersonagemString = new String[especiesPersonagem.size()];
+        
+        //iterando no mapa de itens
+        for (Iterator it = especiesPersonagem.entrySet().iterator(); it.hasNext();) {
+            
+            Map.Entry<Integer, Especie> especiePersonagem = (Map.Entry<Integer, Especie>) it.next();
+            
+            especiesPersonagemString[i] = especiePersonagem.getValue().getNome();
+            
+            i++;
+            
+        }
+        
+        selectTipo.setModel(new javax.swing.DefaultComboBoxModel<>(especiesPersonagemString));
+        
+    }
+    
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+              
+        
+        try {
+            
+            //IDADE
+            int idade;
+            
+            if(txtIdade.getText() != ""){
+                idade = Integer.parseInt(txtIdade.getText());   
+            } else {
+                throw new Exception("Idade não recebida");
+            } 
+            
+            Personagem personagem = new Personagem();
+            personagem.setNome(txtNome.getText());
+            personagem.setIdade(idade);
+            personagem.setAltura(Float.parseFloat(txtAltura.getText()));
+            personagem.setPeso(Float.parseFloat(txtAltura.getText()));
+        
+            System.out.println(selectTipo.getModel().getSelectedItem());            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(NovoJogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         MenuIntermediario menuIntermediario = new MenuIntermediario();
         menuIntermediario.setVisible(true);
         this.setVisible(false);
@@ -343,6 +406,10 @@ public class NovoJogo extends javax.swing.JFrame {
         this.setVisible(false);
         telaInicial.setVisible(true);
     }//GEN-LAST:event_btnVoltarTelaInicialActionPerformed
+
+    private void txtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,7 +441,13 @@ public class NovoJogo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NovoJogo().setVisible(true);
+                try {                
+                    new NovoJogo().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NovoJogo.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(NovoJogo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -383,7 +456,6 @@ public class NovoJogo extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnSalvar;
     private javax.swing.JToggleButton btnTaverna;
     private javax.swing.JToggleButton btnVoltarTelaInicial;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -428,13 +500,14 @@ public class NovoJogo extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner7;
     private javax.swing.JSpinner jSpinner8;
     private javax.swing.JSpinner jSpinner9;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lblBackground;
     private java.awt.Panel panel2;
     private java.awt.Panel panelEspecializacoes;
     private java.awt.Panel panelEspecializacoes1;
+    private javax.swing.JComboBox<String> selectTipo;
+    private javax.swing.JTextField txtAltura;
+    private javax.swing.JTextField txtIdade;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtPeso;
     // End of variables declaration//GEN-END:variables
 }

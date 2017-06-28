@@ -10,6 +10,7 @@ import Model.Especie;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 
 /**
@@ -17,6 +18,31 @@ import java.sql.SQLException;
  * @author Nathan
  */
 public class EspecieDAO {
+    
+    
+    public static HashMap getEspecies() throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_especie;");
+        
+        HashMap<Integer,Especie> especies = new HashMap<Integer,Especie>();
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            
+            Especie especie = new Especie();
+
+            especie.setId(rs.getInt("id"));
+            especie.setNome(rs.getString("nome"));
+            
+            especies.put (rs.getInt("id"), especie);
+        }
+
+        return especies;
+    }
+    
        
     public static Especie getEspeciePorId(int id) throws SQLException, ClassNotFoundException{
         
