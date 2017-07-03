@@ -44,7 +44,6 @@ public class AtributoEspecializacaoCombateDAO {
             atributoEspecializacaoCombate.setPersonagem(personagem);
                        
             atributoCombate = AtributoCombateDAO.getAtributoCombatePorID(rs.getInt("id_atributo_combate"));
-            atributoEspecializacaoCombate.setAtributoCombate(atributoCombate);
 
             atributoEspecializacao = AtributoEspecilizacaoDAO.getAtributoEspecilizacaoPorID(rs.getInt("id_atributo_especializacao"));
             atributoEspecializacaoCombate.setAtributoEspecializacao(atributoEspecializacao);
@@ -60,7 +59,6 @@ public class AtributoEspecializacaoCombateDAO {
         
         int personagem = atributoEspecializacaoCombate.getPersonagem().getId();
         int atributoEspecializacao = atributoEspecializacaoCombate.getAtributoEspecializacao().getId();
-        int atributoCombate = atributoEspecializacaoCombate.getAtributoCombate().getId();
         
         Connection conn = Connect.conectar();
         Statement st = conn.createStatement();
@@ -69,7 +67,6 @@ public class AtributoEspecializacaoCombateDAO {
               String query = "INSERT INTO tbl_atributo_especializacao_combate (valor_melhoria, id_personagem, id_atributo_combate, id_atributo_especializacao)" +
                       "VALUES ("+ atributoEspecializacaoCombate.getValorMelhoria()+","
                       + personagem+","
-                      +atributoCombate+","
                       +atributoEspecializacao+");";
               
               int i = st.executeUpdate(query);
@@ -97,14 +94,12 @@ public class AtributoEspecializacaoCombateDAO {
         
         int personagem = atributoEspecializacaoCombate.getPersonagem().getId();
         int atributoEspecializacao = atributoEspecializacaoCombate.getAtributoEspecializacao().getId();
-        int atributoCombate = atributoEspecializacaoCombate.getAtributoCombate().getId();
                 
           try (Connection conn = Connect.conectar()) {
               java.sql.Statement st = conn.createStatement();
               
               String query = "UPDATE tbl_atributo_especializacao_combate SET "
                       + "id_personagem ="+ personagem
-                      + ", id_atributo_combate ="+ atributoCombate
                       + ", valor_melhoria ="+ atributoEspecializacaoCombate.getValorMelhoria()
                       + ", id_atributo_especializacao ="+ atributoEspecializacao
                       + " WHERE ID =" + atributoEspecializacaoCombate.getId() + ";";

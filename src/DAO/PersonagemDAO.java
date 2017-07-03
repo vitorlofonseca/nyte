@@ -59,7 +59,7 @@ public class PersonagemDAO {
         return personagem;
     }
     
-    public static void incluirPersonagem(Personagem personagem) throws SQLException, ClassNotFoundException{           
+    public static int incluirPersonagem(Personagem personagem) throws SQLException, ClassNotFoundException{           
         
         int povoado = personagem.getPovoado().getId();
         int especie = personagem.getEspecie().getId();
@@ -80,6 +80,8 @@ public class PersonagemDAO {
                       + especie + ");";
               
               int i = st.executeUpdate(query);
+              
+              return i;
            
     }
          

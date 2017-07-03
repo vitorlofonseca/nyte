@@ -5,7 +5,12 @@
  */
 package ControllerView;
 
+import DAO.AtributoEspecializacaoCombateDAO;
+import DAO.AtributoEspecilizacaoDAO;
 import DAO.EspecieDAO;
+import DAO.PersonagemDAO;
+import Model.AtributoEspecializacaoCombate;
+import Model.AtributoEspecilizacao;
 import Model.Especie;
 import Model.Personagem;
 import java.awt.Dimension;
@@ -38,10 +43,10 @@ public class NovoJogo extends javax.swing.JFrame {
                 
                 int pontosTotaisEspecializacao = 0;
         
-                pontosTotaisEspecializacao += Integer.parseInt(spinnerAgilidadeEsp.getValue().toString());
-                pontosTotaisEspecializacao += Integer.parseInt(spinnerConhecimentoEsp.getValue().toString());
-                pontosTotaisEspecializacao += Integer.parseInt(spinnerBlefeEsp.getValue().toString());
-                pontosTotaisEspecializacao += Integer.parseInt(spinnerForcaEsp.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerAgilidade.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerConhecimento.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerBlefe.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerForca.getValue().toString());
                 pontosTotaisEspecializacao += Integer.parseInt(spinnerFurtividade.getValue().toString());
                 pontosTotaisEspecializacao += Integer.parseInt(spinnerInteligencia.getValue().toString());
                 pontosTotaisEspecializacao += Integer.parseInt(spinnerLabia.getValue().toString());
@@ -57,10 +62,10 @@ public class NovoJogo extends javax.swing.JFrame {
                 
                 if(pontosTotaisEspecializacao > 20) {
                     
-                    spinnerAgilidadeEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerAgilidadeEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerAgilidadeEsp.getValue().toString()), 1));
-                    spinnerConhecimentoEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerConhecimentoEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerConhecimentoEsp.getValue().toString()), 1));
-                    spinnerBlefeEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerBlefeEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerBlefeEsp.getValue().toString()), 1));
-                    spinnerForcaEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerForcaEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerForcaEsp.getValue().toString()), 1));
+                    spinnerAgilidade.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerAgilidade.getValue().toString()) - 1, 0, Integer.parseInt(spinnerAgilidade.getValue().toString()), 1));
+                    spinnerConhecimento.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerConhecimento.getValue().toString()) - 1, 0, Integer.parseInt(spinnerConhecimento.getValue().toString()), 1));
+                    spinnerBlefe.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerBlefe.getValue().toString()) - 1, 0, Integer.parseInt(spinnerBlefe.getValue().toString()), 1));
+                    spinnerForca.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerForca.getValue().toString()) - 1, 0, Integer.parseInt(spinnerForca.getValue().toString()), 1));
                     spinnerFurtividade.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerFurtividade.getValue().toString()) - 1, 0, Integer.parseInt(spinnerFurtividade.getValue().toString()), 1));
                     spinnerInteligencia.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerInteligencia.getValue().toString()) - 1, 0, Integer.parseInt(spinnerInteligencia.getValue().toString()), 1));
                     spinnerLabia.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerLabia.getValue().toString()) - 1, 0, Integer.parseInt(spinnerLabia.getValue().toString()), 1));
@@ -76,10 +81,10 @@ public class NovoJogo extends javax.swing.JFrame {
             }
         };
         
-        spinnerAgilidadeEsp.addChangeListener(listener);
-        spinnerConhecimentoEsp.addChangeListener(listener);
-        spinnerBlefeEsp.addChangeListener(listener);
-        spinnerForcaEsp.addChangeListener(listener);
+        spinnerAgilidade.addChangeListener(listener);
+        spinnerConhecimento.addChangeListener(listener);
+        spinnerBlefe.addChangeListener(listener);
+        spinnerForca.addChangeListener(listener);
         spinnerFurtividade.addChangeListener(listener);
         spinnerInteligencia.addChangeListener(listener);
         spinnerLabia.addChangeListener(listener);
@@ -99,10 +104,10 @@ public class NovoJogo extends javax.swing.JFrame {
                 
                 int pontosTotaisCombate = 0;
         
-                pontosTotaisCombate += Integer.parseInt(spinnerAgilidadeComb.getValue().toString());
-                pontosTotaisCombate += Integer.parseInt(spinnerConhecimentoComb.getValue().toString());
-                pontosTotaisCombate += Integer.parseInt(spinnerBlefeComb.getValue().toString());
-                pontosTotaisCombate += Integer.parseInt(spinnerForcaComb.getValue().toString());
+                pontosTotaisCombate += Integer.parseInt(spinnerNegociacao.getValue().toString());
+                pontosTotaisCombate += Integer.parseInt(spinnerDefesa.getValue().toString());
+                pontosTotaisCombate += Integer.parseInt(spinnerDano.getValue().toString());
+                pontosTotaisCombate += Integer.parseInt(spinnerFuga.getValue().toString());
                 
                 //se for maior que vinte, volta pra não bugar os spinners
                 if(pontosTotaisCombate > 20){
@@ -111,10 +116,10 @@ public class NovoJogo extends javax.swing.JFrame {
                 
                 if(pontosTotaisCombate > 20) {
                     
-                    spinnerAgilidadeComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerAgilidadeComb.getValue().toString()) - 1, 0, Integer.parseInt(spinnerAgilidadeComb.getValue().toString()), 1));
-                    spinnerConhecimentoComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerConhecimentoComb.getValue().toString()) - 1, 0, Integer.parseInt(spinnerConhecimentoComb.getValue().toString()), 1));
-                    spinnerBlefeComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerBlefeComb.getValue().toString()) - 1, 0, Integer.parseInt(spinnerBlefeComb.getValue().toString()), 1));
-                    spinnerForcaComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerForcaComb.getValue().toString()), 0, Integer.parseInt(spinnerForcaComb.getValue().toString()), 1));
+                    spinnerNegociacao.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerNegociacao.getValue().toString()) - 1, 0, Integer.parseInt(spinnerNegociacao.getValue().toString()), 1));
+                    spinnerDefesa.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerDefesa.getValue().toString()) - 1, 0, Integer.parseInt(spinnerDefesa.getValue().toString()), 1));
+                    spinnerDano.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerDano.getValue().toString()) - 1, 0, Integer.parseInt(spinnerDano.getValue().toString()), 1));
+                    spinnerFuga.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerFuga.getValue().toString()), 0, Integer.parseInt(spinnerFuga.getValue().toString()), 1));
                     
                 } else {
                 
@@ -123,10 +128,10 @@ public class NovoJogo extends javax.swing.JFrame {
             }
         };
         
-        spinnerAgilidadeComb.addChangeListener(listener);
-        spinnerConhecimentoComb.addChangeListener(listener);
-        spinnerBlefeComb.addChangeListener(listener);
-        spinnerForcaComb.addChangeListener(listener);
+        spinnerNegociacao.addChangeListener(listener);
+        spinnerDefesa.addChangeListener(listener);
+        spinnerDano.addChangeListener(listener);
+        spinnerFuga.addChangeListener(listener);
         
     }
     
@@ -173,10 +178,10 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         spinnerInteligencia = new javax.swing.JSpinner();
         jLabel14 = new javax.swing.JLabel();
-        spinnerAgilidadeEsp = new javax.swing.JSpinner();
-        spinnerConhecimentoEsp = new javax.swing.JSpinner();
-        spinnerBlefeEsp = new javax.swing.JSpinner();
-        spinnerForcaEsp = new javax.swing.JSpinner();
+        spinnerAgilidade = new javax.swing.JSpinner();
+        spinnerConhecimento = new javax.swing.JSpinner();
+        spinnerBlefe = new javax.swing.JSpinner();
+        spinnerForca = new javax.swing.JSpinner();
         spinnerFurtividade = new javax.swing.JSpinner();
         lblEspecializacao = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -207,10 +212,10 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        spinnerAgilidadeComb = new javax.swing.JSpinner();
-        spinnerConhecimentoComb = new javax.swing.JSpinner();
-        spinnerBlefeComb = new javax.swing.JSpinner();
-        spinnerForcaComb = new javax.swing.JSpinner();
+        spinnerNegociacao = new javax.swing.JSpinner();
+        spinnerDefesa = new javax.swing.JSpinner();
+        spinnerDano = new javax.swing.JSpinner();
+        spinnerFuga = new javax.swing.JSpinner();
         lblCombate = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         btnTaverna = new javax.swing.JToggleButton();
@@ -274,21 +279,21 @@ public class NovoJogo extends javax.swing.JFrame {
         panelEspecializacoes.add(jLabel14);
         jLabel14.setBounds(200, 150, 80, 15);
 
-        spinnerAgilidadeEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        panelEspecializacoes.add(spinnerAgilidadeEsp);
-        spinnerAgilidadeEsp.setBounds(120, 50, 60, 20);
+        spinnerAgilidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerAgilidade);
+        spinnerAgilidade.setBounds(120, 50, 60, 20);
 
-        spinnerConhecimentoEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        panelEspecializacoes.add(spinnerConhecimentoEsp);
-        spinnerConhecimentoEsp.setBounds(120, 80, 60, 20);
+        spinnerConhecimento.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerConhecimento);
+        spinnerConhecimento.setBounds(120, 80, 60, 20);
 
-        spinnerBlefeEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        panelEspecializacoes.add(spinnerBlefeEsp);
-        spinnerBlefeEsp.setBounds(120, 110, 60, 20);
+        spinnerBlefe.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerBlefe);
+        spinnerBlefe.setBounds(120, 110, 60, 20);
 
-        spinnerForcaEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        panelEspecializacoes.add(spinnerForcaEsp);
-        spinnerForcaEsp.setBounds(120, 140, 60, 20);
+        spinnerForca.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerForca);
+        spinnerForca.setBounds(120, 140, 60, 20);
 
         spinnerFurtividade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         panelEspecializacoes.add(spinnerFurtividade);
@@ -393,33 +398,33 @@ public class NovoJogo extends javax.swing.JFrame {
 
         panelEspecializacoes1.setLayout(null);
 
-        jLabel21.setText("Agilidade");
+        jLabel21.setText("Negociação");
         panelEspecializacoes1.add(jLabel21);
-        jLabel21.setBounds(10, 50, 66, 15);
+        jLabel21.setBounds(10, 50, 100, 15);
 
-        jLabel22.setText("Conhecimento");
+        jLabel22.setText("Defesa");
         panelEspecializacoes1.add(jLabel22);
         jLabel22.setBounds(10, 90, 110, 15);
 
-        jLabel23.setText("Blefe");
+        jLabel23.setText("Dano");
         panelEspecializacoes1.add(jLabel23);
         jLabel23.setBounds(10, 130, 80, 15);
 
-        jLabel24.setText("Força");
+        jLabel24.setText("Fuga");
         panelEspecializacoes1.add(jLabel24);
         jLabel24.setBounds(10, 170, 100, 15);
 
         jLabel28.setText("Restantes:");
         panelEspecializacoes1.add(jLabel28);
         jLabel28.setBounds(200, 80, 80, 15);
-        panelEspecializacoes1.add(spinnerAgilidadeComb);
-        spinnerAgilidadeComb.setBounds(120, 50, 60, 20);
-        panelEspecializacoes1.add(spinnerConhecimentoComb);
-        spinnerConhecimentoComb.setBounds(120, 90, 60, 20);
-        panelEspecializacoes1.add(spinnerBlefeComb);
-        spinnerBlefeComb.setBounds(120, 130, 60, 20);
-        panelEspecializacoes1.add(spinnerForcaComb);
-        spinnerForcaComb.setBounds(120, 170, 60, 20);
+        panelEspecializacoes1.add(spinnerNegociacao);
+        spinnerNegociacao.setBounds(120, 50, 60, 20);
+        panelEspecializacoes1.add(spinnerDefesa);
+        spinnerDefesa.setBounds(120, 90, 60, 20);
+        panelEspecializacoes1.add(spinnerDano);
+        spinnerDano.setBounds(120, 130, 60, 20);
+        panelEspecializacoes1.add(spinnerFuga);
+        spinnerFuga.setBounds(120, 170, 60, 20);
 
         lblCombate.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
         lblCombate.setText("20");
@@ -501,6 +506,7 @@ public class NovoJogo extends javax.swing.JFrame {
         
         try {
             
+            // ------------------------------------------ Inclusão do personagem ------------------------------------------
             //IDADE
             int idade;
             
@@ -521,8 +527,82 @@ public class NovoJogo extends javax.swing.JFrame {
             personagem.setIdade(idade);
             personagem.setAltura(Float.parseFloat(txtAltura.getText()));
             personagem.setPeso(Float.parseFloat(txtAltura.getText()));
+            
+            int idPersonagem = PersonagemDAO.incluirPersonagem(personagem);
+            // ------------------------------------------ Inclusão do personagem ------------------------------------------
+            
+            
+            
+            
+            
+            // ------------------------------------------ Montagem Array especializações ------------------------------------------
+            HashMap atributoEspecializacoes = AtributoEspecilizacaoDAO.getAtributoEspecializacoes();
+            
+            int[] valoresSpinners;
+            valoresSpinners = new int[atributoEspecializacoes.size()];
+            
+            //montagem do array que contém os valores de especialização selecionados
+            for (Iterator it2 = atributoEspecializacoes.entrySet().iterator(); it2.hasNext();) {
+                Map.Entry<Integer, AtributoEspecilizacao> atributoEspecializacao = (Map.Entry<Integer, AtributoEspecilizacao>) it2.next();
+                
+                switch(atributoEspecializacao.getValue().getAtributo()){
+                    
+                    case "Agilidade":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerAgilidade.getValue().toString());
+                        break;
+                    case "Conhecimento":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerConhecimento.getValue().toString());
+                        break;
+                    case "Blefe":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerBlefe.getValue().toString());
+                        break;
+                    case "Força":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerForca.getValue().toString());
+                        break;
+                    case "Furtividade":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerFurtividade.getValue().toString());
+                        break;
+                    case "Inteligência":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerInteligencia.getValue().toString());
+                        break;
+                    case "Lábia":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerLabia.getValue().toString());
+                        break;
+                    case "Percepção":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerPercepcao.getValue().toString());
+                        break;
+                    case "Resistência":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerResistencia.getValue().toString());
+                        break;
+                    case "Sobrevivência":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerSobrevivencia.getValue().toString());
+                        break;
+                    case "Vontade":
+                        valoresSpinners[atributoEspecializacao.getValue().getId()] = Integer.parseInt(spinnerVontade.getValue().toString());
+                        break;
+                    
+                }
+                
+            }
+
+            //iterando no mapa de itens
+            for (Iterator it = atributoEspecializacoes.entrySet().iterator(); it.hasNext();) {
+                
+                Map.Entry<Integer, AtributoEspecilizacao> atributoEspecializacao = (Map.Entry<Integer, AtributoEspecilizacao>) it.next();               
+                
+                AtributoEspecializacaoCombate atributoEspecializacaoCombate = new AtributoEspecializacaoCombate();
+                atributoEspecializacaoCombate.setAtributoEspecializacao(atributoEspecializacao.getValue());
+                atributoEspecializacaoCombate.setPersonagem(personagem);
+                atributoEspecializacaoCombate.setValorMelhoria(valoresSpinners[atributoEspecializacao.getValue().getId()]);
+                
+                AtributoEspecializacaoCombateDAO.incluirAtributoEspecializacaoCombate(atributoEspecializacaoCombate);
+                
+            }
+            // ------------------------------------------ Montagem Array especializações ------------------------------------------
+            
         
-            System.out.println(spinnerAgilidadeEsp.getValue());            
+            
+            
             
         } catch (Exception ex) {
             Logger.getLogger(NovoJogo.class.getName()).log(Level.SEVERE, null, ex);
@@ -630,17 +710,17 @@ public class NovoJogo extends javax.swing.JFrame {
     private java.awt.Panel panelEspecializacoes;
     private java.awt.Panel panelEspecializacoes1;
     private javax.swing.JComboBox<String> selectTipo;
-    private javax.swing.JSpinner spinnerAgilidadeComb;
-    private javax.swing.JSpinner spinnerAgilidadeEsp;
-    private javax.swing.JSpinner spinnerBlefeComb;
-    private javax.swing.JSpinner spinnerBlefeEsp;
-    private javax.swing.JSpinner spinnerConhecimentoComb;
-    private javax.swing.JSpinner spinnerConhecimentoEsp;
-    private javax.swing.JSpinner spinnerForcaComb;
-    private javax.swing.JSpinner spinnerForcaEsp;
+    private javax.swing.JSpinner spinnerAgilidade;
+    private javax.swing.JSpinner spinnerBlefe;
+    private javax.swing.JSpinner spinnerConhecimento;
+    private javax.swing.JSpinner spinnerDano;
+    private javax.swing.JSpinner spinnerDefesa;
+    private javax.swing.JSpinner spinnerForca;
+    private javax.swing.JSpinner spinnerFuga;
     private javax.swing.JSpinner spinnerFurtividade;
     private javax.swing.JSpinner spinnerInteligencia;
     private javax.swing.JSpinner spinnerLabia;
+    private javax.swing.JSpinner spinnerNegociacao;
     private javax.swing.JSpinner spinnerPercepcao;
     private javax.swing.JSpinner spinnerResistencia;
     private javax.swing.JSpinner spinnerSobrevivencia;

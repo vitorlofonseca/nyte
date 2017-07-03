@@ -13,7 +13,6 @@ public class AtributoEspecializacaoCombate {
     
     private int id;
     private int valorMelhoria;
-    private AtributoCombate atributoCombate;
     private AtributoEspecilizacao atributoEspecializacao;
     private Personagem personagem;
 
@@ -36,14 +35,6 @@ public class AtributoEspecializacaoCombate {
 
     public void setValorMelhoria(int valorMelhoria) {
         this.valorMelhoria = valorMelhoria;
-    }
-
-    public AtributoCombate getAtributoCombate() {
-        return atributoCombate;
-    }
-
-    public void setAtributoCombate(AtributoCombate atributoCombate) {
-        this.atributoCombate = atributoCombate;
     }
 
     public AtributoEspecilizacao getAtributoEspecializacao() {

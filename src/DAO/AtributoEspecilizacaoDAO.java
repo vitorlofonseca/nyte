@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 /**
  *
@@ -79,6 +80,30 @@ public class AtributoEspecilizacaoDAO {
                       
               st.executeUpdate(query);
           }
+    }
+    
+    
+    public static HashMap getAtributoEspecializacoes() throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_atributo_especializacao;");
+        
+        HashMap<Integer,AtributoEspecilizacao> atributoEspecializacoes = new HashMap<Integer,AtributoEspecilizacao>();
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            
+            AtributoEspecilizacao atributoEspecializacao = new AtributoEspecilizacao();
+
+            atributoEspecializacao.setId(rs.getInt("id"));
+            atributoEspecializacao.setAtributo(rs.getString("atributo"));
+            
+            atributoEspecializacoes.put (rs.getInt("id"), atributoEspecializacao);
+        }
+
+        return atributoEspecializacoes;
     }
      
     
