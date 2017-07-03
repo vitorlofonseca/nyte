@@ -18,13 +18,120 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
  * @author vitorlofonseca
  */
 public class NovoJogo extends javax.swing.JFrame {
-
+    
+    private final static int pontosEspecializacao = 20;
+    private final static int pontosCombate = 20;
+    
+    private void carregarListenerSpinnersEspecializacoes(){
+        
+        ChangeListener listener = new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                
+                int pontosTotaisEspecializacao = 0;
+        
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerAgilidadeEsp.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerConhecimentoEsp.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerBlefeEsp.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerForcaEsp.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerFurtividade.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerInteligencia.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerLabia.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerPercepcao.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerResistencia.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerSobrevivencia.getValue().toString());
+                pontosTotaisEspecializacao += Integer.parseInt(spinnerVontade.getValue().toString());
+                
+                //se for maior que vinte, volta pra não bugar os spinners
+                if(pontosTotaisEspecializacao > 20){
+                    pontosTotaisEspecializacao = 21;
+                } 
+                
+                if(pontosTotaisEspecializacao > 20) {
+                    
+                    spinnerAgilidadeEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerAgilidadeEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerAgilidadeEsp.getValue().toString()), 1));
+                    spinnerConhecimentoEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerConhecimentoEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerConhecimentoEsp.getValue().toString()), 1));
+                    spinnerBlefeEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerBlefeEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerBlefeEsp.getValue().toString()), 1));
+                    spinnerForcaEsp.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerForcaEsp.getValue().toString()) - 1, 0, Integer.parseInt(spinnerForcaEsp.getValue().toString()), 1));
+                    spinnerFurtividade.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerFurtividade.getValue().toString()) - 1, 0, Integer.parseInt(spinnerFurtividade.getValue().toString()), 1));
+                    spinnerInteligencia.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerInteligencia.getValue().toString()) - 1, 0, Integer.parseInt(spinnerInteligencia.getValue().toString()), 1));
+                    spinnerLabia.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerLabia.getValue().toString()) - 1, 0, Integer.parseInt(spinnerLabia.getValue().toString()), 1));
+                    spinnerPercepcao.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerPercepcao.getValue().toString()) - 1, 0, Integer.parseInt(spinnerPercepcao.getValue().toString()), 1));
+                    spinnerResistencia.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerResistencia.getValue().toString()) - 1, 0, Integer.parseInt(spinnerResistencia.getValue().toString()), 1));
+                    spinnerSobrevivencia.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerSobrevivencia.getValue().toString()) - 1, 0, Integer.parseInt(spinnerSobrevivencia.getValue().toString()), 1));
+                    spinnerVontade.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerVontade.getValue().toString()) - 1, 0, Integer.parseInt(spinnerVontade.getValue().toString()), 1));
+                    
+                } else {
+                
+                    lblEspecializacao.setText(String.valueOf(NovoJogo.pontosEspecializacao - pontosTotaisEspecializacao));
+                }
+            }
+        };
+        
+        spinnerAgilidadeEsp.addChangeListener(listener);
+        spinnerConhecimentoEsp.addChangeListener(listener);
+        spinnerBlefeEsp.addChangeListener(listener);
+        spinnerForcaEsp.addChangeListener(listener);
+        spinnerFurtividade.addChangeListener(listener);
+        spinnerInteligencia.addChangeListener(listener);
+        spinnerLabia.addChangeListener(listener);
+        spinnerPercepcao.addChangeListener(listener);
+        spinnerResistencia.addChangeListener(listener);
+        spinnerSobrevivencia.addChangeListener(listener);
+        spinnerVontade.addChangeListener(listener);
+        
+    }
+    
+    
+    
+    private void carregarListenerSpinnersCombate(){
+        
+        ChangeListener listener = new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                
+                int pontosTotaisCombate = 0;
+        
+                pontosTotaisCombate += Integer.parseInt(spinnerAgilidadeComb.getValue().toString());
+                pontosTotaisCombate += Integer.parseInt(spinnerConhecimentoComb.getValue().toString());
+                pontosTotaisCombate += Integer.parseInt(spinnerBlefeComb.getValue().toString());
+                pontosTotaisCombate += Integer.parseInt(spinnerForcaComb.getValue().toString());
+                
+                //se for maior que vinte, volta pra não bugar os spinners
+                if(pontosTotaisCombate > 20){
+                    pontosTotaisCombate = 21;
+                } 
+                
+                if(pontosTotaisCombate > 20) {
+                    
+                    spinnerAgilidadeComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerAgilidadeComb.getValue().toString()) - 1, 0, Integer.parseInt(spinnerAgilidadeComb.getValue().toString()), 1));
+                    spinnerConhecimentoComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerConhecimentoComb.getValue().toString()) - 1, 0, Integer.parseInt(spinnerConhecimentoComb.getValue().toString()), 1));
+                    spinnerBlefeComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerBlefeComb.getValue().toString()) - 1, 0, Integer.parseInt(spinnerBlefeComb.getValue().toString()), 1));
+                    spinnerForcaComb.setModel(new SpinnerNumberModel(Integer.parseInt(spinnerForcaComb.getValue().toString()), 0, Integer.parseInt(spinnerForcaComb.getValue().toString()), 1));
+                    
+                } else {
+                
+                    lblCombate.setText(String.valueOf(NovoJogo.pontosEspecializacao - pontosTotaisCombate));
+                }
+            }
+        };
+        
+        spinnerAgilidadeComb.addChangeListener(listener);
+        spinnerConhecimentoComb.addChangeListener(listener);
+        spinnerBlefeComb.addChangeListener(listener);
+        spinnerForcaComb.addChangeListener(listener);
+        
+    }
+    
+    
+    
     /**
      * Creates new form NovoJogo
      */
@@ -32,6 +139,9 @@ public class NovoJogo extends javax.swing.JFrame {
         initComponents();
         
         this.carregarSelect();
+     
+        carregarListenerSpinnersEspecializacoes();
+        carregarListenerSpinnersCombate();
         
         Dimension windowSize = getSize();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -41,6 +151,7 @@ public class NovoJogo extends javax.swing.JFrame {
         int dy = centerPoint.y - windowSize.height / 2;    
         setLocation(dx, dy);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,24 +171,24 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spinnerInteligencia = new javax.swing.JSpinner();
         jLabel14 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
-        jSpinner5 = new javax.swing.JSpinner();
-        jSpinner6 = new javax.swing.JSpinner();
-        jLabel15 = new javax.swing.JLabel();
+        spinnerAgilidadeEsp = new javax.swing.JSpinner();
+        spinnerConhecimentoEsp = new javax.swing.JSpinner();
+        spinnerBlefeEsp = new javax.swing.JSpinner();
+        spinnerForcaEsp = new javax.swing.JSpinner();
+        spinnerFurtividade = new javax.swing.JSpinner();
+        lblEspecializacao = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jSpinner7 = new javax.swing.JSpinner();
+        spinnerLabia = new javax.swing.JSpinner();
         jLabel17 = new javax.swing.JLabel();
-        jSpinner8 = new javax.swing.JSpinner();
+        spinnerPercepcao = new javax.swing.JSpinner();
         jLabel18 = new javax.swing.JLabel();
-        jSpinner9 = new javax.swing.JSpinner();
+        spinnerResistencia = new javax.swing.JSpinner();
         jLabel19 = new javax.swing.JLabel();
-        jSpinner10 = new javax.swing.JSpinner();
+        spinnerSobrevivencia = new javax.swing.JSpinner();
         jLabel20 = new javax.swing.JLabel();
-        jSpinner11 = new javax.swing.JSpinner();
+        spinnerVontade = new javax.swing.JSpinner();
         panel2 = new java.awt.Panel();
         jLabel6 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -96,11 +207,11 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jSpinner13 = new javax.swing.JSpinner();
-        jSpinner14 = new javax.swing.JSpinner();
-        jSpinner15 = new javax.swing.JSpinner();
-        jSpinner16 = new javax.swing.JSpinner();
-        jLabel29 = new javax.swing.JLabel();
+        spinnerAgilidadeComb = new javax.swing.JSpinner();
+        spinnerConhecimentoComb = new javax.swing.JSpinner();
+        spinnerBlefeComb = new javax.swing.JSpinner();
+        spinnerForcaComb = new javax.swing.JSpinner();
+        lblCombate = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         btnTaverna = new javax.swing.JToggleButton();
         btnSalvar = new javax.swing.JToggleButton();
@@ -154,58 +265,80 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel13.setText("Especializações");
         panelEspecializacoes.add(jLabel13);
         jLabel13.setBounds(20, 10, 180, 20);
-        panelEspecializacoes.add(jSpinner1);
-        jSpinner1.setBounds(120, 200, 60, 20);
+
+        spinnerInteligencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerInteligencia);
+        spinnerInteligencia.setBounds(120, 200, 60, 20);
 
         jLabel14.setText("Restantes:");
         panelEspecializacoes.add(jLabel14);
         jLabel14.setBounds(200, 150, 80, 15);
-        panelEspecializacoes.add(jSpinner2);
-        jSpinner2.setBounds(120, 50, 60, 20);
-        panelEspecializacoes.add(jSpinner3);
-        jSpinner3.setBounds(120, 80, 60, 20);
-        panelEspecializacoes.add(jSpinner4);
-        jSpinner4.setBounds(120, 110, 60, 20);
-        panelEspecializacoes.add(jSpinner5);
-        jSpinner5.setBounds(120, 140, 60, 20);
-        panelEspecializacoes.add(jSpinner6);
-        jSpinner6.setBounds(120, 170, 60, 20);
 
-        jLabel15.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
-        jLabel15.setText("20");
-        jLabel15.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelEspecializacoes.add(jLabel15);
-        jLabel15.setBounds(230, 170, 50, 40);
+        spinnerAgilidadeEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerAgilidadeEsp);
+        spinnerAgilidadeEsp.setBounds(120, 50, 60, 20);
+
+        spinnerConhecimentoEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerConhecimentoEsp);
+        spinnerConhecimentoEsp.setBounds(120, 80, 60, 20);
+
+        spinnerBlefeEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerBlefeEsp);
+        spinnerBlefeEsp.setBounds(120, 110, 60, 20);
+
+        spinnerForcaEsp.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerForcaEsp);
+        spinnerForcaEsp.setBounds(120, 140, 60, 20);
+
+        spinnerFurtividade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerFurtividade);
+        spinnerFurtividade.setBounds(120, 170, 60, 20);
+
+        lblEspecializacao.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
+        lblEspecializacao.setText("20");
+        lblEspecializacao.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelEspecializacoes.add(lblEspecializacao);
+        lblEspecializacao.setBounds(230, 170, 50, 40);
 
         jLabel16.setText("Lábia");
         panelEspecializacoes.add(jLabel16);
         jLabel16.setBounds(10, 230, 90, 15);
-        panelEspecializacoes.add(jSpinner7);
-        jSpinner7.setBounds(120, 230, 60, 20);
+
+        spinnerLabia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerLabia);
+        spinnerLabia.setBounds(120, 230, 60, 20);
 
         jLabel17.setText("Percepção");
         panelEspecializacoes.add(jLabel17);
         jLabel17.setBounds(10, 260, 90, 15);
-        panelEspecializacoes.add(jSpinner8);
-        jSpinner8.setBounds(120, 260, 60, 20);
+
+        spinnerPercepcao.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerPercepcao);
+        spinnerPercepcao.setBounds(120, 260, 60, 20);
 
         jLabel18.setText("Resistência");
         panelEspecializacoes.add(jLabel18);
         jLabel18.setBounds(10, 290, 90, 15);
-        panelEspecializacoes.add(jSpinner9);
-        jSpinner9.setBounds(120, 290, 60, 20);
+
+        spinnerResistencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerResistencia);
+        spinnerResistencia.setBounds(120, 290, 60, 20);
 
         jLabel19.setText("Sobrevivência");
         panelEspecializacoes.add(jLabel19);
         jLabel19.setBounds(10, 320, 100, 15);
-        panelEspecializacoes.add(jSpinner10);
-        jSpinner10.setBounds(120, 320, 60, 20);
+
+        spinnerSobrevivencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerSobrevivencia);
+        spinnerSobrevivencia.setBounds(120, 320, 60, 20);
 
         jLabel20.setText("Vontade");
         panelEspecializacoes.add(jLabel20);
         jLabel20.setBounds(10, 350, 90, 15);
-        panelEspecializacoes.add(jSpinner11);
-        jSpinner11.setBounds(120, 350, 60, 20);
+
+        spinnerVontade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        panelEspecializacoes.add(spinnerVontade);
+        spinnerVontade.setBounds(120, 350, 60, 20);
 
         getContentPane().add(panelEspecializacoes);
         panelEspecializacoes.setBounds(350, 100, 300, 390);
@@ -279,20 +412,20 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel28.setText("Restantes:");
         panelEspecializacoes1.add(jLabel28);
         jLabel28.setBounds(200, 80, 80, 15);
-        panelEspecializacoes1.add(jSpinner13);
-        jSpinner13.setBounds(120, 50, 60, 20);
-        panelEspecializacoes1.add(jSpinner14);
-        jSpinner14.setBounds(120, 90, 60, 20);
-        panelEspecializacoes1.add(jSpinner15);
-        jSpinner15.setBounds(120, 130, 60, 20);
-        panelEspecializacoes1.add(jSpinner16);
-        jSpinner16.setBounds(120, 170, 60, 20);
+        panelEspecializacoes1.add(spinnerAgilidadeComb);
+        spinnerAgilidadeComb.setBounds(120, 50, 60, 20);
+        panelEspecializacoes1.add(spinnerConhecimentoComb);
+        spinnerConhecimentoComb.setBounds(120, 90, 60, 20);
+        panelEspecializacoes1.add(spinnerBlefeComb);
+        spinnerBlefeComb.setBounds(120, 130, 60, 20);
+        panelEspecializacoes1.add(spinnerForcaComb);
+        spinnerForcaComb.setBounds(120, 170, 60, 20);
 
-        jLabel29.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
-        jLabel29.setText("20");
-        jLabel29.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelEspecializacoes1.add(jLabel29);
-        jLabel29.setBounds(230, 100, 50, 40);
+        lblCombate.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
+        lblCombate.setText("20");
+        lblCombate.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelEspecializacoes1.add(lblCombate);
+        lblCombate.setBounds(230, 100, 50, 40);
 
         jLabel35.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel35.setText("Combate");
@@ -336,7 +469,7 @@ public class NovoJogo extends javax.swing.JFrame {
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/castelo.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 10, 1010, 650);
+        lblBackground.setBounds(0, 0, 1010, 650);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -372,6 +505,12 @@ public class NovoJogo extends javax.swing.JFrame {
             int idade;
             
             if(txtIdade.getText() != ""){
+                
+                //se a idade não for numeric, exception
+                if(!txtIdade.getText().matches("[-+]?\\d*\\.?\\d+")){
+                    throw new Exception("Idade não é número");
+                }
+                
                 idade = Integer.parseInt(txtIdade.getText());   
             } else {
                 throw new Exception("Idade não recebida");
@@ -383,7 +522,7 @@ public class NovoJogo extends javax.swing.JFrame {
             personagem.setAltura(Float.parseFloat(txtAltura.getText()));
             personagem.setPeso(Float.parseFloat(txtAltura.getText()));
         
-            System.out.println(selectTipo.getModel().getSelectedItem());            
+            System.out.println(spinnerAgilidadeEsp.getValue());            
             
         } catch (Exception ex) {
             Logger.getLogger(NovoJogo.class.getName()).log(Level.SEVERE, null, ex);
@@ -393,7 +532,8 @@ public class NovoJogo extends javax.swing.JFrame {
         menuIntermediario.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSalvarActionPerformed
-
+  
+    
     private void btnTavernaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTavernaActionPerformed
         Taverna taverna = new Taverna();
         taverna.setVisible(true);
@@ -463,7 +603,6 @@ public class NovoJogo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -476,7 +615,6 @@ public class NovoJogo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
@@ -485,26 +623,28 @@ public class NovoJogo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner11;
-    private javax.swing.JSpinner jSpinner13;
-    private javax.swing.JSpinner jSpinner14;
-    private javax.swing.JSpinner jSpinner15;
-    private javax.swing.JSpinner jSpinner16;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblCombate;
+    private javax.swing.JLabel lblEspecializacao;
     private java.awt.Panel panel2;
     private java.awt.Panel panelEspecializacoes;
     private java.awt.Panel panelEspecializacoes1;
     private javax.swing.JComboBox<String> selectTipo;
+    private javax.swing.JSpinner spinnerAgilidadeComb;
+    private javax.swing.JSpinner spinnerAgilidadeEsp;
+    private javax.swing.JSpinner spinnerBlefeComb;
+    private javax.swing.JSpinner spinnerBlefeEsp;
+    private javax.swing.JSpinner spinnerConhecimentoComb;
+    private javax.swing.JSpinner spinnerConhecimentoEsp;
+    private javax.swing.JSpinner spinnerForcaComb;
+    private javax.swing.JSpinner spinnerForcaEsp;
+    private javax.swing.JSpinner spinnerFurtividade;
+    private javax.swing.JSpinner spinnerInteligencia;
+    private javax.swing.JSpinner spinnerLabia;
+    private javax.swing.JSpinner spinnerPercepcao;
+    private javax.swing.JSpinner spinnerResistencia;
+    private javax.swing.JSpinner spinnerSobrevivencia;
+    private javax.swing.JSpinner spinnerVontade;
     private javax.swing.JTextField txtAltura;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;

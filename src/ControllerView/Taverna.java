@@ -8,6 +8,9 @@ package ControllerView;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -215,7 +218,14 @@ public class Taverna extends javax.swing.JFrame {
         } 
         
         else if(this.caller == "NovoJogo"){
-            NovoJogo novoJogo = new NovoJogo();
+            NovoJogo novoJogo = null;
+            try {
+                novoJogo = new NovoJogo();
+            } catch (SQLException ex) {
+                Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+            }
             novoJogo.setVisible(true);
         }
         
@@ -229,7 +239,14 @@ public class Taverna extends javax.swing.JFrame {
         } 
         
         else if(this.caller == "NovoJogo"){
-            NovoJogo novoJogo = new NovoJogo();
+            NovoJogo novoJogo = null;
+            try {
+                novoJogo = new NovoJogo();
+            } catch (SQLException ex) {
+                Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+            }
             novoJogo.setVisible(true);
         }
         this.setVisible(false);
