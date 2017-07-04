@@ -59,4 +59,24 @@ public class AreaCorpoDAO {
         return areasCorpo;
     }
     
+    
+    public static AreaCorpo getAreaCorpoPorArea(String areaCorpoString) throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_area_corpo where area_corpo like '"+areaCorpoString+"';");
+
+        AreaCorpo areaCorpo = new AreaCorpo();
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            areaCorpo.setId(rs.getInt("Id"));
+            areaCorpo.setAreaCorpo(rs.getString("area_corpo"));
+        }
+        
+        return areaCorpo;
+    }
+    
+    
 }

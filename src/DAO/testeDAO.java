@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Model.CaracteristicaItemCombate;
 import Model.Personagem;
 import Model.Especie;
 import Model.Jogador;
@@ -19,14 +20,12 @@ import java.sql.SQLException;
 public class testeDAO {
     public static void main(String args[]) throws SQLException, ClassNotFoundException {
         
-        Personagem personagem = PersonagemDAO.getPersonagemPorID(2);
-        
-        Jogador jogador = new Jogador();
-        
-        jogador.setNome("Player Teste");
-        jogador.setPersonagem(personagem);
-        
-        JogadorDAO.incluirJogador(jogador);
+        for(int i=0 ; i<240 ; i++){
+            
+            for(int j=0 ; j<4 ; j++){
+            }
+            
+        }
         
     }
 }

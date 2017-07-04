@@ -8,6 +8,9 @@ package ControllerView;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -130,10 +133,17 @@ public class MenuIntermediario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGerenciaItensActionPerformed
 
     private void btnArmarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmarioActionPerformed
-        Taverna taverna = new Taverna();
-        taverna.setVisible(true);
-        taverna.setCaller("MenuIntermediario");
-        this.setVisible(false);
+        Taverna taverna;
+        try {
+            taverna = new Taverna();
+            taverna.setVisible(true);
+            taverna.setCaller("MenuIntermediario");
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuIntermediario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MenuIntermediario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnArmarioActionPerformed
 
     private void btnSalvarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarJogoActionPerformed

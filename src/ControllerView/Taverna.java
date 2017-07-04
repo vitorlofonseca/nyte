@@ -5,12 +5,24 @@
  */
 package ControllerView;
 
+import DAO.AreaCorpoDAO;
+import DAO.ItemDAO;
+import Model.AreaCorpo;
+import Model.Item;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JList;
 
 /**
  *
@@ -23,8 +35,12 @@ public class Taverna extends javax.swing.JFrame {
     /**
      * Creates new form Taverna
      */
-    public Taverna() {
+    public Taverna() throws SQLException, ClassNotFoundException {
         initComponents();
+        
+        this.carregarSelect();
+        
+        this.carregarItens(null);
         
         Dimension windowSize = getSize();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -34,6 +50,115 @@ public class Taverna extends javax.swing.JFrame {
         int dy = centerPoint.y - windowSize.height / 2;    
         setLocation(dx, dy);
     }
+    
+    
+    private void carregarSelect() throws SQLException, ClassNotFoundException{
+        
+        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
+        
+        int i=0;
+        String[] areasCorpoString = new String[areasCorpo.size()];
+        
+        //iterando no mapa de itens
+        for (Iterator it = areasCorpo.entrySet().iterator(); it.hasNext();) {
+            
+            Map.Entry<Integer, AreaCorpo> areaCorpo = (Map.Entry<Integer, AreaCorpo>) it.next();
+            
+            areasCorpoString[i] = areaCorpo.getValue().getAreaCorpo();
+            
+            i++;
+            
+        }
+        
+        selectAreaCorpo.setModel(new javax.swing.DefaultComboBoxModel<>(areasCorpoString));
+        
+    }
+    
+    
+    private void carregarItens(AreaCorpo areaCorpo) throws SQLException, ClassNotFoundException{
+        
+        HashMap itens = null;
+        
+        //se não tiver filtro, consulta sem filtro
+        if(areaCorpo == null){
+            itens = ItemDAO.getItens();
+        } else {
+            itens = ItemDAO.getItensPorArea(areaCorpo);
+        }
+        
+        String[] itensString = new String[itens.size()];
+        
+        int i=0;
+        
+        //iterando no mapa de itens
+        for (Iterator it = itens.entrySet().iterator(); it.hasNext();) {
+            Map.Entry<Integer, Item> item = (Map.Entry<Integer, Item>) it.next();
+            itensString[i] = item.getValue().getNome();
+            i++;
+        }
+        
+        //lista de itens
+        listaItens.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = itensString;
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        
+        
+        listaItens.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();
+                
+                if (evt.getClickCount() == 1) {
+                    int index = list.locationToIndex(evt.getPoint());
+                    
+                    Item item = null;
+                    try {
+                        item = ItemDAO.getItemPorNome(listaItens.getSelectedValue());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    lblInfoItem.setText(item.getNome());
+                    
+                    
+                    
+                }
+                
+                
+                if (evt.getClickCount() == 2) {
+                    int index = list.locationToIndex(evt.getPoint());
+                    
+                    Item itemEdicao = null;
+                    try {
+                        itemEdicao = ItemDAO.getItemPorNome(listaItens.getSelectedValue());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    AdmGerenciaItem telaGerenciaItem = null;
+                    try {
+                        Connection conn = null;
+                        telaGerenciaItem = new AdmGerenciaItem(itemEdicao, conn);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    telaGerenciaItem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    telaGerenciaItem.setVisible(true);
+                }
+            }
+        });
+        
+    }    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,21 +170,21 @@ public class Taverna extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaItens = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         lblInfoItemTitulo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        lblInfoItemTitulo1 = new javax.swing.JLabel();
+        lblInfoItem = new javax.swing.JLabel();
         btnMenuIntermediario = new javax.swing.JButton();
         btnFinalizar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jPanel6 = new javax.swing.JPanel();
         lblInfoItemTitulo3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        selectAreaCorpo = new javax.swing.JComboBox<>();
+        btnFiltrar = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -75,12 +200,12 @@ public class Taverna extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaItens.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaItens);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 230, 420, 340);
@@ -105,10 +230,10 @@ public class Taverna extends javax.swing.JFrame {
         jPanel4.add(jLabel6);
         jLabel6.setBounds(20, 50, 114, 94);
 
-        lblInfoItemTitulo1.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo1.setText("Malha X");
-        jPanel4.add(lblInfoItemTitulo1);
-        lblInfoItemTitulo1.setBounds(20, 20, 66, 18);
+        lblInfoItem.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        lblInfoItem.setText("Malha X");
+        jPanel4.add(lblInfoItem);
+        lblInfoItem.setBounds(20, 20, 190, 18);
 
         getContentPane().add(jPanel4);
         jPanel4.setBounds(500, 310, 240, 170);
@@ -148,13 +273,18 @@ public class Taverna extends javax.swing.JFrame {
         jPanel6.add(lblInfoItemTitulo3);
         lblInfoItemTitulo3.setBounds(20, 10, 180, 18);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel6.add(jComboBox2);
-        jComboBox2.setBounds(20, 40, 150, 24);
+        selectAreaCorpo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel6.add(selectAreaCorpo);
+        selectAreaCorpo.setBounds(20, 40, 150, 24);
 
-        jToggleButton2.setText("Filtrar");
-        jPanel6.add(jToggleButton2);
-        jToggleButton2.setBounds(180, 40, 80, 25);
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnFiltrar);
+        btnFiltrar.setBounds(180, 40, 80, 25);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
         jLabel3.setText("<html><body>Clique duas vezes no item <br>para adicioná-lo ao carrinho</body></html>");
@@ -252,6 +382,21 @@ public class Taverna extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        
+        try {
+            
+            AreaCorpo areaCorpo = AreaCorpoDAO.getAreaCorpoPorArea(selectAreaCorpo.getSelectedItem().toString());
+            this.carregarItens(areaCorpo);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnFiltrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,7 +427,13 @@ public class Taverna extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Taverna().setVisible(true);
+                try {
+                    new Taverna().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -298,9 +449,9 @@ public class Taverna extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnFiltrar;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnMenuIntermediario;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -308,7 +459,6 @@ public class Taverna extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -318,10 +468,11 @@ public class Taverna extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JLabel lblInfoItem;
     private javax.swing.JLabel lblInfoItemTitulo;
-    private javax.swing.JLabel lblInfoItemTitulo1;
     private javax.swing.JLabel lblInfoItemTitulo3;
     private javax.swing.JLabel lblInfoItemTitulo4;
+    private javax.swing.JList<String> listaItens;
+    private javax.swing.JComboBox<String> selectAreaCorpo;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,13 +9,13 @@ package Model;
  *
  * @author Nathan
  */
-public class CaracteristicaItem {
+public class CaracteristicaItemCombate {
     private int id;
     private int valor;
     private AtributoCombate atributoCombate;
     private Item item;
 
-    public CaracteristicaItem() {
+    public CaracteristicaItemCombate() {
     }
     
         public void setId(int id) {

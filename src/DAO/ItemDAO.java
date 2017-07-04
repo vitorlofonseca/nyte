@@ -98,4 +98,31 @@ public class ItemDAO {
         return item;
     }
     
+    
+    public static HashMap getItensPorArea(AreaCorpo areaCorpo) throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_item where id_area_corpo = "+areaCorpo.getId()+";");
+        
+        HashMap<Integer,Item> itens = new HashMap<Integer,Item>();
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            
+            Item itemTemp = new Item();
+
+            itemTemp.setId(rs.getInt("id"));
+            itemTemp.setAreaCorpo(areaCorpo);
+            itemTemp.setNome(rs.getString("nome"));
+            itemTemp.setValor(rs.getFloat("valor"));
+            
+            itens.put (rs.getInt("id"), itemTemp);
+        }
+
+        return itens;
+    }
+    
+    
 }
