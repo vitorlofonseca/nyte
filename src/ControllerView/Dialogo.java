@@ -19,6 +19,8 @@ import javax.swing.UIManager;
  */
 public class Dialogo extends javax.swing.JFrame {
 
+    public static Model.Dialogo dialogoCheckpoint = null;
+    
     /**
      * Creates new form dialogo
      */

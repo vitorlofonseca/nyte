@@ -10,12 +10,14 @@ import DAO.AtributoEspecializacaoCombateDAO;
 import DAO.AtributoEspecilizacaoDAO;
 import DAO.CombatePersonagemDAO;
 import DAO.EspecieDAO;
+import DAO.JogadorDAO;
 import DAO.PersonagemDAO;
 import Model.AtributoCombate;
 import Model.AtributoEspecializacaoCombate;
 import Model.AtributoEspecilizacao;
 import Model.CombatePersonagem;
 import Model.Especie;
+import Model.Jogador;
 import Model.Personagem;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -38,7 +40,7 @@ import javax.swing.event.ChangeListener;
 public class NovoJogo extends javax.swing.JFrame {
     
     private final static int pontosEspecializacao = 20;
-    private final static int pontosCombate = 20;
+    public static int idJogador;
     
     private void carregarListenerSpinnersEspecializacoes(){
         
@@ -525,7 +527,18 @@ public class NovoJogo extends javax.swing.JFrame {
             
             int idPersonagem = PersonagemDAO.incluirPersonagem(personagem);
             personagem.setId(idPersonagem);
+            NovoJogo.idJogador = idPersonagem;
             // ------------------------------------------ Inclusão do personagem ------------------------------------------
+            
+            
+            
+            
+            // ------------------------------------------ Inclusão do jogador ------------------------------------------
+            Jogador jogador = new Jogador();
+            jogador.setNome("jogadorDefault");
+            jogador.setPersonagem(personagem);
+            JogadorDAO.incluirJogador(jogador);
+            // ------------------------------------------ Inclusão do jogador ------------------------------------------
             
             
             

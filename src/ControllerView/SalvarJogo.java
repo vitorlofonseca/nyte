@@ -5,9 +5,15 @@
  */
 package ControllerView;
 
+import DAO.JogadorDAO;
+import Model.Jogador;
+import Model.SaveGame;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,7 +48,7 @@ public class SalvarJogo extends javax.swing.JFrame {
 
         btnCancelar = new javax.swing.JButton();
         btnSalvarJogo = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,8 +75,8 @@ public class SalvarJogo extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalvarJogo);
         btnSalvarJogo.setBounds(100, 158, 78, 25);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(160, 100, 140, 19);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(160, 100, 140, 19);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,6 +97,31 @@ public class SalvarJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarJogoActionPerformed
+        
+        System.out.println(NovoJogo.idJogador);
+        
+        try {
+            
+            //se não tiver diálogo nem salva
+            if(Dialogo.dialogoCheckpoint == null){
+                System.out.println("O jogo ainda está no início");
+            } else {
+            
+                Jogador jogador = JogadorDAO.getJogadorPorID(NovoJogo.idJogador);
+
+                SaveGame saveGame = new SaveGame();
+                saveGame.setJogador(jogador);
+                saveGame.setDialogoCheckpoint(Dialogo.dialogoCheckpoint);
+                saveGame.setNome(txtNome.getText());
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SalvarJogo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SalvarJogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         MenuIntermediario menuIntermediario = new MenuIntermediario();
         menuIntermediario.setVisible(true);
         this.setVisible(false);
@@ -143,6 +174,6 @@ public class SalvarJogo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
