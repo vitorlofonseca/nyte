@@ -21,7 +21,7 @@ import java.sql.Statement;
 public class AtributoEspecializacaoCombateDAO {
     
     
-        public static AtributoEspecializacaoCombate getAtributoEspecializacaoCombatePorID(int id) throws SQLException, ClassNotFoundException{           
+    public static AtributoEspecializacaoCombate getAtributoEspecializacaoCombatePorID(int id) throws SQLException, ClassNotFoundException{           
         
         Connection conn = Connect.conectar();
         
@@ -63,15 +63,14 @@ public class AtributoEspecializacaoCombateDAO {
         Connection conn = Connect.conectar();
         Statement st = conn.createStatement();
         
-              
-              String query = "INSERT INTO tbl_atributo_especializacao_combate (valor_melhoria, id_personagem, id_atributo_combate, id_atributo_especializacao)" +
-                      "VALUES ("+ atributoEspecializacaoCombate.getValorMelhoria()+","
-                      + personagem+","
-                      +atributoEspecializacao+");";
-              
-              int i = st.executeUpdate(query);
-              
-              conn.close();
+        String query = "INSERT INTO tbl_atributo_especializacao_combate (valor_melhoria, id_personagem, id_atributo_especializacao)" +
+                "VALUES ("+ atributoEspecializacaoCombate.getValorMelhoria()+","
+                + personagem+","
+                +atributoEspecializacao+");";
+
+        int i = st.executeUpdate(query);
+
+        conn.close();
            
     }
          
@@ -87,6 +86,8 @@ public class AtributoEspecializacaoCombateDAO {
               String query = "DELETE FROM tbl_atributo_especializacao_combate WHERE ID = "+id+";";
                                    
               int i = st.executeUpdate(query);
+              
+              conn.close();
           }
     }
 

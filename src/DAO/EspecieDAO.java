@@ -62,4 +62,25 @@ public class EspecieDAO {
         
         return especie;
     }    
+    
+    
+    public static Especie getEspeciePorEspecie(String especieString) throws SQLException, ClassNotFoundException{
+        
+        Connection conn = Connect.conectar();
+        
+        Especie especie = new Especie();
+ 
+        //Executa a query de seleção
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_especie where nome like '"+especieString+"';");
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            especie.setId(rs.getInt("id"));
+            especie.setNome(rs.getString("nome"));
+        }
+        
+        return especie;
+    }    
+    
 }

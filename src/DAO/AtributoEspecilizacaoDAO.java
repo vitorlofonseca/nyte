@@ -45,12 +45,13 @@ public class AtributoEspecilizacaoDAO {
         
         Connection conn = Connect.conectar();
         Statement st = conn.createStatement();
+              
+        String query = "INSERT INTO tbl_atributo_especializacao (atributo)" +
+                "VALUES ('"+ atributoEspecilizacao.getAtributo()+"');";
+
+        int i = st.executeUpdate(query);
         
-              
-              String query = "INSERT INTO tbl_atributo_especializacao (atributo)" +
-                      "VALUES ('"+ atributoEspecilizacao.getAtributo()+"');";
-              
-              int i = st.executeUpdate(query);
+        conn.close();
            
     }
          
@@ -59,13 +60,14 @@ public class AtributoEspecilizacaoDAO {
     
     public static void deletarAtributoEspecilizacao(int id) throws SQLException, ClassNotFoundException{           
         
-               
           try (Connection conn = Connect.conectar()) {
               java.sql.Statement st = conn.createStatement();
               
               String query = "DELETE FROM tbl_atributo_especializacao WHERE ID = "+id+";";
                                    
               int i = st.executeUpdate(query);
+              
+              conn.close();
           }
     }
 
@@ -79,6 +81,8 @@ public class AtributoEspecilizacaoDAO {
                       + "' WHERE ID =" + atributoEspecilizacao.getId() + ";";
                       
               st.executeUpdate(query);
+              
+              conn.close();
           }
     }
     
@@ -102,6 +106,8 @@ public class AtributoEspecilizacaoDAO {
             
             atributoEspecializacoes.put (rs.getInt("id"), atributoEspecializacao);
         }
+        
+        conn.close();
 
         return atributoEspecializacoes;
     }

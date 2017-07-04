@@ -61,7 +61,6 @@ public class PersonagemDAO {
     
     public static int incluirPersonagem(Personagem personagem) throws SQLException, ClassNotFoundException{           
         
-        int povoado = personagem.getPovoado().getId();
         int especie = personagem.getEspecie().getId();
         
         Connection conn = Connect.conectar();
@@ -71,17 +70,22 @@ public class PersonagemDAO {
               String query = "INSERT INTO tbl_personagem (altura, peso,"
                       + "idade, nome, lvl,"
                       + "id_povoado, tbl_especie_id)" +
-                      "VALUES ("+ personagem.getAltura()+","
+                      " VALUES ("+ personagem.getAltura()+","
                       + personagem.getPeso()+","
                       + personagem.getIdade()+",'"
                       + personagem.getNome()+"',"
                       + personagem.getLevel()+","
-                      + povoado +","
+                      + "1,"
                       + especie + ");";
               
               int i = st.executeUpdate(query);
               
-              return i;
+        ResultSet rs = st.executeQuery("SELECT MAX(id) AS id FROM tbl_personagem");
+        
+        int idPersonagem = rs.getInt("id");
+        
+        conn.close();
+        return idPersonagem;
            
     }
          
@@ -97,6 +101,7 @@ public class PersonagemDAO {
               String query = "DELETE FROM tbl_personagem WHERE ID = "+id+";";
                                    
               int i = st.executeUpdate(query);
+              conn.close();
           }
     }
 
@@ -119,6 +124,7 @@ public class PersonagemDAO {
                       + " WHERE ID =" + personagem.getId() + ";";
                       
               st.executeUpdate(query);
+              conn.close();
           }
     }
         

@@ -5,12 +5,16 @@
  */
 package ControllerView;
 
+import DAO.AtributoCombateDAO;
 import DAO.AtributoEspecializacaoCombateDAO;
 import DAO.AtributoEspecilizacaoDAO;
+import DAO.CombatePersonagemDAO;
 import DAO.EspecieDAO;
 import DAO.PersonagemDAO;
+import Model.AtributoCombate;
 import Model.AtributoEspecializacaoCombate;
 import Model.AtributoEspecilizacao;
+import Model.CombatePersonagem;
 import Model.Especie;
 import Model.Personagem;
 import java.awt.Dimension;
@@ -218,7 +222,6 @@ public class NovoJogo extends javax.swing.JFrame {
         spinnerFuga = new javax.swing.JSpinner();
         lblCombate = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        btnTaverna = new javax.swing.JToggleButton();
         btnSalvar = new javax.swing.JToggleButton();
         btnVoltarTelaInicial = new javax.swing.JToggleButton();
         jLabel25 = new javax.swing.JLabel();
@@ -354,9 +357,9 @@ public class NovoJogo extends javax.swing.JFrame {
         panel2.add(jLabel6);
         jLabel6.setBounds(20, 50, 40, 15);
         panel2.add(txtNome);
-        txtNome.setBounds(70, 50, 210, 19);
+        txtNome.setBounds(70, 40, 210, 30);
         panel2.add(txtIdade);
-        txtIdade.setBounds(70, 90, 210, 19);
+        txtIdade.setBounds(70, 80, 210, 30);
 
         jLabel7.setText("Idade");
         panel2.add(jLabel7);
@@ -372,21 +375,21 @@ public class NovoJogo extends javax.swing.JFrame {
             }
         });
         panel2.add(txtAltura);
-        txtAltura.setBounds(70, 170, 210, 19);
+        txtAltura.setBounds(70, 170, 210, 30);
 
         jLabel9.setText("Altura");
         panel2.add(jLabel9);
-        jLabel9.setBounds(20, 170, 43, 15);
+        jLabel9.setBounds(20, 180, 43, 15);
         panel2.add(txtPeso);
-        txtPeso.setBounds(70, 210, 210, 19);
+        txtPeso.setBounds(70, 210, 210, 30);
 
         jLabel10.setText("Peso");
         panel2.add(jLabel10);
-        jLabel10.setBounds(20, 210, 35, 15);
+        jLabel10.setBounds(20, 220, 35, 15);
 
         selectTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panel2.add(selectTipo);
-        selectTipo.setBounds(70, 130, 210, 24);
+        selectTipo.setBounds(70, 124, 210, 30);
 
         jLabel12.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel12.setText("Dados");
@@ -440,15 +443,6 @@ public class NovoJogo extends javax.swing.JFrame {
         getContentPane().add(panelEspecializacoes1);
         panelEspecializacoes1.setBounds(680, 100, 300, 220);
 
-        btnTaverna.setText("Taverna");
-        btnTaverna.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTavernaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTaverna);
-        btnTaverna.setBounds(20, 410, 300, 50);
-
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,7 +450,7 @@ public class NovoJogo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(850, 410, 130, 50);
+        btnSalvar.setBounds(680, 410, 300, 50);
 
         btnVoltarTelaInicial.setText("Voltar");
         btnVoltarTelaInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -465,7 +459,7 @@ public class NovoJogo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVoltarTelaInicial);
-        btnVoltarTelaInicial.setBounds(680, 410, 130, 50);
+        btnVoltarTelaInicial.setBounds(20, 410, 300, 50);
 
         jLabel25.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
         jLabel25.setText("Novo Personagem");
@@ -527,8 +521,10 @@ public class NovoJogo extends javax.swing.JFrame {
             personagem.setIdade(idade);
             personagem.setAltura(Float.parseFloat(txtAltura.getText()));
             personagem.setPeso(Float.parseFloat(txtAltura.getText()));
+            personagem.setEspecie(EspecieDAO.getEspeciePorEspecie(selectTipo.getSelectedItem().toString()));
             
             int idPersonagem = PersonagemDAO.incluirPersonagem(personagem);
+            personagem.setId(idPersonagem);
             // ------------------------------------------ Inclusão do personagem ------------------------------------------
             
             
@@ -539,7 +535,7 @@ public class NovoJogo extends javax.swing.JFrame {
             HashMap atributoEspecializacoes = AtributoEspecilizacaoDAO.getAtributoEspecializacoes();
             
             int[] valoresSpinners;
-            valoresSpinners = new int[atributoEspecializacoes.size()];
+            valoresSpinners = new int[atributoEspecializacoes.size()+1];
             
             //montagem do array que contém os valores de especialização selecionados
             for (Iterator it2 = atributoEspecializacoes.entrySet().iterator(); it2.hasNext();) {
@@ -590,17 +586,67 @@ public class NovoJogo extends javax.swing.JFrame {
                 
                 Map.Entry<Integer, AtributoEspecilizacao> atributoEspecializacao = (Map.Entry<Integer, AtributoEspecilizacao>) it.next();               
                 
-                AtributoEspecializacaoCombate atributoEspecializacaoCombate = new AtributoEspecializacaoCombate();
-                atributoEspecializacaoCombate.setAtributoEspecializacao(atributoEspecializacao.getValue());
-                atributoEspecializacaoCombate.setPersonagem(personagem);
-                atributoEspecializacaoCombate.setValorMelhoria(valoresSpinners[atributoEspecializacao.getValue().getId()]);
+                //se for 0, nem insere
+                if(valoresSpinners[atributoEspecializacao.getValue().getId()] > 0){
                 
-                AtributoEspecializacaoCombateDAO.incluirAtributoEspecializacaoCombate(atributoEspecializacaoCombate);
+                    AtributoEspecializacaoCombate atributoEspecializacaoCombate = new AtributoEspecializacaoCombate();
+                    atributoEspecializacaoCombate.setAtributoEspecializacao(atributoEspecializacao.getValue());
+                    atributoEspecializacaoCombate.setPersonagem(personagem);
+                    atributoEspecializacaoCombate.setValorMelhoria(valoresSpinners[atributoEspecializacao.getValue().getId()]);
+
+                    AtributoEspecializacaoCombateDAO.incluirAtributoEspecializacaoCombate(atributoEspecializacaoCombate);
+                }
                 
             }
             // ------------------------------------------ Montagem Array especializações ------------------------------------------
             
-        
+            
+            
+            
+            // ------------------------------------------ Montagem Array combate ------------------------------------------
+            HashMap atributosCombate = AtributoCombateDAO.getAtributoEspecializacoes();
+            
+            valoresSpinners = new int[atributosCombate.size()+1];
+            
+            //montagem do array que contém os valores de especialização selecionados
+            for (Iterator it2 = atributosCombate.entrySet().iterator(); it2.hasNext();) {
+                Map.Entry<Integer, AtributoCombate> atributoCombate = (Map.Entry<Integer, AtributoCombate>) it2.next();
+                
+                switch(atributoCombate.getValue().getAtributo()){
+                    
+                    case "Negociação":
+                        valoresSpinners[atributoCombate.getValue().getId()] = Integer.parseInt(spinnerNegociacao.getValue().toString());
+                        break;
+                    case "Defesa":
+                        valoresSpinners[atributoCombate.getValue().getId()] = Integer.parseInt(spinnerDefesa.getValue().toString());
+                        break;
+                    case "Dano":
+                        valoresSpinners[atributoCombate.getValue().getId()] = Integer.parseInt(spinnerDano.getValue().toString());
+                        break;
+                    case "Fuga":
+                        valoresSpinners[atributoCombate.getValue().getId()] = Integer.parseInt(spinnerFuga.getValue().toString());
+                        break;                    
+                }
+                
+            }
+
+            //iterando no mapa de itens
+            for (Iterator it = atributosCombate.entrySet().iterator(); it.hasNext();) {
+                
+                Map.Entry<Integer, AtributoCombate> atributoCombate = (Map.Entry<Integer, AtributoCombate>) it.next();
+                
+                //se for zero, nem insere
+                if(valoresSpinners[atributoCombate.getValue().getId()] > 0){
+                    CombatePersonagem atributoCombateTemp = new CombatePersonagem();
+                    atributoCombateTemp.setAtributoCombate(atributoCombate.getValue());
+                    atributoCombateTemp.setPersonagem(personagem);
+                    atributoCombateTemp.setValor(valoresSpinners[atributoCombate.getValue().getId()]);
+
+                    CombatePersonagemDAO.incluirCombatePersonagem(atributoCombateTemp);
+                }                
+                
+            }
+            // ------------------------------------------ Montagem Array combate ------------------------------------------
             
             
             
@@ -614,13 +660,6 @@ public class NovoJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
   
     
-    private void btnTavernaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTavernaActionPerformed
-        Taverna taverna = new Taverna();
-        taverna.setVisible(true);
-        taverna.setCaller("NovoJogo");
-        this.setVisible(false);
-    }//GEN-LAST:event_btnTavernaActionPerformed
-
     private void btnVoltarTelaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarTelaInicialActionPerformed
         TelaInicial telaInicial = new TelaInicial();
         this.setVisible(false);
@@ -674,7 +713,6 @@ public class NovoJogo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnSalvar;
-    private javax.swing.JToggleButton btnTaverna;
     private javax.swing.JToggleButton btnVoltarTelaInicial;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
