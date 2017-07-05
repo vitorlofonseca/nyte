@@ -19,6 +19,7 @@ public class Personagem {
     private Especie especie;
     private int idade;
     private int level;
+    private float dinheiro;
     
     public String ToString(){
         String text = "";
@@ -95,5 +96,12 @@ public class Personagem {
         this.idade = idade;
     }
     
-   
+   public float getDinheiro() {
+        return dinheiro;
+    }
+
+    public void setDinheiro(float dinheiro) {
+        this.dinheiro = dinheiro;
+    }
+    
 }

@@ -6,9 +6,13 @@
 package ControllerView;
 
 import DAO.AreaCorpoDAO;
+import DAO.CaracteristicaItemCombateDAO;
 import DAO.ItemDAO;
+import DAO.PersonagemDAO;
 import Model.AreaCorpo;
+import Model.CaracteristicaItemCombate;
 import Model.Item;
+import Model.Personagem;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -16,6 +20,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -31,6 +37,12 @@ import javax.swing.JList;
 public class Taverna extends javax.swing.JFrame {
     
     private String caller;
+    private static ArrayList<String> carrinho;
+    private static float dinheiroDisponivel;
+    private static float danoTotalItens;
+    private static float fugaTotalItens;
+    private static float defesaTotalItens;
+    private static float negociacaoTotalItens;
 
     /**
      * Creates new form Taverna
@@ -42,6 +54,12 @@ public class Taverna extends javax.swing.JFrame {
         
         this.carregarItens(null);
         
+        Personagem personagem = PersonagemDAO.getPersonagemPorID(2);//NovoJogo.idPersonagem);
+        
+        Taverna.dinheiroDisponivel = personagem.getDinheiro();
+        
+        atualizarLblDinheiroDisponivel();
+        
         Dimension windowSize = getSize();
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Point centerPoint = ge.getCenterPoint();
@@ -49,6 +67,47 @@ public class Taverna extends javax.swing.JFrame {
         int dx = centerPoint.x - windowSize.width / 2;
         int dy = centerPoint.y - windowSize.height / 2;    
         setLocation(dx, dy);
+    }
+    
+    private void atualizarLblDinheiroDisponivel(){
+        String dinheiroFormatado = NumberFormat.getCurrencyInstance().format(Taverna.dinheiroDisponivel);
+        dinheiroFormatado = dinheiroFormatado.replaceAll("[^0-9.,]", "");
+        
+        lblDinheiroDisponivel.setText("¨"+dinheiroFormatado);
+    }
+    
+    
+    private void atualizarLblSomaAtributosItens(){
+        
+        String html = "<html>"
+                + "         <body>"
+                + "             <table>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Dano +" + String.format("%.0f", Taverna.danoTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Defesa +" + String.format("%.0f", Taverna.defesaTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Fuga +" + String.format("%.0f", Taverna.fugaTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Negociação +" + String.format("%.0f", Taverna.negociacaoTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "             </table>"
+                + "         </body>"
+                + "     </html>";
+
+        lblSomaAtributosItens.setText(html);
+        
     }
     
     
@@ -87,6 +146,7 @@ public class Taverna extends javax.swing.JFrame {
         }
         
         String[] itensString = new String[itens.size()];
+        Taverna.carrinho = new ArrayList<String>();
         
         int i=0;
         
@@ -104,62 +164,175 @@ public class Taverna extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         
+        listaCarrinho.setModel(new javax.swing.AbstractListModel<String>() {
+            public int getSize() { return 0; }
+            public String getElementAt(int i) { return null; }
+        });
+        
         
         listaItens.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 JList list = (JList)evt.getSource();
                 
                 if (evt.getClickCount() == 1) {
-                    int index = list.locationToIndex(evt.getPoint());
                     
                     Item item = null;
                     try {
                         item = ItemDAO.getItemPorNome(listaItens.getSelectedValue());
+                        
+                        HashMap caracteristicasItemCombate = CaracteristicaItemCombateDAO.getCaracteristicasItemCombatePorItem(item);
+                        
+                        CaracteristicaItemCombate caracteristicaDano = (CaracteristicaItemCombate)caracteristicasItemCombate.get(3);
+                        CaracteristicaItemCombate caracteristicaDefesa = (CaracteristicaItemCombate)caracteristicasItemCombate.get(2);
+                        CaracteristicaItemCombate caracteristicaFuga = (CaracteristicaItemCombate)caracteristicasItemCombate.get(4);
+                        CaracteristicaItemCombate caracteristicaNegociacao = (CaracteristicaItemCombate)caracteristicasItemCombate.get(1);
+                        
+                        String html = "<html>"
+                                + "         <body>"
+                                + "             <table>"
+                                + "                 <tr>"
+                                + "                     <td>"
+                                + "                         Dano +" + caracteristicaDano.getValor()
+                                + "                     </td>"
+                                + "                 </tr>"
+                                + "                 <tr>"
+                                + "                     <td>"
+                                + "                         Defesa +" + caracteristicaDefesa.getValor()
+                                + "                     </td>"
+                                + "                 </tr>"
+                                + "                 <tr>"
+                                + "                     <td>"
+                                + "                         Fuga +" + caracteristicaFuga.getValor()
+                                + "                     </td>"
+                                + "                 </tr>"
+                                + "                 <tr>"
+                                + "                     <td>"
+                                + "                         Negociação +" + caracteristicaNegociacao.getValor()
+                                + "                     </td>"
+                                + "                 </tr>"
+                                + "             </table>"
+                                + "         </body>"
+                                + "     </html>";
+                    
+                        lblInfoItem.setText(item.getNome());
+                        lblCaracteristicasItem1.setText(html);
+                        lblPrecoItem.setText("Preço: ¨"+item.getValor());
+                        
                     } catch (SQLException ex) {
                         Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    lblInfoItem.setText(item.getNome());
-                    
+                    }                   
                     
                     
                 }
                 
                 
-                if (evt.getClickCount() == 2) {
-                    int index = list.locationToIndex(evt.getPoint());
+                if (evt.getClickCount() == 2) {    
                     
-                    Item itemEdicao = null;
                     try {
-                        itemEdicao = ItemDAO.getItemPorNome(listaItens.getSelectedValue());
+                        Item item = ItemDAO.getItemPorNome(listaItens.getSelectedValue());
+                        
+                        //se tiver dinheiro pra adicionar, adiciona
+                        if(Taverna.dinheiroDisponivel - item.getValor() > 0){
+                            
+                            HashMap caracteristicasItemCombate = CaracteristicaItemCombateDAO.getCaracteristicasItemCombatePorItem(item);
+                            
+                            CaracteristicaItemCombate caracteristicaDano = (CaracteristicaItemCombate)caracteristicasItemCombate.get(3);
+                            CaracteristicaItemCombate caracteristicaDefesa = (CaracteristicaItemCombate)caracteristicasItemCombate.get(2);
+                            CaracteristicaItemCombate caracteristicaFuga = (CaracteristicaItemCombate)caracteristicasItemCombate.get(4);
+                            CaracteristicaItemCombate caracteristicaNegociacao = (CaracteristicaItemCombate)caracteristicasItemCombate.get(1);
+                            
+                            Taverna.danoTotalItens += caracteristicaDano.getValor();
+                            Taverna.defesaTotalItens += caracteristicaDefesa.getValor();
+                            Taverna.fugaTotalItens += caracteristicaFuga.getValor();
+                            Taverna.negociacaoTotalItens += caracteristicaNegociacao.getValor();
+                            
+                            Taverna.dinheiroDisponivel -= item.getValor();
+                            addCarrinho(listaItens.getSelectedValue());
+                            
+                            atualizarLblDinheiroDisponivel();
+                            atualizarLblSomaAtributosItens();
+                            
+                        } 
+                        
                     } catch (SQLException ex) {
-                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
-                    AdmGerenciaItem telaGerenciaItem = null;
-                    try {
-                        Connection conn = null;
-                        telaGerenciaItem = new AdmGerenciaItem(itemEdicao, conn);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(AdmGerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    telaGerenciaItem.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    telaGerenciaItem.setVisible(true);
                 }
             }
         });
         
+        
+        listaCarrinho.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();               
+                
+                if (evt.getClickCount() == 2) {    
+                    
+                    try {
+                        
+                        Item item;
+                        item = ItemDAO.getItemPorNome(listaCarrinho.getSelectedValue());
+                        
+                        HashMap caracteristicasItemCombate = CaracteristicaItemCombateDAO.getCaracteristicasItemCombatePorItem(item);
+                        
+                        CaracteristicaItemCombate caracteristicaDano = (CaracteristicaItemCombate)caracteristicasItemCombate.get(3);
+                        CaracteristicaItemCombate caracteristicaDefesa = (CaracteristicaItemCombate)caracteristicasItemCombate.get(2);
+                        CaracteristicaItemCombate caracteristicaFuga = (CaracteristicaItemCombate)caracteristicasItemCombate.get(4);
+                        CaracteristicaItemCombate caracteristicaNegociacao = (CaracteristicaItemCombate)caracteristicasItemCombate.get(1);
+
+                        Taverna.danoTotalItens -= caracteristicaDano.getValor();
+                        Taverna.defesaTotalItens -= caracteristicaDefesa.getValor();
+                        Taverna.fugaTotalItens -= caracteristicaFuga.getValor();
+                        Taverna.negociacaoTotalItens -= caracteristicaNegociacao.getValor();
+                        
+                        
+                        Taverna.dinheiroDisponivel += item.getValor();
+                        removerCarrinho(listaCarrinho.getSelectedValue());
+                        
+                        atualizarLblDinheiroDisponivel();
+                        atualizarLblSomaAtributosItens();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
+                
+            }
+        });
+        
+        
     }    
     
+    public void removerCarrinho(String stringItem){
+        
+        Taverna.carrinho.remove(stringItem);
+        
+        listaCarrinho.setModel(new javax.swing.AbstractListModel<String>() {
+            public int getSize() { return Taverna.carrinho.size(); }
+            public String getElementAt(int i) { return Taverna.carrinho.get(i); }
+        });
+        
+    }
     
-
+    
+    public void addCarrinho(String stringItem){
+        
+        Taverna.carrinho.add(stringItem);
+        
+        listaCarrinho.setModel(new javax.swing.AbstractListModel<String>() {
+            public int getSize() { return Taverna.carrinho.size(); }
+            public String getElementAt(int i) { return Taverna.carrinho.get(i); }
+        });
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,14 +346,15 @@ public class Taverna extends javax.swing.JFrame {
         listaItens = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         lblInfoItemTitulo = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblSomaAtributosItens = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        lblPrecoItem = new javax.swing.JLabel();
         lblInfoItem = new javax.swing.JLabel();
+        lblCaracteristicasItem1 = new javax.swing.JLabel();
         btnMenuIntermediario = new javax.swing.JButton();
         btnFinalizar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listaCarrinho = new javax.swing.JList<>();
         jPanel6 = new javax.swing.JPanel();
         lblInfoItemTitulo3 = new javax.swing.JLabel();
         selectAreaCorpo = new javax.swing.JComboBox<>();
@@ -188,7 +362,7 @@ public class Taverna extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblDinheiroDisponivel = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         lblInfoItemTitulo4 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -213,30 +387,34 @@ public class Taverna extends javax.swing.JFrame {
         jPanel3.setLayout(null);
 
         lblInfoItemTitulo.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo.setText("Atributos Personagem");
+        lblInfoItemTitulo.setText("Soma Atributos Itens");
         jPanel3.add(lblInfoItemTitulo);
         lblInfoItemTitulo.setBounds(20, 20, 200, 18);
 
-        jLabel5.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
-        jPanel3.add(jLabel5);
-        jLabel5.setBounds(20, 50, 114, 94);
+        lblSomaAtributosItens.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        jPanel3.add(lblSomaAtributosItens);
+        lblSomaAtributosItens.setBounds(20, 50, 170, 94);
 
         getContentPane().add(jPanel3);
         jPanel3.setBounds(500, 130, 240, 170);
 
         jPanel4.setLayout(null);
 
-        jLabel6.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +5 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +10 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +1 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +2 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
-        jPanel4.add(jLabel6);
-        jLabel6.setBounds(20, 50, 114, 94);
+        lblPrecoItem.setText("Preço:");
+        jPanel4.add(lblPrecoItem);
+        lblPrecoItem.setBounds(24, 160, 120, 20);
 
         lblInfoItem.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItem.setText("Malha X");
+        lblInfoItem.setText("Item");
         jPanel4.add(lblInfoItem);
         lblInfoItem.setBounds(20, 20, 190, 18);
 
+        lblCaracteristicasItem1.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        jPanel4.add(lblCaracteristicasItem1);
+        lblCaracteristicasItem1.setBounds(20, 50, 114, 94);
+
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(500, 310, 240, 170);
+        jPanel4.setBounds(500, 310, 240, 200);
 
         btnMenuIntermediario.setText("Cancelar");
         btnMenuIntermediario.addActionListener(new java.awt.event.ActionListener() {
@@ -256,12 +434,12 @@ public class Taverna extends javax.swing.JFrame {
         getContentPane().add(btnFinalizar);
         btnFinalizar.setBounds(500, 530, 110, 40);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        listaCarrinho.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(listaCarrinho);
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(780, 200, 170, 370);
@@ -303,12 +481,12 @@ public class Taverna extends javax.swing.JFrame {
         jPanel5.add(jLabel2);
         jLabel2.setBounds(20, 0, 130, 50);
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("¨1,000,000");
-        jPanel5.add(jLabel7);
-        jLabel7.setBounds(150, 0, 130, 50);
+        lblDinheiroDisponivel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDinheiroDisponivel.setForeground(new java.awt.Color(0, 0, 0));
+        lblDinheiroDisponivel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDinheiroDisponivel.setText("¨0");
+        jPanel5.add(lblDinheiroDisponivel);
+        lblDinheiroDisponivel.setBounds(150, 0, 130, 50);
 
         getContentPane().add(jPanel5);
         jPanel5.setBounds(660, 40, 290, 50);
@@ -456,10 +634,6 @@ public class Taverna extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -468,10 +642,15 @@ public class Taverna extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCaracteristicasItem1;
+    private javax.swing.JLabel lblDinheiroDisponivel;
     private javax.swing.JLabel lblInfoItem;
     private javax.swing.JLabel lblInfoItemTitulo;
     private javax.swing.JLabel lblInfoItemTitulo3;
     private javax.swing.JLabel lblInfoItemTitulo4;
+    private javax.swing.JLabel lblPrecoItem;
+    private javax.swing.JLabel lblSomaAtributosItens;
+    private javax.swing.JList<String> listaCarrinho;
     private javax.swing.JList<String> listaItens;
     private javax.swing.JComboBox<String> selectAreaCorpo;
     // End of variables declaration//GEN-END:variables

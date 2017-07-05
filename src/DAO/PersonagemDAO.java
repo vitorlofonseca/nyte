@@ -43,6 +43,7 @@ public class PersonagemDAO {
             personagem.setNome(rs.getString("nome"));
             personagem.setIdade(rs.getInt("idade"));
             personagem.setLevel(rs.getInt("lvl"));
+            personagem.setDinheiro(rs.getInt("dinheiro"));
             
             povoado = PovoadoDAO.getPovoadoPorId(rs.getInt("id_povoado"));
             
@@ -69,14 +70,16 @@ public class PersonagemDAO {
               
               String query = "INSERT INTO tbl_personagem (altura, peso,"
                       + "idade, nome, lvl,"
-                      + "id_povoado, tbl_especie_id)" +
+                      + "id_povoado, tbl_especie_id, dinheiro)" +
                       " VALUES ("+ personagem.getAltura()+","
                       + personagem.getPeso()+","
                       + personagem.getIdade()+",'"
                       + personagem.getNome()+"',"
                       + personagem.getLevel()+","
                       + "1,"
-                      + especie + ");";
+                      + especie +","
+                      +personagem.getDinheiro()
+                      + ");";
               
               int i = st.executeUpdate(query);
               
@@ -121,6 +124,7 @@ public class PersonagemDAO {
                       + ", nome ='"+ personagem.getNome()
                       + "', lvl ="+ personagem.getLevel()
                       + ", tbl_especie_id ="+ especie 
+                      + ", dinheiro = "+ personagem.getDinheiro()
                       + " WHERE ID =" + personagem.getId() + ";";
                       
               st.executeUpdate(query);

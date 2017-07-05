@@ -98,7 +98,7 @@ public class SalvarJogo extends javax.swing.JFrame {
 
     private void btnSalvarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarJogoActionPerformed
         
-        System.out.println(NovoJogo.idJogador);
+        System.out.println(NovoJogo.idPersonagem);
         
         try {
             
@@ -107,7 +107,7 @@ public class SalvarJogo extends javax.swing.JFrame {
                 System.out.println("O jogo ainda está no início");
             } else {
             
-                Jogador jogador = JogadorDAO.getJogadorPorID(NovoJogo.idJogador);
+                Jogador jogador = JogadorDAO.getJogadorPorID(NovoJogo.idPersonagem);
 
                 SaveGame saveGame = new SaveGame();
                 saveGame.setJogador(jogador);
