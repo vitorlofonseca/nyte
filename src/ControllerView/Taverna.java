@@ -8,10 +8,12 @@ package ControllerView;
 import DAO.AreaCorpoDAO;
 import DAO.CaracteristicaItemCombateDAO;
 import DAO.ItemDAO;
+import DAO.ItemPersonagemDAO;
 import DAO.PersonagemDAO;
 import Model.AreaCorpo;
 import Model.CaracteristicaItemCombate;
 import Model.Item;
+import Model.ItemPersonagem;
 import Model.Personagem;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -52,9 +54,11 @@ public class Taverna extends javax.swing.JFrame {
         
         this.carregarSelect();
         
+        this.inicializarListeners();
+        
         this.carregarItens(null);
         
-        Personagem personagem = PersonagemDAO.getPersonagemPorID(2);//NovoJogo.idPersonagem);
+        Personagem personagem = PersonagemDAO.getPersonagemPorID(2);//MenuIntermediario.idPersonagem);
         
         Taverna.dinheiroDisponivel = personagem.getDinheiro();
         
@@ -69,106 +73,7 @@ public class Taverna extends javax.swing.JFrame {
         setLocation(dx, dy);
     }
     
-    private void atualizarLblDinheiroDisponivel(){
-        String dinheiroFormatado = NumberFormat.getCurrencyInstance().format(Taverna.dinheiroDisponivel);
-        dinheiroFormatado = dinheiroFormatado.replaceAll("[^0-9.,]", "");
-        
-        lblDinheiroDisponivel.setText("¨"+dinheiroFormatado);
-    }
-    
-    
-    private void atualizarLblSomaAtributosItens(){
-        
-        String html = "<html>"
-                + "         <body>"
-                + "             <table>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Dano +" + String.format("%.0f", Taverna.danoTotalItens)
-                + "                     </td>"
-                + "                 </tr>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Defesa +" + String.format("%.0f", Taverna.defesaTotalItens)
-                + "                     </td>"
-                + "                 </tr>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Fuga +" + String.format("%.0f", Taverna.fugaTotalItens)
-                + "                     </td>"
-                + "                 </tr>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Negociação +" + String.format("%.0f", Taverna.negociacaoTotalItens)
-                + "                     </td>"
-                + "                 </tr>"
-                + "             </table>"
-                + "         </body>"
-                + "     </html>";
-
-        lblSomaAtributosItens.setText(html);
-        
-    }
-    
-    
-    private void carregarSelect() throws SQLException, ClassNotFoundException{
-        
-        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
-        
-        int i=0;
-        String[] areasCorpoString = new String[areasCorpo.size()];
-        
-        //iterando no mapa de itens
-        for (Iterator it = areasCorpo.entrySet().iterator(); it.hasNext();) {
-            
-            Map.Entry<Integer, AreaCorpo> areaCorpo = (Map.Entry<Integer, AreaCorpo>) it.next();
-            
-            areasCorpoString[i] = areaCorpo.getValue().getAreaCorpo();
-            
-            i++;
-            
-        }
-        
-        selectAreaCorpo.setModel(new javax.swing.DefaultComboBoxModel<>(areasCorpoString));
-        
-    }
-    
-    
-    private void carregarItens(AreaCorpo areaCorpo) throws SQLException, ClassNotFoundException{
-        
-        HashMap itens = null;
-        
-        //se não tiver filtro, consulta sem filtro
-        if(areaCorpo == null){
-            itens = ItemDAO.getItens();
-        } else {
-            itens = ItemDAO.getItensPorArea(areaCorpo);
-        }
-        
-        String[] itensString = new String[itens.size()];
-        Taverna.carrinho = new ArrayList<String>();
-        
-        int i=0;
-        
-        //iterando no mapa de itens
-        for (Iterator it = itens.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<Integer, Item> item = (Map.Entry<Integer, Item>) it.next();
-            itensString[i] = item.getValue().getNome();
-            i++;
-        }
-        
-        //lista de itens
-        listaItens.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = itensString;
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        
-        listaCarrinho.setModel(new javax.swing.AbstractListModel<String>() {
-            public int getSize() { return 0; }
-            public String getElementAt(int i) { return null; }
-        });
-        
+    private void inicializarListeners(){
         
         listaItens.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -231,6 +136,7 @@ public class Taverna extends javax.swing.JFrame {
                 if (evt.getClickCount() == 2) {    
                     
                     try {
+                        
                         Item item = ItemDAO.getItemPorNome(listaItens.getSelectedValue());
                         
                         //se tiver dinheiro pra adicionar, adiciona
@@ -305,6 +211,108 @@ public class Taverna extends javax.swing.JFrame {
                 }
                 
             }
+        });
+        
+    }
+    
+    private void atualizarLblDinheiroDisponivel(){
+        String dinheiroFormatado = NumberFormat.getCurrencyInstance().format(Taverna.dinheiroDisponivel);
+        dinheiroFormatado = dinheiroFormatado.replaceAll("[^0-9.,]", "");
+        
+        lblDinheiroDisponivel.setText("¨"+dinheiroFormatado);
+    }
+    
+    
+    private void atualizarLblSomaAtributosItens(){
+        
+        String html = "<html>"
+                + "         <body>"
+                + "             <table>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Dano +" + String.format("%.0f", Taverna.danoTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Defesa +" + String.format("%.0f", Taverna.defesaTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Fuga +" + String.format("%.0f", Taverna.fugaTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Negociação +" + String.format("%.0f", Taverna.negociacaoTotalItens)
+                + "                     </td>"
+                + "                 </tr>"
+                + "             </table>"
+                + "         </body>"
+                + "     </html>";
+
+        lblSomaAtributosItens.setText(html);
+        
+    }
+    
+    
+    private void carregarSelect() throws SQLException, ClassNotFoundException{
+        
+        HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
+        
+        int i=0;
+        String[] areasCorpoString = new String[areasCorpo.size()];
+        
+        //iterando no mapa de itens
+        for (Iterator it = areasCorpo.entrySet().iterator(); it.hasNext();) {
+            
+            Map.Entry<Integer, AreaCorpo> areaCorpo = (Map.Entry<Integer, AreaCorpo>) it.next();
+            
+            areasCorpoString[i] = areaCorpo.getValue().getAreaCorpo();
+            
+            i++;
+            
+        }
+        
+        selectAreaCorpo.setModel(new javax.swing.DefaultComboBoxModel<>(areasCorpoString));
+        
+    }
+    
+    
+    private void carregarItens(AreaCorpo areaCorpo) throws SQLException, ClassNotFoundException{
+        
+        HashMap itens = null;
+        
+        //se não tiver filtro, consulta sem filtro
+        if(areaCorpo == null){
+            itens = ItemDAO.getItens();
+        Taverna.carrinho = new ArrayList<String>();
+        } else {
+            itens = ItemDAO.getItensPorArea(areaCorpo);
+        }
+        
+        String[] itensString = new String[itens.size()];
+        
+        int i=0;
+        
+        //iterando no mapa de itens
+        for (Iterator it = itens.entrySet().iterator(); it.hasNext();) {
+            Map.Entry<Integer, Item> item = (Map.Entry<Integer, Item>) it.next();
+            itensString[i] = item.getValue().getNome();
+            i++;
+        }
+        
+        //lista de itens
+        listaItens.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = itensString;
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        
+        listaCarrinho.setModel(new javax.swing.AbstractListModel<String>() {
+            public int getSize() { return carrinho.size(); }
+            public String getElementAt(int i) { return carrinho.get(i); }
         });
         
         
@@ -541,22 +549,61 @@ public class Taverna extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuIntermediarioActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
-        if(this.caller == "MenuIntermediario"){
-            MenuIntermediario menuIntermediario = new MenuIntermediario();
-            menuIntermediario.setVisible(true);
-        } 
         
-        else if(this.caller == "NovoJogo"){
-            NovoJogo novoJogo = null;
+        float totalCompra = 0;
+        Personagem personagem = null;
+        
+        try {
+            personagem = PersonagemDAO.getPersonagemPorID(2); //MenuIntermediario.idPersonagem));
+            
+            if(personagem == null){
+                throw new Exception("Personagem inválido");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for (String stringItem : carrinho) {
+            
             try {
-                novoJogo = new NovoJogo();
+                Item item = ItemDAO.getItemPorNome(stringItem);
+                
+                ItemPersonagem itemPersonagem = new ItemPersonagem();
+                itemPersonagem.setPersonagem(personagem);
+                itemPersonagem.setItem(item);
+                itemPersonagem.setEquipado(0);
+                itemPersonagem.setArmaReserva(0);
+                
+                totalCompra += item.getValor();
+                
+                ItemPersonagemDAO.incluirItemPersonagem(itemPersonagem);
+                
             } catch (SQLException ex) {
                 Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
             }
-            novoJogo.setVisible(true);
+            
         }
+        
+        /*
+        //atualizando dinheiro personagem
+        personagem.setDinheiro(personagem.getDinheiro() - totalCompra);
+        try {
+            PersonagemDAO.alterarPersonagem(personagem);
+        } catch (SQLException ex) {
+            Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+        
+        MenuIntermediario menuIntermediario = new MenuIntermediario();
+        menuIntermediario.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnFinalizarActionPerformed
 

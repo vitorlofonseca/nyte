@@ -18,6 +18,8 @@ import java.util.logging.Logger;
  */
 public class MenuIntermediario extends javax.swing.JFrame {
 
+    public static int idPersonagem;
+    
     /**
      * Creates new form MenuIntermediario
      */
@@ -127,9 +129,16 @@ public class MenuIntermediario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTelaInicialActionPerformed
 
     private void btnGerenciaItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciaItensActionPerformed
-        GerenciaItens gerenciaItens = new GerenciaItens();
-        gerenciaItens.setVisible(true);
+        GerenciaItens gerenciaItens;
+        try {
+            gerenciaItens = new GerenciaItens();
+            gerenciaItens.setVisible(true);
         this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuIntermediario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MenuIntermediario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnGerenciaItensActionPerformed
 
     private void btnArmarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmarioActionPerformed

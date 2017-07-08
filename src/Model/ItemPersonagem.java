@@ -11,10 +11,10 @@ package Model;
  */
 public class ItemPersonagem {
     private int id;
-    private boolean equipado;
+    private int equipado;
     private Personagem personagem;
     private Item item;
-    private boolean armaReserva;
+    private int armaReserva;
 
     public ItemPersonagem() {
     }
@@ -28,11 +28,11 @@ public class ItemPersonagem {
     }
 
 
-    public boolean isEquipado() {
+    public int isEquipado() {
         return equipado;
     }
 
-    public void setEquipado(boolean equipado) {
+    public void setEquipado(int equipado) {
         this.equipado = equipado;
     }
 
@@ -52,11 +52,11 @@ public class ItemPersonagem {
         this.item = item;
     }
 
-    public boolean isArmaReserva() {
+    public int isArmaReserva() {
         return armaReserva;
     }
 
-    public void setArmaReserva(boolean armaReserva) {
+    public void setArmaReserva(int armaReserva) {
         this.armaReserva = armaReserva;
     }
     

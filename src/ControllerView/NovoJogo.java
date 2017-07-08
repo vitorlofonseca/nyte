@@ -40,7 +40,6 @@ import javax.swing.event.ChangeListener;
 public class NovoJogo extends javax.swing.JFrame {
     
     private final static int pontosEspecializacao = 20;
-    public static int idPersonagem;
     
     private void carregarListenerSpinnersEspecializacoes(){
         
@@ -528,7 +527,7 @@ public class NovoJogo extends javax.swing.JFrame {
             
             int idPersonagem = PersonagemDAO.incluirPersonagem(personagem);
             personagem.setId(idPersonagem);
-            NovoJogo.idPersonagem = idPersonagem;
+            MenuIntermediario.idPersonagem = idPersonagem;
             // ------------------------------------------ Inclusão do personagem ------------------------------------------
             
             
