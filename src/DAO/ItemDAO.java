@@ -7,6 +7,7 @@ package DAO;
 
 import Model.AreaCorpo;
 import Model.Item;
+import Model.Personagem;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

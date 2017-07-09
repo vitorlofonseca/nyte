@@ -130,7 +130,7 @@ public class ItemPersonagemDAO {
 
             itemTemp.setId(rs.getInt("id"));
             itemTemp.setEquipado(rs.getInt("equipado"));
-            itemTemp.setEquipado(rs.getInt("arma_reserva"));
+            itemTemp.setArmaReserva(rs.getInt("arma_reserva"));
             itemTemp.setPersonagem(personagem);
             itemTemp.setItem(ItemDAO.getItemPorID(rs.getInt("id_item")));
             
@@ -138,6 +138,39 @@ public class ItemPersonagemDAO {
         }
 
         return itensPersonagem;
+    }
+    
+    
+    public static ItemPersonagem getItemPorPersonagemEItem(Personagem personagem, Item item) throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        
+        ResultSet rs = st.executeQuery("select * from tbl_item_personagem "
+                + "inner join tbl_item on tbl_item.id = tbl_item_personagem.id_item "
+                + "where tbl_item_personagem.id_personagem = "+personagem.getId()+" AND tbl_item.id = "+item.getId()+";");
+        
+        ItemPersonagem itemPersonagem = new ItemPersonagem();
+        
+        //Lista os alunos no console
+        while (rs.next()) {
+
+            itemPersonagem.setId(rs.getInt("id"));
+            itemPersonagem.setEquipado(rs.getInt("equipado"));
+            itemPersonagem.setArmaReserva(rs.getInt("arma_reserva"));
+            
+            personagem = PersonagemDAO.getPersonagemPorID(rs.getInt("id_personagem"));
+            itemPersonagem.setPersonagem(personagem);
+                       
+            item = ItemDAO.getItemPorID(rs.getInt("id_item"));
+            itemPersonagem.setItem(item);
+
+        }
+        
+        conn.close();
+
+        return itemPersonagem;
     }
     
     
@@ -160,10 +193,7 @@ public class ItemPersonagemDAO {
             ItemPersonagem itemTemp = new ItemPersonagem();
 
             itemTemp.setId(rs.getInt("id"));
-            itemTemp.setEquipado(rs.getInt("equipado"));
-            
-            A PORRA DO EQUIPADO NÂO TÀ VINDO CERTO
-            
+            itemTemp.setEquipado(rs.getInt("equipado"));            
             itemTemp.setArmaReserva(rs.getInt("arma_reserva"));
             itemTemp.setPersonagem(personagem);
             

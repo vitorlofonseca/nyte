@@ -6,9 +6,13 @@
 package ControllerView;
 
 import DAO.AreaCorpoDAO;
+import DAO.CaracteristicaItemCombateDAO;
+import DAO.ItemDAO;
 import DAO.ItemPersonagemDAO;
 import DAO.PersonagemDAO;
 import Model.AreaCorpo;
+import Model.CaracteristicaItemCombate;
+import Model.Item;
 import Model.ItemPersonagem;
 import Model.Personagem;
 import java.awt.Dimension;
@@ -70,45 +74,56 @@ public class GerenciaItens extends javax.swing.JFrame{
             
             Map.Entry<Integer, ItemPersonagem> itemPersonagem = (Map.Entry<Integer, ItemPersonagem>) it.next();
             
-            //System.out.println(itemPersonagem.getValue().isEquipado());
-            
             if(itemPersonagem.getValue().isEquipado() == 1){
                 danoTotal = itemPersonagem.getValue().getItem().getDano();
                 defesaTotal = itemPersonagem.getValue().getItem().getDefesa();
                 negociacaoTotal = itemPersonagem.getValue().getItem().getNegociacao();
                 fugaTotal = itemPersonagem.getValue().getItem().getFuga();
+                
+                switch(itemPersonagem.getValue().getItem().getAreaCorpo().getId()){
+                    case 1:
+                        btnPernaDireitaEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 2:
+                        btnPernaEsquerdaEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 3:
+                        btnCabecaEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 4:
+                        btnPescocoEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 5:
+                        btnCinturaoEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 6:
+                        btnArmaEquipada.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 7:
+                        btnAnelDireitoEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 8:
+                        btnAnelEsquerdoEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 9:
+                        btnBracoDireitoEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 10:
+                        btnBracoEsquerdoEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 11:
+                        btnPeitoralEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                    case 12:
+                        btnBotaEquipado.setText(itemPersonagem.getValue().getItem().getNome());
+                        break;
+                }
+                
             }
             
         }
         
-        String html = "<html>"
-                + "         <body>"
-                + "             <table>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Dano +" + danoTotal
-                + "                     </td>"
-                + "                 </tr>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Defesa +" + defesaTotal
-                + "                     </td>"
-                + "                 </tr>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Fuga +" + fugaTotal
-                + "                     </td>"
-                + "                 </tr>"
-                + "                 <tr>"
-                + "                     <td>"
-                + "                         Negociação +" + negociacaoTotal
-                + "                     </td>"
-                + "                 </tr>"
-                + "             </table>"
-                + "         </body>"
-                + "     </html>";
-        
-        lblPontosTotaisItensEquipados.setText(html);
+        atualizarTotalItensEquipados();
         
         
         
@@ -372,6 +387,107 @@ public class GerenciaItens extends javax.swing.JFrame{
         
         
     }
+    
+    
+    private void atualizarTotalItensEquipados(){
+        String html = "<html>"
+                + "         <body>"
+                + "             <table>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Dano +" + danoTotal
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Defesa +" + defesaTotal
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Fuga +" + fugaTotal
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Negociação +" + negociacaoTotal
+                + "                     </td>"
+                + "                 </tr>"
+                + "             </table>"
+                + "         </body>"
+                + "     </html>";
+        
+        lblPontosTotaisItensEquipados.setText(html);
+    }
+    
+    private void atualizaAtributosItem(String nomeItem) throws SQLException{
+        
+        try {
+            Item item = ItemDAO.getItemPorNome(nomeItem);
+            HashMap caracteristicasItem = CaracteristicaItemCombateDAO.getCaracteristicasItemCombatePorItem(item);
+            
+            int dano = 0;
+            int negociacao = 0;
+            int defesa = 0;
+            int fuga = 0;
+            
+            
+            for (Iterator it = caracteristicasItem.entrySet().iterator(); it.hasNext();) {
+            
+                Map.Entry<Integer, CaracteristicaItemCombate> caracteristicaItem = (Map.Entry<Integer, CaracteristicaItemCombate>) it.next();
+
+                switch(caracteristicaItem.getValue().getAtributoCombate().getId()){
+                    case 1:
+                        negociacao = caracteristicaItem.getValue().getValor();
+                        break;
+                    case 2:
+                        defesa = caracteristicaItem.getValue().getValor();
+                        break;
+                    case 3:
+                        dano = caracteristicaItem.getValue().getValor();
+                        break;
+                    case 4:
+                        fuga = caracteristicaItem.getValue().getValor();
+                        break;
+                } 
+
+            }
+            
+            lblInfoItemTitulo.setText(item.getNome());
+            
+            String html = "<html>"
+                + "         <body>"
+                + "             <table>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Dano +" + dano
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Defesa +" + defesa
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Fuga +" + fuga
+                + "                     </td>"
+                + "                 </tr>"
+                + "                 <tr>"
+                + "                     <td>"
+                + "                         Negociação +" + negociacao
+                + "                     </td>"
+                + "                 </tr>"
+                + "             </table>"
+                + "         </body>"
+                + "     </html>";
+        
+        lblPontosItem.setText(html);
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -437,7 +553,7 @@ public class GerenciaItens extends javax.swing.JFrame{
         jLabel17 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblInfoItemTitulo = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblPontosItem = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         lblPontosTotaisItensEquipados = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -814,9 +930,9 @@ public class GerenciaItens extends javax.swing.JFrame{
         getContentPane().add(lblInfoItemTitulo);
         lblInfoItemTitulo.setBounds(380, 240, 200, 16);
 
-        jLabel5.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(380, 270, 114, 94);
+        lblPontosItem.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        getContentPane().add(lblPontosItem);
+        lblPontosItem.setBounds(380, 270, 114, 94);
 
         jLabel19.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         jLabel19.setText("Total Itens");
@@ -844,20 +960,40 @@ public class GerenciaItens extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCabecaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCabecaEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnCabecaEquipado.getText());
+        try {
+            atualizaAtributosItem(btnCabecaEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_btnCabecaEquipadoActionPerformed
 
     private void btnPescocoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPescocoEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnPescocoEquipado.getText());
+        
+        try {
+            atualizaAtributosItem(btnPescocoEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPescocoEquipadoActionPerformed
 
     private void btnPeitoralEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeitoralEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnPeitoralEquipado.getText());
+                
+        try {
+            atualizaAtributosItem(btnPeitoralEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnPeitoralEquipadoActionPerformed
 
     private void btnBracoDireitoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBracoDireitoEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnBracoDireitoEquipado.getText());
+        
+        try {
+            atualizaAtributosItem(btnBracoDireitoEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnBracoDireitoEquipadoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -867,6 +1003,68 @@ public class GerenciaItens extends javax.swing.JFrame{
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        
+        HashMap itensParaEquipar = new HashMap<Integer,ItemPersonagem>();
+        
+        try {
+            Personagem personagem = PersonagemDAO.getPersonagemPorID(2);//MenuIntermediario.idPersonagem);
+            
+            Item itemPernaDireita =  ItemDAO.getItemPorNome(btnPernaDireitaEquipado.getText());
+            Item itemPernaEsquerda = ItemDAO.getItemPorNome(btnPernaEsquerdaEquipado.getText());
+            Item itemCabeca = ItemDAO.getItemPorNome(btnCabecaEquipado.getText());
+            Item itemPescoco = ItemDAO.getItemPorNome(btnPescocoEquipado.getText());
+            Item itemCinturao = ItemDAO.getItemPorNome(btnCinturaoEquipado.getText());
+            Item itemArma = ItemDAO.getItemPorNome(btnArmaEquipada.getText());
+            Item itemAnelDireito = ItemDAO.getItemPorNome(btnAnelDireitoEquipado.getText());
+            Item itemAnelEsquerdo = ItemDAO.getItemPorNome(btnAnelEsquerdoEquipado.getText());
+            Item itemBracoDireito = ItemDAO.getItemPorNome(btnBracoDireitoEquipado.getText());
+            Item itemBracoEsquerdo = ItemDAO.getItemPorNome(btnBracoEsquerdoEquipado.getText());
+            Item itemPeitoral = ItemDAO.getItemPorNome(btnPeitoralEquipado.getText());
+            Item itemPe = ItemDAO.getItemPorNome(btnBotaEquipado.getText());
+            
+            ItemPersonagem pernaDireita = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemPernaDireita);
+            ItemPersonagem pernaEsquerda = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemPernaEsquerda);
+            ItemPersonagem cabeca = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemCabeca);
+            ItemPersonagem pescoco = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemPescoco);
+            ItemPersonagem cinturao = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemCinturao);
+            ItemPersonagem arma = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemArma);
+            ItemPersonagem anelDireito = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemAnelDireito);
+            ItemPersonagem anelEsquerdo = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemAnelEsquerdo);
+            ItemPersonagem bracoDireito = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemBracoDireito);
+            ItemPersonagem bracoEsquerdo = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemBracoEsquerdo);
+            ItemPersonagem peitoral = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemPeitoral);
+            ItemPersonagem pe = ItemPersonagemDAO.getItemPorPersonagemEItem(personagem, itemPe);
+            
+            itensParaEquipar.put(pernaDireita.getId(), pernaDireita);
+            itensParaEquipar.put(pernaEsquerda.getId(), pernaEsquerda);
+            itensParaEquipar.put(cabeca.getId(), cabeca);
+            itensParaEquipar.put(pescoco.getId(), pescoco);
+            itensParaEquipar.put(cinturao.getId(), cinturao);
+            itensParaEquipar.put(arma.getId(), arma);
+            itensParaEquipar.put(anelDireito.getId(), anelDireito);
+            itensParaEquipar.put(anelEsquerdo.getId(), anelEsquerdo);
+            itensParaEquipar.put(bracoDireito.getId(), bracoDireito);
+            itensParaEquipar.put(bracoEsquerdo.getId(), bracoEsquerdo);
+            itensParaEquipar.put(peitoral.getId(), peitoral);
+            itensParaEquipar.put(pe.getId(), pe);
+            
+            for (Iterator it = itensParaEquipar.entrySet().iterator(); it.hasNext();) {
+            
+                Map.Entry<Integer, ItemPersonagem> itemPersonagem = (Map.Entry<Integer, ItemPersonagem>) it.next();
+                
+                if(itemPersonagem.getValue().isEquipado() == 1){
+                    ItemPersonagemDAO.alterarItemPersonagem(itemPersonagem.getValue());
+                }
+                
+
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        
         MenuIntermediario menuIntermediario = new MenuIntermediario();
         menuIntermediario.setVisible(true);
         this.setVisible(false);
@@ -886,6 +1084,11 @@ public class GerenciaItens extends javax.swing.JFrame{
 
     private void btnEquiparBracoDireitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparBracoDireitoActionPerformed
         btnBracoDireitoEquipado.setText(selectItemBracoDireito.getSelectedItem().toString());
+        
+        NEXT STEP: FAZER UM CACHE COM TODOS OS ITENS DO PERSONAGEM PARA NÃO PRECISAR FICAR 
+                CONSULTANDO, E DEPOIS ATUALIZAR A LABEL GERAL QUANDO CLICAR NO EQUIPAR
+                        DEPOIS DISSO, TEM A EXCEPTION DA SUBMISSÃO
+        
     }//GEN-LAST:event_btnEquiparBracoDireitoActionPerformed
 
     private void btnEquiparBracoEsquerdoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquiparBracoEsquerdoActionPerformed
@@ -929,35 +1132,81 @@ public class GerenciaItens extends javax.swing.JFrame{
     }//GEN-LAST:event_selectItemBracoDireitoActionPerformed
 
     private void btnBracoEsquerdoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBracoEsquerdoEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnBracoEsquerdoEquipado.getText());
+        try {
+            atualizaAtributosItem(btnBracoEsquerdoEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnBracoEsquerdoEquipadoActionPerformed
 
     private void btnCinturaoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCinturaoEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnCinturaoEquipado.getText());
+                
+        try {
+            atualizaAtributosItem(btnCinturaoEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnCinturaoEquipadoActionPerformed
 
     private void btnAnelDireitoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnelDireitoEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnAnelDireitoEquipado.getText());
+                
+        try {
+            atualizaAtributosItem(btnAnelDireitoEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnAnelDireitoEquipadoActionPerformed
 
     private void btnAnelEsquerdoEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnelEsquerdoEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnAnelEsquerdoEquipado.getText());
+                
+        try {
+            atualizaAtributosItem(btnAnelEsquerdoEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnAnelEsquerdoEquipadoActionPerformed
 
     private void btnPernaDireitaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPernaDireitaEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnPernaDireitaEquipado.getText());
+                
+        try {
+            atualizaAtributosItem(btnPernaDireitaEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnPernaDireitaEquipadoActionPerformed
 
     private void btnPernaEsquerdaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPernaEsquerdaEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnPernaEsquerdaEquipado.getText());
+                
+        try {
+            atualizaAtributosItem(btnPernaEsquerdaEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnPernaEsquerdaEquipadoActionPerformed
 
     private void btnArmaEquipadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArmaEquipadaActionPerformed
-        lblInfoItemTitulo.setText(btnArmaEquipada.getText());
+        
+        try {
+            atualizaAtributosItem(btnArmaEquipada.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnArmaEquipadaActionPerformed
 
     private void btnBotaEquipadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBotaEquipadoActionPerformed
-        lblInfoItemTitulo.setText(btnBotaEquipado.getText());
+        
+        try {
+            atualizaAtributosItem(btnBotaEquipado.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenciaItens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnBotaEquipadoActionPerformed
     
     
@@ -1044,7 +1293,6 @@ public class GerenciaItens extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1055,6 +1303,7 @@ public class GerenciaItens extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblInfoItemTitulo;
+    private javax.swing.JLabel lblPontosItem;
     private javax.swing.JLabel lblPontosTotaisItensEquipados;
     private javax.swing.JComboBox<String> selectItemAnelDireito;
     private javax.swing.JComboBox<String> selectItemAnelEsquerdo;
