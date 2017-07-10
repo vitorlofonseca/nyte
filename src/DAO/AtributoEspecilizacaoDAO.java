@@ -36,7 +36,7 @@ public class AtributoEspecilizacaoDAO {
                       
         }
         
-        conn.close();
+        
 
         return atributoEspecilizacao;
     }
@@ -51,7 +51,7 @@ public class AtributoEspecilizacaoDAO {
 
         int i = st.executeUpdate(query);
         
-        conn.close();
+        
            
     }
          
@@ -67,7 +67,7 @@ public class AtributoEspecilizacaoDAO {
                                    
               int i = st.executeUpdate(query);
               
-              conn.close();
+              
           }
     }
 
@@ -82,7 +82,7 @@ public class AtributoEspecilizacaoDAO {
                       
               st.executeUpdate(query);
               
-              conn.close();
+              
           }
     }
     
@@ -107,7 +107,7 @@ public class AtributoEspecilizacaoDAO {
             atributoEspecializacoes.put (rs.getInt("id"), atributoEspecializacao);
         }
         
-        conn.close();
+        
 
         return atributoEspecializacoes;
     }

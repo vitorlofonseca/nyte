@@ -42,7 +42,7 @@ public class JogadorDAO {
                        
         }
         
-        conn.close();
+        
 
         return jogador;
     }

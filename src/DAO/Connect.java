@@ -15,21 +15,22 @@ import java.sql.SQLException;
  */
 public class Connect {
     
-    private static Connection connection;
+    private static Connection connection = null;
     
     public static Connection conectar() throws ClassNotFoundException, SQLException{
         
-        try
-        {
-           Class.forName("org.sqlite.JDBC");
+        try {
+           
+            if(connection == null){
+                
+                Class.forName("org.sqlite.JDBC");
+                // Não precisa alterar mais nada   
+                connection = DriverManager.getConnection("jdbc:sqlite:src/DAO/database/nyte.sqlite");
+            }
         
-        // Não precisa alterar mais nada   
-        connection = DriverManager.getConnection("jdbc:sqlite:src/DAO/database/nyte.sqlite");
-        
-       
         }
-        catch (Exception e)
-        {
+        
+        catch (Exception e){
             System.out.println(e.getMessage());
         }
         

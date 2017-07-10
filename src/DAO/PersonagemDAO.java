@@ -54,8 +54,6 @@ public class PersonagemDAO {
             personagem.setEspecie(especie);
                        
         }
-        
-        conn.close();
 
         return personagem;
     }
@@ -87,7 +85,7 @@ public class PersonagemDAO {
         
         int idPersonagem = rs.getInt("id");
         
-        conn.close();
+        
         return idPersonagem;
            
     }
@@ -104,7 +102,7 @@ public class PersonagemDAO {
               String query = "DELETE FROM tbl_personagem WHERE ID = "+id+";";
                                    
               int i = st.executeUpdate(query);
-              conn.close();
+              
           }
     }
 
@@ -128,7 +126,7 @@ public class PersonagemDAO {
                       + " WHERE ID =" + personagem.getId() + ";";
                       
               st.executeUpdate(query);
-              conn.close();
+              
           }
     }
         

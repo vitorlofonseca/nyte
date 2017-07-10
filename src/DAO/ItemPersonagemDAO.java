@@ -48,7 +48,7 @@ public class ItemPersonagemDAO {
 
         }
         
-        conn.close();
+        
 
         return itemPersonagem;
     }
@@ -71,7 +71,7 @@ public class ItemPersonagemDAO {
               
               int i = st.executeUpdate(query);
               
-              conn.close();
+              
            
     }
          
@@ -94,21 +94,20 @@ public class ItemPersonagemDAO {
         
         int personagem = itemPersonagem.getPersonagem().getId();
         int item = itemPersonagem.getItem().getId();
+            
+        Connection conn = Connect.conectar();
+
+        java.sql.Statement st = conn.createStatement();
+
+        String query = "UPDATE tbl_item_personagem SET "
+                + "id_personagem ="+ personagem
+                + ", id_item ="+ item
+                + ", equipado ="+ itemPersonagem.isEquipado()
+                + ", arma_reserva ="+ itemPersonagem.isArmaReserva()
+                + " WHERE ID =" + itemPersonagem.getId() + ";";
+
+        st.executeUpdate(query);
         
-          try (Connection conn = Connect.conectar()) {
-              java.sql.Statement st = conn.createStatement();
-              
-              String query = "UPDATE tbl_item_personagem SET "
-                      + "id_personagem ="+ personagem
-                      + ", id_item ="+ item
-                      + ", equipado ="+ itemPersonagem.isEquipado()
-                      + ", arma_reserva ="+ itemPersonagem.isArmaReserva()
-                      + " WHERE ID =" + itemPersonagem.getId() + ";";
-                      
-              st.executeUpdate(query);
-              
-              conn.close();
-          }
     }
     
     public static HashMap getItensPorPersonagemEArea(Personagem personagem, AreaCorpo areaCorpo) throws SQLException, ClassNotFoundException{           
@@ -136,6 +135,8 @@ public class ItemPersonagemDAO {
             
             itensPersonagem.put (rs.getInt("id"), itemTemp);
         }
+        
+        
 
         return itensPersonagem;
     }
@@ -168,7 +169,7 @@ public class ItemPersonagemDAO {
 
         }
         
-        conn.close();
+        
 
         return itemPersonagem;
     }
@@ -181,44 +182,53 @@ public class ItemPersonagemDAO {
         
         java.sql.Statement st = conn.createStatement();
         
-        ResultSet rs = st.executeQuery("select * from tbl_item_personagem "
+        ResultSet rs = st.executeQuery("select *, tbl_item_personagem.id as id_item_personagem, tbl_caracteristica_item_combate.id as id_item_combate from tbl_item_personagem "
                 + "inner join tbl_caracteristica_item_combate on tbl_caracteristica_item_combate.id_item = tbl_item_personagem.id_item "
-                + "where tbl_item_personagem.id_personagem = "+personagem.getId()+";");
+                + "where tbl_item_personagem.id_personagem = "+personagem.getId()+";");        
         
         HashMap<Integer,ItemPersonagem> itensPersonagem = new HashMap<Integer,ItemPersonagem>();
+        
+        //item corrente para não ficar atualizando os atributos do item
+        int itemCorrente = -1;
+        Item objItemCorrente = null;
+        
 
         //Lista os alunos no console
         while (rs.next()) {
             
             ItemPersonagem itemTemp = new ItemPersonagem();
 
-            itemTemp.setId(rs.getInt("id"));
-            itemTemp.setEquipado(rs.getInt("equipado"));            
+            itemTemp.setId(rs.getInt("id_item_personagem"));
+            itemTemp.setEquipado(rs.getInt("equipado"));
             itemTemp.setArmaReserva(rs.getInt("arma_reserva"));
             itemTemp.setPersonagem(personagem);
             
-            Item item = ItemDAO.getItemPorID(rs.getInt("id_item"));
+            if(rs.getInt("id_item") != itemCorrente){
+                Item item = ItemDAO.getItemPorID(rs.getInt("id_item"));
+                itemCorrente = rs.getInt("id_item");
+                objItemCorrente = item;
+            }
+            
             switch(rs.getInt("id_atributo_combate")){
                 case 1:
-                    item.setNegociacao(rs.getInt("valor"));   
+                    objItemCorrente.setNegociacao(rs.getInt("valor"));   
                     break;
                 case 2:
-                    item.setDefesa(rs.getInt("valor"));   
+                    objItemCorrente.setDefesa(rs.getInt("valor"));
                     break;
                 case 3:
-                    item.setDano(rs.getInt("valor"));   
+                    objItemCorrente.setDano(rs.getInt("valor"));   
                     break;
                 case 4:
-                    item.setFuga(rs.getInt("valor"));   
+                    objItemCorrente.setFuga(rs.getInt("valor"));   
                     break;
             } 
             
-            itemTemp.setItem(item);
-            
-            itensPersonagem.put (rs.getInt("id"), itemTemp);
+            itemTemp.setItem(objItemCorrente);
+            itensPersonagem.put (rs.getInt("id_item_personagem"), itemTemp);
         }
             
-        //System.out.println(itensPersonagem.get(1).isEquipado());
+        
 
         return itensPersonagem;
     }

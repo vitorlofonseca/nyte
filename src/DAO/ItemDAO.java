@@ -43,6 +43,7 @@ public class ItemDAO {
             
             itens.put (rs.getInt("id"), itemTemp);
         }
+        
 
         return itens;
     }
@@ -68,7 +69,7 @@ public class ItemDAO {
             item.setValor(rs.getFloat("valor"));
         }
         
-        conn.close();
+        
 
         return item;
     }
@@ -94,10 +95,47 @@ public class ItemDAO {
             item.setValor(rs.getFloat("valor"));
         }
         
-        conn.close();
+        
 
         return item;
     }
+    
+    
+    public static Item getCaracteristicasItemCombate(Item item) throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        
+        ResultSet rs = st.executeQuery("select tbl_caracteristica_item_combate.* from tbl_item "
+                + "inner join tbl_caracteristica_item_combate on tbl_caracteristica_item_combate.id_item = tbl_item.id "
+                + "where tbl_item.id = "+item.getId()+";");
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            
+            switch(rs.getInt("id_atributo_combate")){
+                case 1:
+                    item.setNegociacao(rs.getInt("valor"));   
+                    break;
+                case 2:
+                    item.setDefesa(rs.getInt("valor"));   
+                    break;
+                case 3:
+                    item.setDano(rs.getInt("valor"));   
+                    break;
+                case 4:
+                    item.setFuga(rs.getInt("valor"));   
+                    break;
+            } 
+            
+        }
+            
+        
+
+        return item;
+    }
+    
     
     
     public static HashMap getItensPorArea(AreaCorpo areaCorpo) throws SQLException, ClassNotFoundException{           
@@ -121,6 +159,7 @@ public class ItemDAO {
             
             itens.put (rs.getInt("id"), itemTemp);
         }
+        
 
         return itens;
     }

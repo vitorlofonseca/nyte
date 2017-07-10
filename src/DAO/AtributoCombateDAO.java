@@ -36,7 +36,7 @@ public class AtributoCombateDAO {
                       
         }
         
-        conn.close();
+        
 
         return atributoCombate;
     }

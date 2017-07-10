@@ -5,6 +5,8 @@
  */
 package ControllerView;
 
+import DAO.PersonagemDAO;
+import Model.Personagem;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -18,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class MenuIntermediario extends javax.swing.JFrame {
 
-    public static int idPersonagem;
+    public static int idPersonagem = 2;
     
     /**
      * Creates new form MenuIntermediario

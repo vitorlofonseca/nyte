@@ -50,7 +50,7 @@ public class AtributoEspecializacaoCombateDAO {
             
         }
         
-        conn.close();
+        
 
         return atributoEspecializacaoCombate;
     }
@@ -70,7 +70,7 @@ public class AtributoEspecializacaoCombateDAO {
 
         int i = st.executeUpdate(query);
 
-        conn.close();
+        
            
     }
          
@@ -87,7 +87,7 @@ public class AtributoEspecializacaoCombateDAO {
                                    
               int i = st.executeUpdate(query);
               
-              conn.close();
+              
           }
     }
 
@@ -107,7 +107,7 @@ public class AtributoEspecializacaoCombateDAO {
                       
               st.executeUpdate(query);
               
-              conn.close();
+              
             }
     }
 }

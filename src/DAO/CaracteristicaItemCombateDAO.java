@@ -38,7 +38,7 @@ public class CaracteristicaItemCombateDAO {
         
         int idCaracteristicaItemCombate = rs.getInt("id");
         
-        conn.close();
+        
         
         return idCaracteristicaItemCombate;
               

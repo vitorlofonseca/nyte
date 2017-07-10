@@ -5,11 +5,10 @@
         <group>
             <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/CaracteristicaItemCombateDAO.java</file>
             <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/Taverna.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/AreaCorpoDAO.java</file>
             <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/ItemPersonagemDAO.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/PersonagemDAO.java</file>
             <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/GerenciaItens.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/Model/ItemPersonagem.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/ItemDAO.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/Model/Item.java</file>
         </group>
     </open-files>
 </project-private>

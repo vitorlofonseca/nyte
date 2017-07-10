@@ -58,7 +58,7 @@ public class Taverna extends javax.swing.JFrame {
         
         this.carregarItens(null);
         
-        Personagem personagem = PersonagemDAO.getPersonagemPorID(2);//MenuIntermediario.idPersonagem);
+        Personagem personagem = PersonagemDAO.getPersonagemPorID(MenuIntermediario.idPersonagem);
         
         Taverna.dinheiroDisponivel = personagem.getDinheiro();
         
@@ -554,7 +554,7 @@ public class Taverna extends javax.swing.JFrame {
         Personagem personagem = null;
         
         try {
-            personagem = PersonagemDAO.getPersonagemPorID(2); //MenuIntermediario.idPersonagem));
+            personagem = PersonagemDAO.getPersonagemPorID(MenuIntermediario.idPersonagem);
             
             if(personagem == null){
                 throw new Exception("Personagem inválido");

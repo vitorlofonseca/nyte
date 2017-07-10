@@ -32,7 +32,7 @@ public class CombatePersonagemDAO {
 
         int i = st.executeUpdate(query);
 
-        conn.close();
+        
            
     }
     

@@ -42,7 +42,7 @@ public class AdversidadeDAO {
                        
         }
         
-        conn.close();
+        
 
         return adversidade;
     }
