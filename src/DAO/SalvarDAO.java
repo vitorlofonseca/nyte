@@ -143,10 +143,10 @@ public class SalvarDAO {
               
         ResultSet rs = st.executeQuery("SELECT MAX(id) AS id FROM tbl_save_game");
         
-        int idPersonagem = rs.getInt("id");
+        int idSave = rs.getInt("id");
         
         
-        return idPersonagem;
+        return idSave;
            
     }
          

@@ -22,6 +22,8 @@ import javax.swing.UIManager;
  * @author vitorlofonseca
  */
 public class TelaDialogo extends javax.swing.JFrame {
+
+    static int IDDialogoCheckpoint = -1;
     
     /**
      * Creates new form dialogo
