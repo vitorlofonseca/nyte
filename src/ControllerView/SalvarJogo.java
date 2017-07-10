@@ -103,9 +103,13 @@ public class SalvarJogo extends javax.swing.JFrame {
         try {
             
             //se não tiver diálogo nem salva
+<<<<<<< HEAD
+           // if(Dialogo.dialogoCheckpoint == null){
+=======
             if(TelaDialogo.dialogoCheckpoint == null){
+>>>>>>> 5bcc6c7294c879eb14c55fe548a764c9c8bf5171
                 System.out.println("O jogo ainda está no início");
-            } else {
+            //} else {
             
                 Jogador jogador = JogadorDAO.getJogadorPorID(MenuIntermediario.idPersonagem);
 
@@ -114,7 +118,7 @@ public class SalvarJogo extends javax.swing.JFrame {
                 saveGame.setDialogoCheckpoint(TelaDialogo.dialogoCheckpoint);
                 saveGame.setNome(txtNome.getText());
                 
-            }
+            //}
             
         } catch (SQLException ex) {
             Logger.getLogger(SalvarJogo.class.getName()).log(Level.SEVERE, null, ex);
