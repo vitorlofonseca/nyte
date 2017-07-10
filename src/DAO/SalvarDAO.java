@@ -5,7 +5,8 @@
  */
 package DAO;
 
-import ControllerView.Dialogo;
+
+import Model.Dialogo;
 import Model.Jogador;
 import Model.Personagem;
 import Model.SaveGame;
@@ -42,9 +43,9 @@ public class SalvarDAO {
             saveGame.setId(rs.getInt("id"));
             saveGame.setNome(rs.getString("nome"));
                         
-            dialogo = DialogoDAO.getDialogoPorId(rs.getInt("id_dialogo_checkpoint"));
+            dialogo = DialogoDAO.getDialogoPorID(rs.getInt("id_dialogo_checkpoint"));
             
-            saveGame.setDialogo(dialogo);
+            saveGame.setDialogoCheckpoint(dialogo);
             
             jogador = JogadorDAO.getJogadorPorID(rs.getInt("id_jogador"));
             
@@ -75,9 +76,9 @@ public class SalvarDAO {
             saveGame.setId(rs.getInt("id"));
             saveGame.setNome(rs.getString("nome"));
             
-            dialogo = DialogoDAO.getDialogoPorId(rs.getInt("id_dialogo_checkpoint"));
+            dialogo = DialogoDAO.getDialogoPorID(rs.getInt("id_dialogo_checkpoint"));
             
-            saveGame.setDialogo(dialogo);
+            saveGame.setDialogoCheckpoint(dialogo);
             
             jogador = JogadorDAO.getJogadorPorID(rs.getInt("id_jogador"));
             
@@ -108,9 +109,9 @@ public class SalvarDAO {
             saveGame.setId(rs.getInt("id"));
             saveGame.setNome(rs.getString("nome"));
             
-            dialogo = DialogoDAO.getDialogoPorId(rs.getInt("id_dialogo_checkpoint"));
+            dialogo = DialogoDAO.getDialogoPorID(rs.getInt("id_dialogo_checkpoint"));
             
-            saveGame.setDialogo(dialogo);
+            saveGame.setDialogoCheckpoint(dialogo);
             
             jogador = JogadorDAO.getJogadorPorID(rs.getInt("id_jogador"));
             
