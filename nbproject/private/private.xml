@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/CaracteristicaItemCombateDAO.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/Taverna.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/AreaCorpoDAO.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/ItemPersonagemDAO.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/PersonagemDAO.java</file>
-            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/GerenciaItens.java</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/SalvarDAO.java</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/JogadorDAO.java</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/ControllerView/SalvarJogo.java</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/EspecieDAO.java</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/PersonagemDAO.java</file>
+            <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/Model/Personagem.java</file>
         </group>
     </open-files>
 </project-private>
