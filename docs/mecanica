@@ -9,8 +9,8 @@
 *// Mecânica *// 
 
 	1 - Como funciona a Luta
-	- Se hp(default = 1000) == 0 {jogo terminado} se não {jogo continua com decrease ((ataqueInimigo*(resultDado*100))/defesaPropria) no life}
-	- Se life adversidade == 0 {posses} se não {jogo continua com decrease ((ataqueProprio*(resultDado*100))/defesaInimigo)no life inimigo}
+	- Se hp(default = 1000 * defesa) == 0 {jogo terminado} se não {jogo continua com decrease ((ataqueInimigo*(resultDado*100))/defesaPropria) no life}
+	- Se life adversidade == 0 {itens} se não {jogo continua com decrease ((ataqueProprio*(resultDado*100))/defesaInimigo)no life inimigo}
 	- dado volta a ser jogado / escapar selecionado}
 
 	2 - Como funciona a Fuga

@@ -21,8 +21,8 @@ public class Dialogo {
 
     private int id;
     private String texto;
-    private Dialogo dialogoAnterior;
-    private Dialogo proximoDialogo;
+    private int idDialogoAnterior;
+    private int idProximoDialogo;
     private Adversidade adversidade;
 
     public int getId() {
@@ -37,20 +37,20 @@ public class Dialogo {
         this.texto = texto;
     }
 
-    public Dialogo getDialogoAnterior() {
-        return dialogoAnterior;
+    public int getIdDialogoAnterior() {
+        return idDialogoAnterior;
     }
 
-    public void setDialogoAnterior(Dialogo dialogoAnterior) {
-        this.dialogoAnterior = dialogoAnterior;
+    public void setIdDialogoAnterior(int idDialogoAnterior) {
+        this.idDialogoAnterior = idDialogoAnterior;
     }
 
-    public Dialogo getProximoDialogo() {
-        return proximoDialogo;
+    public int getIdProximoDialogo() {
+        return idProximoDialogo;
     }
 
-    public void setProximoDialogo(Dialogo proximoDialogo) {
-        this.proximoDialogo = proximoDialogo;
+    public void setIdProximoDialogo(int idProximoDialogo) {
+        this.idProximoDialogo = idProximoDialogo;
     }
 
     public Adversidade getAdversidade() {

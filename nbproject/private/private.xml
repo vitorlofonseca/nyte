@@ -3,12 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/SalvarDAO.java</file>
             <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/JogadorDAO.java</file>
             <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/ControllerView/SalvarJogo.java</file>
             <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/EspecieDAO.java</file>
             <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/DAO/PersonagemDAO.java</file>
             <file>file:/C:/Users/Nathan/Documents/NetBeansProjects/nyte/src/Model/Personagem.java</file>
+=======
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/AdmGerenciaAtributosCombate.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/AdmGerenciaItens.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/Model/Dialogo.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/AdmGerenciaDialogo.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/DialogoDAO.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/DAO/ItemDAO.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/AdmGerencia.java</file>
+            <file>file:/home/vitorlofonseca/NetBeansProjects/nyte/src/ControllerView/AdmGerenciaItem.java</file>
+>>>>>>> 5bcc6c7294c879eb14c55fe548a764c9c8bf5171
         </group>
     </open-files>
 </project-private>
