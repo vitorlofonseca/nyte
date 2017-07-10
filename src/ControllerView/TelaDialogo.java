@@ -6,6 +6,7 @@
 package ControllerView;
 
 import java.awt.Color;
+import Model.Dialogo;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -17,14 +18,14 @@ import javax.swing.UIManager;
  *
  * @author vitorlofonseca
  */
-public class Dialogo extends javax.swing.JFrame {
+public class TelaDialogo extends javax.swing.JFrame {
 
     public static Model.Dialogo dialogoCheckpoint = null;
     
     /**
      * Creates new form dialogo
      */
-    public Dialogo() {
+    public TelaDialogo() {
         initComponents();
         
         Dimension windowSize = getSize();
@@ -177,21 +178,23 @@ public class Dialogo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaDialogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dialogo().setVisible(true);
+                new TelaDialogo().setVisible(true);
             }
         });
         
