@@ -51,9 +51,13 @@ public class AdmGerenciaDialogos extends javax.swing.JFrame {
         
     }
     
-    private void mostraDialogos(){
+    private void mostraDialogos() throws SQLException, ClassNotFoundException{
         
-        this.itens = ItemDAO.getItens();        
+        try {        
+            this.itens = ItemDAO.getItens();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdmGerenciaDialogos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String[] itensString = new String[this.itens.size()];
         
         int i=0;

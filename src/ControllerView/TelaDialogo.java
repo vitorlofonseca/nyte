@@ -5,11 +5,14 @@
  */
 package ControllerView;
 
+import DAO.DialogoDAO;
 import java.awt.Color;
 import Model.Dialogo;
+import Model.SaveGame;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.sql.SQLException;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -19,8 +22,6 @@ import javax.swing.UIManager;
  * @author vitorlofonseca
  */
 public class TelaDialogo extends javax.swing.JFrame {
-
-    public static Model.Dialogo dialogoCheckpoint = null;
     
     /**
      * Creates new form dialogo
@@ -36,7 +37,30 @@ public class TelaDialogo extends javax.swing.JFrame {
         int dy = centerPoint.y - windowSize.height / 2;    
         setLocation(dx, dy);
         
-        String txtPuroDialogo = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        /*
+        //se tiver jogo salvo, chama o método passando o savegame
+        if(){
+            atualizarTela(dialogo);
+        } else {
+            atualizarTela(null);
+        }
+        */
+        
+        
+    }
+    
+    
+    private void atualizarTela(SaveGame saveGame) throws SQLException, ClassNotFoundException{
+        
+        Dialogo dialogoCheckpoint = null;
+        
+        if(saveGame == null){
+            dialogoCheckpoint = DialogoDAO.getDialogoPorID(1);
+        } else {
+            dialogoCheckpoint = saveGame.getDialogoCheckpoint();
+        } 
+        
+        String txtPuroDialogo = dialogoCheckpoint.getTexto();
         
         String dialogoTratado = "";
         
@@ -57,8 +81,8 @@ public class TelaDialogo extends javax.swing.JFrame {
         lblDialogo.setText(dialogoFinal);
         
         barHp.setValue(100);
-        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

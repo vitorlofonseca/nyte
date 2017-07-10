@@ -9,7 +9,7 @@
 *// Mecânica *// 
 
 	1 - Como funciona a Luta
-	- Se hp(default = 1000 * defesa) == 0 {jogo terminado} se não {jogo continua com decrease ((ataqueInimigo*(resultDado*100))/defesaPropria) no life}
+	- Se hp(default = 1000 * defesa + ((resistência + sobrevivência + vontade) / 2)) == 0 {jogo terminado} se não {jogo continua com decrease ((ataqueInimigo*(resultDado*100))/defesaPropria) no life}
 	- Se life adversidade == 0 {itens} se não {jogo continua com decrease ((ataqueProprio*(resultDado*100))/defesaInimigo)no life inimigo}
 	- dado volta a ser jogado / escapar selecionado}
 
