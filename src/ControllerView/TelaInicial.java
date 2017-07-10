@@ -111,9 +111,17 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCarregarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarJogoActionPerformed
-        CarregarJogo carregarJogo = new CarregarJogo();
+        CarregarJogo carregarJogo;
+        try {
+            carregarJogo = new CarregarJogo();
+            carregarJogo.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
-        carregarJogo.setVisible(true);
+        
     }//GEN-LAST:event_btnCarregarJogoActionPerformed
 
     /**

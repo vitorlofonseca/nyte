@@ -5,9 +5,23 @@
  */
 package ControllerView;
 
+import DAO.ItemDAO;
+import DAO.SalvarDAO;
+import Model.Item;
+import Model.SaveGame;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JList;
 
 /**
  *
@@ -15,10 +29,11 @@ import java.awt.Point;
  */
 public class CarregarJogo extends javax.swing.JFrame {
 
+    private HashMap saves;
     /**
      * Creates new form CarregarJogo
      */
-    public CarregarJogo() {
+    public CarregarJogo() throws SQLException, ClassNotFoundException {
         initComponents();
         
         Dimension windowSize = getSize();
@@ -28,6 +43,53 @@ public class CarregarJogo extends javax.swing.JFrame {
         int dx = centerPoint.x - windowSize.width / 2;
         int dy = centerPoint.y - windowSize.height / 2;    
         setLocation(dx, dy);
+        
+        this.saves = SalvarDAO.getSaves();        
+        String[] savesString = new String[this.saves.size()];
+        
+        int i=0;
+        
+        //iterando no mapa de itens
+        for (Iterator it = this.saves.entrySet().iterator(); it.hasNext();) {
+            Map.Entry<Integer, Item> item = (Map.Entry<Integer, Item>) it.next();
+            savesString[i] = item.getValue().getNome();
+            i++;
+        }
+        
+        //lista de itens
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = savesString;
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        
+        
+        jList1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();
+                if (evt.getClickCount() == 2) {
+                    int index = list.locationToIndex(evt.getPoint());
+                    
+                    SaveGame save = null;
+                    try {
+                        save = SalvarDAO.getSaveGamePorNome(jList1.getSelectedValue());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CarregarJogo.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(CarregarJogo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    
+                    MenuIntermediario telaMenu = null;
+                    telaMenu = new MenuIntermediario(save.getId());
+                                       
+                    telaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    telaMenu.setVisible(true);
+                }
+            }
+        });
+    
+        
         
     }
 
@@ -104,6 +166,8 @@ public class CarregarJogo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCarregar1ActionPerformed
 
+    
+        
     /**
      * @param args the command line arguments
      */
@@ -134,7 +198,13 @@ public class CarregarJogo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CarregarJogo().setVisible(true);
+                try {
+                    new CarregarJogo().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CarregarJogo.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(CarregarJogo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
