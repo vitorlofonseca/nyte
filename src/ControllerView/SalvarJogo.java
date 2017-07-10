@@ -5,7 +5,9 @@
  */
 package ControllerView;
 
+import DAO.DialogoDAO;
 import DAO.JogadorDAO;
+import DAO.SalvarDAO;
 import Model.Jogador;
 import Model.SaveGame;
 import java.awt.Dimension;
@@ -102,27 +104,28 @@ public class SalvarJogo extends javax.swing.JFrame {
         
         try {
             
-            //se não tiver diálogo nem salva
-<<<<<<< HEAD
-           // if(Dialogo.dialogoCheckpoint == null){
-=======
-            if(TelaDialogo.dialogoCheckpoint == null){
->>>>>>> 5bcc6c7294c879eb14c55fe548a764c9c8bf5171
-                System.out.println("O jogo ainda está no início");
-            //} else {
+    if(TelaDialogo.IDDialogoCheckpoint == -1){
+        
+            throw new Exception("Sem diálogo");
+        
+            } else {
             
                 Jogador jogador = JogadorDAO.getJogadorPorID(MenuIntermediario.idPersonagem);
 
                 SaveGame saveGame = new SaveGame();
                 saveGame.setJogador(jogador);
-                saveGame.setDialogoCheckpoint(TelaDialogo.dialogoCheckpoint);
+                saveGame.setDialogoCheckpoint(DialogoDAO.getDialogoPorID(TelaDialogo.IDDialogoCheckpoint));
                 saveGame.setNome(txtNome.getText());
                 
-            //}
+                saveGame.setId(SalvarDAO.incluirSaveGame(saveGame));
+                
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(SalvarJogo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SalvarJogo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(SalvarJogo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
