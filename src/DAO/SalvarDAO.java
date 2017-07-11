@@ -43,7 +43,7 @@ public class SalvarDAO {
             saveGame.setId(rs.getInt("id"));
             saveGame.setNome(rs.getString("nome"));
                         
-            dialogo = DialogoDAO.getDialogoPorID(rs.getInt("id_dialogo_checkpoint"));
+            dialogo = DialogoDAO.getDialogoPorID(rs.getInt("id_dialogo_checkpoINTEGER"));
             
             saveGame.setDialogoCheckpoint(dialogo);
             
@@ -109,7 +109,7 @@ public class SalvarDAO {
             saveGame.setId(rs.getInt("id"));
             saveGame.setNome(rs.getString("nome"));
             
-            dialogo = DialogoDAO.getDialogoPorID(rs.getInt("id_dialogo_checkpoint"));
+            dialogo = DialogoDAO.getDialogoPorID(rs.getInt("id_dialogo_checkpoINTEGER"));
             
             saveGame.setDialogoCheckpoint(dialogo);
             
@@ -132,9 +132,9 @@ public class SalvarDAO {
         Statement st = conn.createStatement();
         
               
-              String query = "INSERT INTO tbl_save_game (id, nome,"
-                      + "id_dialogo_checklist, id_jogador)" +
-                      " VALUES ("+ saveGame.getId()+",'"
+              String query = "INSERT INTO tbl_save_game (nome,"
+                      + "id_dialogo_checkpoINTEGER, id_jogador)" +
+                      " VALUES ('"
                       + saveGame.getNome()+"',"
                       + dialogo + ","
                       + jogador + ");";

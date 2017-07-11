@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class MenuIntermediario extends javax.swing.JFrame {
 
-    public static int idPersonagem = 2;
+    public static int idPersonagem;
     public static int idSaveGame;
     /**
      * Creates new form MenuIntermediario
@@ -35,6 +35,7 @@ public class MenuIntermediario extends javax.swing.JFrame {
         int dx = centerPoint.x - windowSize.width / 2;
         int dy = centerPoint.y - windowSize.height / 2;    
         setLocation(dx, dy);
+        
     }
     
     

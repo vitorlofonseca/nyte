@@ -50,7 +50,7 @@ public class SalvarJogo extends javax.swing.JFrame {
 
         btnCancelar = new javax.swing.JButton();
         btnSalvarJogo = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
+        txtNomeSaveGame = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -77,8 +77,8 @@ public class SalvarJogo extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalvarJogo);
         btnSalvarJogo.setBounds(100, 158, 78, 25);
-        getContentPane().add(txtNome);
-        txtNome.setBounds(160, 100, 140, 19);
+        getContentPane().add(txtNomeSaveGame);
+        txtNomeSaveGame.setBounds(160, 100, 140, 19);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,8 +90,6 @@ public class SalvarJogo extends javax.swing.JFrame {
         jLabel2.setText("Nome:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(100, 100, 45, 20);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/vitorlofonseca/NetBeansProjects/nyte/src/img/corredor.jpg")); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(-360, 0, 810, 250);
 
@@ -99,26 +97,25 @@ public class SalvarJogo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarJogoActionPerformed
-        
-        System.out.println(MenuIntermediario.idPersonagem);
+       
         
         try {
             
-    if(TelaDialogo.idDialogo == -1){
-        
-            throw new Exception("Sem diálogo");
-        
+            if(TelaDialogo.idDialogo == -1){
+
+                throw new Exception("Sem diálogo");
+
             } else {
-            
+
                 Jogador jogador = JogadorDAO.getJogadorPorID(MenuIntermediario.idPersonagem);
 
                 SaveGame saveGame = new SaveGame();
                 saveGame.setJogador(jogador);
                 saveGame.setDialogoCheckpoint(DialogoDAO.getDialogoPorID(TelaDialogo.idDialogo));
-                saveGame.setNome(txtNome.getText());
-                
+                saveGame.setNome(txtNomeSaveGame.getText());
+
                 saveGame.setId(SalvarDAO.incluirSaveGame(saveGame));
-                
+
             }
             
         } catch (SQLException ex) {
@@ -181,6 +178,6 @@ public class SalvarJogo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeSaveGame;
     // End of variables declaration//GEN-END:variables
 }

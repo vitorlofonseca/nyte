@@ -51,20 +51,20 @@ public class CarregarJogo extends javax.swing.JFrame {
         
         //iterando no mapa de itens
         for (Iterator it = this.saves.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<Integer, Item> item = (Map.Entry<Integer, Item>) it.next();
+            Map.Entry<Integer, SaveGame> item = (Map.Entry<Integer, SaveGame>) it.next();
             savesString[i] = item.getValue().getNome();
             i++;
         }
         
         //lista de itens
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaJogosSalvos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = savesString;
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public int getSize() { return savesString.length; }
+            public String getElementAt(int i) { return savesString[i]; }
         });
         
         
-        jList1.addMouseListener(new MouseAdapter() {
+        listaJogosSalvos.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 JList list = (JList)evt.getSource();
                 if (evt.getClickCount() == 2) {
@@ -72,7 +72,7 @@ public class CarregarJogo extends javax.swing.JFrame {
                     
                     SaveGame save = null;
                     try {
-                        save = SalvarDAO.getSaveGamePorNome(jList1.getSelectedValue());
+                        save = SalvarDAO.getSaveGamePorNome(listaJogosSalvos.getSelectedValue());
                     } catch (SQLException ex) {
                         Logger.getLogger(CarregarJogo.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -82,6 +82,9 @@ public class CarregarJogo extends javax.swing.JFrame {
                     
                     MenuIntermediario telaMenu = null;
                     telaMenu = new MenuIntermediario(save.getId());
+                    MenuIntermediario.idPersonagem = save.getJogador().getPersonagem().getId();
+                    MenuIntermediario.idSaveGame = save.getId();
+                    TelaDialogo.idDialogo = save.getDialogoCheckpoint().getId();
                                        
                     telaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     telaMenu.setVisible(true);
@@ -103,7 +106,7 @@ public class CarregarJogo extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaJogosSalvos = new javax.swing.JList<>();
         jLabel25 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JToggleButton();
         btnCarregar1 = new javax.swing.JToggleButton();
@@ -114,12 +117,12 @@ public class CarregarJogo extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaJogosSalvos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaJogosSalvos);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 90, 550, 250);
@@ -214,7 +217,7 @@ public class CarregarJogo extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listaJogosSalvos;
     // End of variables declaration//GEN-END:variables
 }
