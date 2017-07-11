@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class MenuIntermediario extends javax.swing.JFrame {
 
     public static int idPersonagem = 2;
-    
+    public static int idSaveGame;
     /**
      * Creates new form MenuIntermediario
      */
@@ -32,6 +32,20 @@ public class MenuIntermediario extends javax.swing.JFrame {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Point centerPoint = ge.getCenterPoint();
 
+        int dx = centerPoint.x - windowSize.width / 2;
+        int dy = centerPoint.y - windowSize.height / 2;    
+        setLocation(dx, dy);
+    }
+    
+    
+    public MenuIntermediario(int idSave) {
+        initComponents();
+        
+        Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+        
+        idSaveGame = idSave;
         int dx = centerPoint.x - windowSize.width / 2;
         int dy = centerPoint.y - windowSize.height / 2;    
         setLocation(dx, dy);
