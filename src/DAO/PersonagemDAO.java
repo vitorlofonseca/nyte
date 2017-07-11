@@ -111,23 +111,22 @@ public class PersonagemDAO {
         int povoado = personagem.getPovoado().getId();
         int especie = personagem.getEspecie().getId();
         
-          try (Connection conn = Connect.conectar()) {
-              java.sql.Statement st = conn.createStatement();
-              
-              String query = "UPDATE tbl_personagem SET "
-                      + "id_povoado ="+ povoado
-                      + ", altura ="+ personagem.getAltura()
-                      + ", idade ="+ personagem.getIdade()
-                      + ", peso ="+ personagem.getPeso()
-                      + ", nome ='"+ personagem.getNome()
-                      + "', lvl ="+ personagem.getLevel()
-                      + ", tbl_especie_id ="+ especie 
-                      + ", dinheiro = "+ personagem.getDinheiro()
-                      + " WHERE ID =" + personagem.getId() + ";";
-                      
-              st.executeUpdate(query);
-              
-          }
+          
+        Connection conn = Connect.conectar();
+        java.sql.Statement st = conn.createStatement();
+
+        String query = "UPDATE tbl_personagem SET "
+                + "id_povoado ="+ povoado
+                + ", altura ="+ personagem.getAltura()
+                + ", idade ="+ personagem.getIdade()
+                + ", peso ="+ personagem.getPeso()
+                + ", nome ='"+ personagem.getNome()
+                + "', lvl ="+ personagem.getLevel()
+                + ", tbl_especie_id ="+ especie 
+                + ", dinheiro = "+ personagem.getDinheiro()
+                + " WHERE ID =" + personagem.getId() + ";";
+
+        st.executeUpdate(query);
     }
         
 }
