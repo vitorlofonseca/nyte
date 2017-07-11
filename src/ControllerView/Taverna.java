@@ -590,7 +590,6 @@ public class Taverna extends javax.swing.JFrame {
             
         }
         
-        /*
         //atualizando dinheiro personagem
         personagem.setDinheiro(personagem.getDinheiro() - totalCompra);
         try {
@@ -600,7 +599,6 @@ public class Taverna extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Taverna.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
         
         MenuIntermediario menuIntermediario = new MenuIntermediario();
         menuIntermediario.setVisible(true);

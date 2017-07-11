@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 /**
  *
@@ -110,4 +111,34 @@ public class AtributoEspecializacaoCombateDAO {
               
             }
     }
+    
+    
+    
+    public static HashMap getItensAtributoEspecializacaoPorPersonagem(Personagem personagem) throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        
+        ResultSet rs = st.executeQuery("select * from tbl_atributo_especializacao_combate "
+                + "where tbl_atributo_especializacao_combate.id_personagem = "+personagem.getId()+";");        
+        
+        HashMap<Integer,AtributoEspecializacaoCombate> atributoEspecializacaoCombate = new HashMap<Integer,AtributoEspecializacaoCombate>();
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            
+            AtributoEspecializacaoCombate atributoEspComb = new AtributoEspecializacaoCombate();
+
+            atributoEspComb.setPersonagem(personagem);
+            atributoEspComb.setValorMelhoria(rs.getInt("valor_melhoria"));
+            atributoEspComb.setAtributoEspecializacao(AtributoEspecilizacaoDAO.getAtributoEspecilizacaoPorID(rs.getInt("id_atributo_especilizacao")));
+            
+            atributoEspecializacaoCombate.put (rs.getInt("id_item_personagem"), atributoEspComb);
+        }
+
+        return atributoEspecializacaoCombate;
+    }
+    
+    
 }

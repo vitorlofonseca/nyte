@@ -104,7 +104,7 @@ public class SalvarJogo extends javax.swing.JFrame {
         
         try {
             
-    if(TelaDialogo.IDDialogoCheckpoint == -1){
+    if(TelaDialogo.idDialogo == -1){
         
             throw new Exception("Sem diálogo");
         
@@ -114,7 +114,7 @@ public class SalvarJogo extends javax.swing.JFrame {
 
                 SaveGame saveGame = new SaveGame();
                 saveGame.setJogador(jogador);
-                saveGame.setDialogoCheckpoint(DialogoDAO.getDialogoPorID(TelaDialogo.IDDialogoCheckpoint));
+                saveGame.setDialogoCheckpoint(DialogoDAO.getDialogoPorID(TelaDialogo.idDialogo));
                 saveGame.setNome(txtNome.getText());
                 
                 saveGame.setId(SalvarDAO.incluirSaveGame(saveGame));

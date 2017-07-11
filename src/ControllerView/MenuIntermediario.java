@@ -119,7 +119,14 @@ public class MenuIntermediario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDialogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDialogoActionPerformed
-        TelaDialogo dialogo = new TelaDialogo();
+        TelaDialogo dialogo = null;
+        try {
+            dialogo = new TelaDialogo();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuIntermediario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MenuIntermediario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dialogo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnDialogoActionPerformed

@@ -1,7 +1,7 @@
 *// Ataques e defesas // *
 
-	- ataques = ataquePersonagem + ataqueEquipamento + valorAtributos
-	- defesas = defesaPersonagem + defesaEquipamento + valorAtributos
+	- ataque = dano + ataqueEquipamento + valorAtributos
+	- defesa = defesaPersonagem + defesaEquipamento + valorAtributos
 	- acordoAtaque = (acordoPersonagem + acordoEquipamento)/2
 	- acordoDefesa = (acordoPersonagem + acordoEquipamento)/2
 
@@ -9,8 +9,8 @@
 *// Mecânica *// 
 
 	1 - Como funciona a Luta
-	- Se hp(default = 1000 * defesa + ((resistência + sobrevivência + vontade) / 2)) == 0 {jogo terminado} se não {jogo continua com decrease ((ataqueInimigo*(resultDado*100))/defesaPropria) no life}
-	- Se life adversidade == 0 {itens} se não {jogo continua com decrease ((ataqueProprio*(resultDado*100))/defesaInimigo)no life inimigo}
+	- Se hp(default = 1000 * defesa) == 0 {jogo terminado} se não {jogo continua com decrease ((defesaPropria*resultDado)/ataqueInimigo) no life}
+	- Se life adversidade == 0 {itens} se não {jogo continua com decrease ((ataqueInimigo*resultDado)/defesaPropria) no life inimigo}
 	- dado volta a ser jogado / escapar selecionado}
 
 	2 - Como funciona a Fuga
@@ -47,6 +47,4 @@
 	- defesa
 	- dano
 	- fuga
-
-
 

@@ -6,9 +6,12 @@
 package DAO;
 
 import Model.CombatePersonagem;
+import Model.Personagem;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 /**
  *
@@ -35,5 +38,33 @@ public class CombatePersonagemDAO {
         
            
     }
+    
+    
+    public static HashMap getCombatePersonagem(Personagem personagem) throws SQLException, ClassNotFoundException{           
+
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_combate_personagem where id_personagem = "+personagem.getId()+";");
+
+        HashMap<Integer,CombatePersonagem> combatesPersonagem = new HashMap<Integer,CombatePersonagem>();
+
+        //Lista os alunos no console
+        while (rs.next()) {
+            
+            CombatePersonagem combatePersonagem = new CombatePersonagem();
+            
+            combatePersonagem.setId(rs.getInt("id"));
+            combatePersonagem.setPersonagem(personagem);
+            combatePersonagem.setValor(rs.getInt("valor"));
+            combatePersonagem.setAtributoCombate(AtributoCombateDAO.getAtributoCombatePorID(rs.getInt("id_atributo_combate")));
+            
+            combatesPersonagem.put(rs.getInt("id"), combatePersonagem);
+        }
+
+        return combatesPersonagem;
+           
+    }
+    
     
 }

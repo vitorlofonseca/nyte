@@ -21,8 +21,8 @@ public class Dialogo {
 
     private int id;
     private String texto;
-    private int idDialogoAnterior;
-    private int idProximoDialogo;
+    private int idDialogoAnterior = -1;
+    private int idProximoDialogo = -1;
     private Adversidade adversidade;
 
     public int getId() {
