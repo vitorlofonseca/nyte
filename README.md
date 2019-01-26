@@ -1,4 +1,3 @@
 # Nyte RPG
-RPG eletrônico que simula o funcionamento de um RPG clássico, onde histórias, e itens são gerenciáveis, proporcionando uma customização por parte do narrador para uma jogabilidade variável, de acordo com a vontade dos jogadores.
 
-Eletronic RPG that simulate the work of a classic RPG, where histories and items are manageable, allowing a customizability to variable jogability, according the players' desires.
+Electronic RPG that simulates the working of classic RPGs, where stories and items are manageable. In the classic RPG, the master is the person who tell the stories, and manage all game items (weapons, armors, potions...). Nyte allow these funcionalities, making possible the player make a custom story, with custom items.
