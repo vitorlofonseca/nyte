@@ -2,7 +2,7 @@
 
 Electronic RPG that simulates the working of classic RPGs, where stories and items are manageable. 
 
-Context: In the classic RPG, the master is the person who tell the stories, and manage all game items (weapons, armors, potions...). 
+Context: In the classic RPG, the master is the person who tell the stories based in books, creating in own head all possible flows to each different results. The master can manage all game items (weapons, armors, potions...) too, giving the item he wants to player who he wants.
 
 Solution: Nyte allow these possibilities cited above, making possible the player make a custom story with different flows. The user can too create custom items, attributing to them different characteristics, prices, and power, that have influence in stories adversities.
 
