@@ -209,7 +209,7 @@ public class NovoJogo extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtPeso = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        selectTipo = new javax.swing.JComboBox<>();
+        selectTipo = new javax.swing.JComboBox<String>();
         jLabel12 = new javax.swing.JLabel();
         panelEspecializacoes1 = new java.awt.Panel();
         jLabel21 = new javax.swing.JLabel();
@@ -246,60 +246,60 @@ public class NovoJogo extends javax.swing.JFrame {
 
         panelEspecializacoes.setLayout(null);
 
-        jLabel1.setText("Agilidade");
+        jLabel1.setText("Agility");
         panelEspecializacoes.add(jLabel1);
-        jLabel1.setBounds(10, 50, 66, 15);
+        jLabel1.setBounds(10, 50, 60, 14);
 
-        jLabel2.setText("Conhecimento");
+        jLabel2.setText("Knowledge");
         panelEspecializacoes.add(jLabel2);
-        jLabel2.setBounds(10, 80, 110, 15);
+        jLabel2.setBounds(10, 80, 110, 14);
 
-        jLabel3.setText("Blefe");
+        jLabel3.setText("Bluff");
         panelEspecializacoes.add(jLabel3);
-        jLabel3.setBounds(10, 110, 80, 15);
+        jLabel3.setBounds(10, 110, 80, 14);
 
-        jLabel4.setText("Força");
+        jLabel4.setText("Strenght");
         panelEspecializacoes.add(jLabel4);
-        jLabel4.setBounds(10, 140, 100, 15);
+        jLabel4.setBounds(10, 140, 100, 14);
 
-        jLabel5.setText("Furtividade");
+        jLabel5.setText("Stealth");
         panelEspecializacoes.add(jLabel5);
-        jLabel5.setBounds(10, 170, 100, 15);
+        jLabel5.setBounds(10, 170, 100, 14);
 
-        jLabel11.setText("Inteligência");
+        jLabel11.setText("Inteligence");
         panelEspecializacoes.add(jLabel11);
-        jLabel11.setBounds(10, 200, 90, 15);
+        jLabel11.setBounds(10, 200, 90, 14);
 
         jLabel13.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jLabel13.setText("Especializações");
+        jLabel13.setText("Specialization");
         panelEspecializacoes.add(jLabel13);
         jLabel13.setBounds(20, 10, 180, 20);
 
-        spinnerInteligencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerInteligencia.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerInteligencia);
         spinnerInteligencia.setBounds(120, 200, 60, 20);
 
-        jLabel14.setText("Restantes:");
+        jLabel14.setText("Remaining:");
         panelEspecializacoes.add(jLabel14);
-        jLabel14.setBounds(200, 150, 80, 15);
+        jLabel14.setBounds(200, 150, 80, 14);
 
-        spinnerAgilidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerAgilidade.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerAgilidade);
         spinnerAgilidade.setBounds(120, 50, 60, 20);
 
-        spinnerConhecimento.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerConhecimento.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerConhecimento);
         spinnerConhecimento.setBounds(120, 80, 60, 20);
 
-        spinnerBlefe.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerBlefe.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerBlefe);
         spinnerBlefe.setBounds(120, 110, 60, 20);
 
-        spinnerForca.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerForca.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerForca);
         spinnerForca.setBounds(120, 140, 60, 20);
 
-        spinnerFurtividade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerFurtividade.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerFurtividade);
         spinnerFurtividade.setBounds(120, 170, 60, 20);
 
@@ -307,45 +307,45 @@ public class NovoJogo extends javax.swing.JFrame {
         lblEspecializacao.setText("20");
         lblEspecializacao.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panelEspecializacoes.add(lblEspecializacao);
-        lblEspecializacao.setBounds(230, 170, 50, 40);
+        lblEspecializacao.setBounds(230, 170, 40, 40);
 
-        jLabel16.setText("Lábia");
+        jLabel16.setText("Persuasiveness");
         panelEspecializacoes.add(jLabel16);
-        jLabel16.setBounds(10, 230, 90, 15);
+        jLabel16.setBounds(10, 230, 90, 14);
 
-        spinnerLabia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerLabia.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerLabia);
         spinnerLabia.setBounds(120, 230, 60, 20);
 
-        jLabel17.setText("Percepção");
+        jLabel17.setText("Perception");
         panelEspecializacoes.add(jLabel17);
-        jLabel17.setBounds(10, 260, 90, 15);
+        jLabel17.setBounds(10, 260, 90, 14);
 
-        spinnerPercepcao.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerPercepcao.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerPercepcao);
         spinnerPercepcao.setBounds(120, 260, 60, 20);
 
-        jLabel18.setText("Resistência");
+        jLabel18.setText("Resistance");
         panelEspecializacoes.add(jLabel18);
-        jLabel18.setBounds(10, 290, 90, 15);
+        jLabel18.setBounds(10, 290, 90, 14);
 
-        spinnerResistencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerResistencia.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerResistencia);
         spinnerResistencia.setBounds(120, 290, 60, 20);
 
-        jLabel19.setText("Sobrevivência");
+        jLabel19.setText("Survivor");
         panelEspecializacoes.add(jLabel19);
-        jLabel19.setBounds(10, 320, 100, 15);
+        jLabel19.setBounds(10, 320, 100, 14);
 
-        spinnerSobrevivencia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerSobrevivencia.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerSobrevivencia);
         spinnerSobrevivencia.setBounds(120, 320, 60, 20);
 
-        jLabel20.setText("Vontade");
+        jLabel20.setText("Desire");
         panelEspecializacoes.add(jLabel20);
-        jLabel20.setBounds(10, 350, 90, 15);
+        jLabel20.setBounds(10, 350, 90, 14);
 
-        spinnerVontade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spinnerVontade.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
         panelEspecializacoes.add(spinnerVontade);
         spinnerVontade.setBounds(120, 350, 60, 20);
 
@@ -354,21 +354,21 @@ public class NovoJogo extends javax.swing.JFrame {
 
         panel2.setLayout(null);
 
-        jLabel6.setText("Nome");
+        jLabel6.setText("Name");
         panel2.add(jLabel6);
-        jLabel6.setBounds(20, 50, 40, 15);
+        jLabel6.setBounds(20, 50, 50, 14);
         panel2.add(txtNome);
         txtNome.setBounds(70, 40, 210, 30);
         panel2.add(txtIdade);
         txtIdade.setBounds(70, 80, 210, 30);
 
-        jLabel7.setText("Idade");
+        jLabel7.setText("Age");
         panel2.add(jLabel7);
-        jLabel7.setBounds(20, 90, 40, 15);
+        jLabel7.setBounds(20, 90, 40, 14);
 
-        jLabel8.setText("Tipo");
+        jLabel8.setText("Type");
         panel2.add(jLabel8);
-        jLabel8.setBounds(20, 130, 30, 15);
+        jLabel8.setBounds(20, 130, 50, 14);
 
         txtAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,22 +378,22 @@ public class NovoJogo extends javax.swing.JFrame {
         panel2.add(txtAltura);
         txtAltura.setBounds(70, 170, 210, 30);
 
-        jLabel9.setText("Altura");
+        jLabel9.setText("Height");
         panel2.add(jLabel9);
-        jLabel9.setBounds(20, 180, 43, 15);
+        jLabel9.setBounds(20, 180, 50, 14);
         panel2.add(txtPeso);
         txtPeso.setBounds(70, 210, 210, 30);
 
-        jLabel10.setText("Peso");
+        jLabel10.setText("Weight");
         panel2.add(jLabel10);
-        jLabel10.setBounds(20, 220, 35, 15);
+        jLabel10.setBounds(20, 220, 50, 14);
 
-        selectTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panel2.add(selectTipo);
         selectTipo.setBounds(70, 124, 210, 30);
 
         jLabel12.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jLabel12.setText("Dados");
+        jLabel12.setText("Info");
         panel2.add(jLabel12);
         jLabel12.setBounds(20, 10, 180, 20);
 
@@ -402,25 +402,25 @@ public class NovoJogo extends javax.swing.JFrame {
 
         panelEspecializacoes1.setLayout(null);
 
-        jLabel21.setText("Negociação");
+        jLabel21.setText("Negotiation");
         panelEspecializacoes1.add(jLabel21);
-        jLabel21.setBounds(10, 50, 100, 15);
+        jLabel21.setBounds(10, 50, 100, 14);
 
-        jLabel22.setText("Defesa");
+        jLabel22.setText("Defense");
         panelEspecializacoes1.add(jLabel22);
-        jLabel22.setBounds(10, 90, 110, 15);
+        jLabel22.setBounds(10, 90, 110, 14);
 
-        jLabel23.setText("Dano");
+        jLabel23.setText("Damage");
         panelEspecializacoes1.add(jLabel23);
-        jLabel23.setBounds(10, 130, 80, 15);
+        jLabel23.setBounds(10, 130, 80, 14);
 
-        jLabel24.setText("Fuga");
+        jLabel24.setText("Escape");
         panelEspecializacoes1.add(jLabel24);
-        jLabel24.setBounds(10, 170, 100, 15);
+        jLabel24.setBounds(10, 170, 100, 14);
 
-        jLabel28.setText("Restantes:");
+        jLabel28.setText("Remaining:");
         panelEspecializacoes1.add(jLabel28);
-        jLabel28.setBounds(200, 80, 80, 15);
+        jLabel28.setBounds(200, 80, 80, 14);
         panelEspecializacoes1.add(spinnerNegociacao);
         spinnerNegociacao.setBounds(120, 50, 60, 20);
         panelEspecializacoes1.add(spinnerDefesa);
@@ -434,17 +434,17 @@ public class NovoJogo extends javax.swing.JFrame {
         lblCombate.setText("20");
         lblCombate.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panelEspecializacoes1.add(lblCombate);
-        lblCombate.setBounds(230, 100, 50, 40);
+        lblCombate.setBounds(230, 100, 40, 40);
 
         jLabel35.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jLabel35.setText("Combate");
+        jLabel35.setText("Fight");
         panelEspecializacoes1.add(jLabel35);
         jLabel35.setBounds(20, 10, 180, 20);
 
         getContentPane().add(panelEspecializacoes1);
         panelEspecializacoes1.setBounds(680, 100, 300, 220);
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Save");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -453,7 +453,7 @@ public class NovoJogo extends javax.swing.JFrame {
         getContentPane().add(btnSalvar);
         btnSalvar.setBounds(680, 410, 300, 50);
 
-        btnVoltarTelaInicial.setText("Voltar");
+        btnVoltarTelaInicial.setText("Back");
         btnVoltarTelaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarTelaInicialActionPerformed(evt);
@@ -463,7 +463,7 @@ public class NovoJogo extends javax.swing.JFrame {
         btnVoltarTelaInicial.setBounds(20, 410, 300, 50);
 
         jLabel25.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
-        jLabel25.setText("Novo Personagem");
+        jLabel25.setText("New character");
         getContentPane().add(jLabel25);
         jLabel25.setBounds(40, 0, 550, 90);
 
@@ -523,7 +523,7 @@ public class NovoJogo extends javax.swing.JFrame {
             personagem.setAltura(Float.parseFloat(txtAltura.getText()));
             personagem.setPeso(Float.parseFloat(txtAltura.getText()));
             personagem.setEspecie(EspecieDAO.getEspeciePorEspecie(selectTipo.getSelectedItem().toString()));
-            personagem.setDinheiro(0);
+            personagem.setDinheiro(5000);
             
             int idPersonagem = PersonagemDAO.incluirPersonagem(personagem);
             personagem.setId(idPersonagem);

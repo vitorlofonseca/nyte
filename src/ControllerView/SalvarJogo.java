@@ -60,36 +60,36 @@ public class SalvarJogo extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cancel");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
         getContentPane().add(btnCancelar);
-        btnCancelar.setBounds(205, 158, 96, 25);
+        btnCancelar.setBounds(205, 158, 100, 23);
 
-        btnSalvarJogo.setText("Salvar");
+        btnSalvarJogo.setText("Save");
         btnSalvarJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarJogoActionPerformed(evt);
             }
         });
         getContentPane().add(btnSalvarJogo);
-        btnSalvarJogo.setBounds(100, 158, 78, 25);
+        btnSalvarJogo.setBounds(100, 158, 90, 23);
         getContentPane().add(txtNomeSaveGame);
-        txtNomeSaveGame.setBounds(160, 100, 140, 19);
+        txtNomeSaveGame.setBounds(160, 100, 140, 30);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Salvar Jogo");
+        jLabel1.setText("Save Game");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(80, 10, 340, 70);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nome:");
+        jLabel2.setText("Name:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(100, 100, 45, 20);
+        jLabel2.setBounds(100, 100, 50, 20);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(-360, 0, 810, 250);
 
@@ -101,22 +101,19 @@ public class SalvarJogo extends javax.swing.JFrame {
         
         try {
             
+            Jogador jogador = JogadorDAO.getJogadorPorIdPersonagem(MenuIntermediario.idPersonagem);
+            SaveGame saveGame = new SaveGame();
+            saveGame.setJogador(jogador);
+            saveGame.setNome(txtNomeSaveGame.getText());
+            
             if(TelaDialogo.idDialogo == -1){
-
-                throw new Exception("Sem diálogo");
+                saveGame.setDialogoCheckpoint(DialogoDAO.getPrimeiroDialogo());
 
             } else {
-
-                Jogador jogador = JogadorDAO.getJogadorPorID(MenuIntermediario.idPersonagem);
-
-                SaveGame saveGame = new SaveGame();
-                saveGame.setJogador(jogador);
                 saveGame.setDialogoCheckpoint(DialogoDAO.getDialogoPorID(TelaDialogo.idDialogo));
-                saveGame.setNome(txtNomeSaveGame.getText());
-
-                saveGame.setId(SalvarDAO.incluirSaveGame(saveGame));
-
             }
+            
+            saveGame.setId(SalvarDAO.incluirSaveGame(saveGame));
             
         } catch (SQLException ex) {
             Logger.getLogger(SalvarJogo.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,6 +126,7 @@ public class SalvarJogo extends javax.swing.JFrame {
         MenuIntermediario menuIntermediario = new MenuIntermediario();
         menuIntermediario.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_btnSalvarJogoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

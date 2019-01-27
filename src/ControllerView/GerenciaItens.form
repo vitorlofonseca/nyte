@@ -34,7 +34,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnCabecaEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Capacete"/>
+        <Property name="text" type="java.lang.String" value="Head"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCabecaEquipadoActionPerformed"/>
@@ -47,7 +47,8 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPescocoEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cord&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Neck"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPescocoEquipadoActionPerformed"/>
@@ -60,7 +61,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPeitoralEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Malha"/>
+        <Property name="text" type="java.lang.String" value="Chest"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
@@ -74,7 +75,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBracoDireitoEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bra&#xe7;adeira"/>
+        <Property name="text" type="java.lang.String" value="Arm"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBracoDireitoEquipadoActionPerformed"/>
@@ -87,7 +88,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBracoEsquerdoEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bra&#xe7;adeira"/>
+        <Property name="text" type="java.lang.String" value="Arm"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBracoEsquerdoEquipadoActionPerformed"/>
@@ -100,7 +101,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCinturaoEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cinto"/>
+        <Property name="text" type="java.lang.String" value="Belt"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCinturaoEquipadoActionPerformed"/>
@@ -113,7 +114,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPernaDireitaEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Perneira"/>
+        <Property name="text" type="java.lang.String" value="Leg"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPernaDireitaEquipadoActionPerformed"/>
@@ -126,7 +127,8 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPernaEsquerdaEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Perneira"/>
+        <Property name="text" type="java.lang.String" value="Leg"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPernaEsquerdaEquipadoActionPerformed"/>
@@ -139,7 +141,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnBotaEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bota"/>
+        <Property name="text" type="java.lang.String" value="Feet"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
@@ -153,7 +155,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAnelDireitoEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Anel"/>
+        <Property name="text" type="java.lang.String" value="Ring"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnelDireitoEquipadoActionPerformed"/>
@@ -166,7 +168,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAnelEsquerdoEquipado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Anel"/>
+        <Property name="text" type="java.lang.String" value="Ring"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnelEsquerdoEquipadoActionPerformed"/>
@@ -179,7 +181,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCancelar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Terminar"/>
+        <Property name="text" type="java.lang.String" value="Finalize"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
@@ -205,11 +207,15 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cabe&#xe7;a"/>
+        <Property name="text" type="java.lang.String" value="Head"/>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="80" y="70" width="70" height="-1"/>
+          <AbsoluteConstraints x="100" y="54" width="50" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -251,11 +257,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pesco&#xe7;o"/>
+        <Property name="text" type="java.lang.String" value="Neck"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="80" y="110" width="70" height="-1"/>
+          <AbsoluteConstraints x="100" y="94" width="50" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -294,11 +300,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Peitoral"/>
+        <Property name="text" type="java.lang.String" value="Chest"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="80" y="150" width="70" height="-1"/>
+          <AbsoluteConstraints x="100" y="134" width="50" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -340,11 +346,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bra&#xe7;o Direito"/>
+        <Property name="text" type="java.lang.String" value="Right Arm"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="50" y="190" width="100" height="-1"/>
+          <AbsoluteConstraints x="80" y="174" width="70" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -385,11 +391,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bra&#xe7;o Esquerdo"/>
+        <Property name="text" type="java.lang.String" value="Left Arm"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="230" width="110" height="-1"/>
+          <AbsoluteConstraints x="90" y="214" width="60" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -428,11 +434,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cintur&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Belt"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="80" y="270" width="70" height="-1"/>
+          <AbsoluteConstraints x="110" y="254" width="40" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -470,11 +476,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Anel Esquerdo"/>
+        <Property name="text" type="java.lang.String" value="Left Ring"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="310" width="110" height="-1"/>
+          <AbsoluteConstraints x="90" y="294" width="60" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -513,11 +519,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Anel Direito"/>
+        <Property name="text" type="java.lang.String" value="Right Ring"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="350" width="90" height="-1"/>
+          <AbsoluteConstraints x="80" y="334" width="70" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -556,11 +562,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Perna Direita"/>
+        <Property name="text" type="java.lang.String" value="Right Leg"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="50" y="390" width="100" height="-1"/>
+          <AbsoluteConstraints x="90" y="374" width="60" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -599,11 +605,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Perna Esquerda"/>
+        <Property name="text" type="java.lang.String" value="Left Leg"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="430" width="110" height="-1"/>
+          <AbsoluteConstraints x="90" y="414" width="60" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -641,11 +647,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel16">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bota"/>
+        <Property name="text" type="java.lang.String" value="Feet"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="100" y="470" width="50" height="-1"/>
+          <AbsoluteConstraints x="110" y="454" width="40" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -715,7 +721,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnArmaEquipada">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Arma"/>
+        <Property name="text" type="java.lang.String" value="Weapon"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArmaEquipadaActionPerformed"/>
@@ -723,16 +729,6 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="840" y="460" width="130" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Equipada"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="760" y="465" width="80" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -750,11 +746,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
-        <Property name="text" type="java.lang.String" value="              Arma"/>
+        <Property name="text" type="java.lang.String" value="Weapon"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="505" width="100" height="20"/>
+          <AbsoluteConstraints x="90" y="495" width="50" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -772,7 +768,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Cantarell" size="15" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Item"/>
+        <Property name="text" type="java.lang.String" value="Item Attributes"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -782,11 +778,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPontosItem">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt; &#x9;&#x9;&lt;table&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Dano +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Defesa +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Fuga +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Negocia&#xe7;&#xe3;o +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Damage +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Defense +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Escape +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Negotiation +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="380" y="270" width="-1" height="-1"/>
+          <AbsoluteConstraints x="380" y="270" width="130" height="110"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -806,11 +802,11 @@
     <Component class="javax.swing.JLabel" name="lblPontosTotaisItensEquipados">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Dano +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Defesa +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Fuga +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Negocia&#xe7;&#xe3;o +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Damage +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Defense +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Escape +0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Negotiation +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="380" y="90" width="-1" height="-1"/>
+          <AbsoluteConstraints x="380" y="90" width="120" height="110"/>
         </Constraint>
       </Constraints>
     </Component>

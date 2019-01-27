@@ -125,16 +125,15 @@ public class AtributoEspecializacaoCombateDAO {
         
         HashMap<Integer,AtributoEspecializacaoCombate> atributoEspecializacaoCombate = new HashMap<Integer,AtributoEspecializacaoCombate>();
 
-        //Lista os alunos no console
         while (rs.next()) {
             
             AtributoEspecializacaoCombate atributoEspComb = new AtributoEspecializacaoCombate();
 
             atributoEspComb.setPersonagem(personagem);
             atributoEspComb.setValorMelhoria(rs.getInt("valor_melhoria"));
-            atributoEspComb.setAtributoEspecializacao(AtributoEspecilizacaoDAO.getAtributoEspecilizacaoPorID(rs.getInt("id_atributo_especilizacao")));
+            atributoEspComb.setAtributoEspecializacao(AtributoEspecilizacaoDAO.getAtributoEspecilizacaoPorID(rs.getInt("id_atributo_especializacao")));
             
-            atributoEspecializacaoCombate.put (rs.getInt("id_item_personagem"), atributoEspComb);
+            atributoEspecializacaoCombate.put (rs.getInt("id"), atributoEspComb);
         }
 
         return atributoEspecializacaoCombate;

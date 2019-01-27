@@ -97,7 +97,7 @@ public class Personagem {
     }
     
    public float getDinheiro() {
-        return dinheiro;
+        return this.dinheiro;
     }
 
     public void setDinheiro(float dinheiro) {

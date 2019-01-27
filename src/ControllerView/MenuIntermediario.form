@@ -37,7 +37,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Bem Vindo! "/>
+        <Property name="text" type="java.lang.String" value="Welcome! "/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -47,7 +47,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSalvarJogo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salvar Jogo"/>
+        <Property name="text" type="java.lang.String" value="Save Game"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarJogoActionPerformed"/>
@@ -60,7 +60,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnArmario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Taverna"/>
+        <Property name="text" type="java.lang.String" value="Tavern"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnArmarioActionPerformed"/>
@@ -73,7 +73,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTelaInicial">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Voltar Menu"/>
+        <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTelaInicialActionPerformed"/>
@@ -86,7 +86,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnGerenciaItens">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Equipamentos"/>
+        <Property name="text" type="java.lang.String" value="Equipment"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerenciaItensActionPerformed"/>
@@ -102,7 +102,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Jornada!"/>
+        <Property name="text" type="java.lang.String" value="Story!"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDialogoActionPerformed"/>

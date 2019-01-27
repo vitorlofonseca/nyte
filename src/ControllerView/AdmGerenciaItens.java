@@ -108,7 +108,7 @@ public class AdmGerenciaItens extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaItens = new javax.swing.JList<>();
+        listaItens = new javax.swing.JList<String>();
         btnAdicionarItem = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -118,10 +118,10 @@ public class AdmGerenciaItens extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        listaItens.setModel(new javax.swing.AbstractListModel<String>() {
+        listaItens.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         listaItens.setMinimumSize(new java.awt.Dimension(1000, 650));
         jScrollPane1.setViewportView(listaItens);
@@ -129,16 +129,16 @@ public class AdmGerenciaItens extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 70, 770, 420);
 
-        btnAdicionarItem.setText("Adicionar Item");
+        btnAdicionarItem.setText("Add Item");
         btnAdicionarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarItemActionPerformed(evt);
             }
         });
         getContentPane().add(btnAdicionarItem);
-        btnAdicionarItem.setBounds(820, 70, 130, 25);
+        btnAdicionarItem.setBounds(820, 70, 130, 23);
 
-        jButton2.setText("Cancelar");
+        jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -148,7 +148,7 @@ public class AdmGerenciaItens extends javax.swing.JFrame {
         jButton2.setBounds(380, 500, 150, 60);
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
-        jLabel1.setText("Gerência de Itens");
+        jLabel1.setText("Items Management");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 30, 230, 30);
 

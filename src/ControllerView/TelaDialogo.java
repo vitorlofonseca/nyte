@@ -272,9 +272,9 @@ public class TelaDialogo extends javax.swing.JFrame {
         lblDado.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblDado.setAlignmentY(0.2F);
         getContentPane().add(lblDado);
-        lblDado.setBounds(550, 327, 130, 73);
+        lblDado.setBounds(550, 327, 130, 92);
 
-        btnLancarDado.setText("Lançar Dado");
+        btnLancarDado.setText("Throw Dice");
         btnLancarDado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLancarDadoActionPerformed(evt);
@@ -296,7 +296,7 @@ public class TelaDialogo extends javax.swing.JFrame {
         getContentPane().add(paneDialogo);
         paneDialogo.setBounds(350, 40, 380, 140);
 
-        btnVoltar.setText("Voltar");
+        btnVoltar.setText("Back");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
@@ -342,6 +342,11 @@ public class TelaDialogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLancarDadoActionPerformed
 
     private void calcularBatalha(int resultDado) throws SQLException{
+        
+        if (defesaPersonagem == 0){
+            lblDialogo.setText("<html><body>You are weak, and need some armor to survive. Go to tavern to buy<br> armor, and come back</body></html>");
+            return;
+        }
         
         hpPersonagem -= (ataqueInimigo * 1000)/((resultDado)*defesaPersonagem);
         

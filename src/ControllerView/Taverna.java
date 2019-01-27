@@ -351,7 +351,7 @@ public class Taverna extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaItens = new javax.swing.JList<>();
+        listaItens = new javax.swing.JList<String>();
         jPanel3 = new javax.swing.JPanel();
         lblInfoItemTitulo = new javax.swing.JLabel();
         lblSomaAtributosItens = new javax.swing.JLabel();
@@ -362,10 +362,10 @@ public class Taverna extends javax.swing.JFrame {
         btnMenuIntermediario = new javax.swing.JButton();
         btnFinalizar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaCarrinho = new javax.swing.JList<>();
+        listaCarrinho = new javax.swing.JList<String>();
         jPanel6 = new javax.swing.JPanel();
         lblInfoItemTitulo3 = new javax.swing.JLabel();
-        selectAreaCorpo = new javax.swing.JComboBox<>();
+        selectAreaCorpo = new javax.swing.JComboBox<String>();
         btnFiltrar = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -382,10 +382,10 @@ public class Taverna extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        listaItens.setModel(new javax.swing.AbstractListModel<String>() {
+        listaItens.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listaItens);
 
@@ -395,36 +395,36 @@ public class Taverna extends javax.swing.JFrame {
         jPanel3.setLayout(null);
 
         lblInfoItemTitulo.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo.setText("Soma Atributos Itens");
+        lblInfoItemTitulo.setText("Sum of item attributes");
         jPanel3.add(lblInfoItemTitulo);
-        lblInfoItemTitulo.setBounds(20, 20, 200, 18);
+        lblInfoItemTitulo.setBounds(20, 20, 200, 20);
 
-        lblSomaAtributosItens.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        lblSomaAtributosItens.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDamage +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefense +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tEscape +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegotiation +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
         jPanel3.add(lblSomaAtributosItens);
-        lblSomaAtributosItens.setBounds(20, 50, 170, 94);
+        lblSomaAtributosItens.setBounds(20, 50, 170, 90);
 
         getContentPane().add(jPanel3);
         jPanel3.setBounds(500, 130, 240, 170);
 
         jPanel4.setLayout(null);
 
-        lblPrecoItem.setText("Preço:");
+        lblPrecoItem.setText("Price:");
         jPanel4.add(lblPrecoItem);
         lblPrecoItem.setBounds(24, 160, 120, 20);
 
         lblInfoItem.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         lblInfoItem.setText("Item");
         jPanel4.add(lblInfoItem);
-        lblInfoItem.setBounds(20, 20, 190, 18);
+        lblInfoItem.setBounds(20, 20, 190, 20);
 
-        lblCaracteristicasItem1.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        lblCaracteristicasItem1.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDamage +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefense +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tEscape +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegotiation +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
         jPanel4.add(lblCaracteristicasItem1);
-        lblCaracteristicasItem1.setBounds(20, 50, 114, 94);
+        lblCaracteristicasItem1.setBounds(20, 40, 140, 120);
 
         getContentPane().add(jPanel4);
         jPanel4.setBounds(500, 310, 240, 200);
 
-        btnMenuIntermediario.setText("Cancelar");
+        btnMenuIntermediario.setText("Cancel");
         btnMenuIntermediario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuIntermediarioActionPerformed(evt);
@@ -433,7 +433,7 @@ public class Taverna extends javax.swing.JFrame {
         getContentPane().add(btnMenuIntermediario);
         btnMenuIntermediario.setBounds(630, 530, 110, 40);
 
-        btnFinalizar.setText("Finalizar");
+        btnFinalizar.setText("Finalize");
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
@@ -442,10 +442,10 @@ public class Taverna extends javax.swing.JFrame {
         getContentPane().add(btnFinalizar);
         btnFinalizar.setBounds(500, 530, 110, 40);
 
-        listaCarrinho.setModel(new javax.swing.AbstractListModel<String>() {
+        listaCarrinho.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(listaCarrinho);
 
@@ -455,25 +455,26 @@ public class Taverna extends javax.swing.JFrame {
         jPanel6.setLayout(null);
 
         lblInfoItemTitulo3.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo3.setText("Filtrar Itens Por");
+        lblInfoItemTitulo3.setText("Filter Items By");
         jPanel6.add(lblInfoItemTitulo3);
-        lblInfoItemTitulo3.setBounds(20, 10, 180, 18);
+        lblInfoItemTitulo3.setBounds(20, 10, 180, 20);
 
-        selectAreaCorpo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectAreaCorpo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel6.add(selectAreaCorpo);
-        selectAreaCorpo.setBounds(20, 40, 150, 24);
+        selectAreaCorpo.setBounds(20, 40, 150, 20);
 
-        btnFiltrar.setText("Filtrar");
+        btnFiltrar.setSelected(true);
+        btnFiltrar.setText("Filter");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
             }
         });
         jPanel6.add(btnFiltrar);
-        btnFiltrar.setBounds(180, 40, 80, 25);
+        btnFiltrar.setBounds(180, 40, 80, 23);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 8)); // NOI18N
-        jLabel3.setText("<html><body>Clique duas vezes no item <br>para adicioná-lo ao carrinho</body></html>");
+        jLabel3.setText("<html><body>Double-click in item <br>to add it in the cart</body></html>");
         jPanel6.add(jLabel3);
         jLabel3.setBounds(270, 40, 180, 20);
 
@@ -483,16 +484,15 @@ public class Taverna extends javax.swing.JFrame {
         jPanel5.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Dinheiro:");
+        jLabel2.setText("Money:");
         jPanel5.add(jLabel2);
         jLabel2.setBounds(20, 0, 130, 50);
 
         lblDinheiroDisponivel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblDinheiroDisponivel.setForeground(new java.awt.Color(0, 0, 0));
         lblDinheiroDisponivel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDinheiroDisponivel.setText("¨0");
+        lblDinheiroDisponivel.setName("lblDinheiroDisponivel"); // NOI18N
         jPanel5.add(lblDinheiroDisponivel);
         lblDinheiroDisponivel.setBounds(150, 0, 130, 50);
 
@@ -502,9 +502,9 @@ public class Taverna extends javax.swing.JFrame {
         jPanel7.setLayout(null);
 
         lblInfoItemTitulo4.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo4.setText("Carrinho");
+        lblInfoItemTitulo4.setText("Cart");
         jPanel7.add(lblInfoItemTitulo4);
-        lblInfoItemTitulo4.setBounds(10, 10, 140, 18);
+        lblInfoItemTitulo4.setBounds(10, 10, 140, 20);
 
         getContentPane().add(jPanel7);
         jPanel7.setBounds(780, 130, 170, 50);
@@ -512,8 +512,7 @@ public class Taverna extends javax.swing.JFrame {
         jPanel8.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Taverna");
+        jLabel4.setText("Tavern");
         jPanel8.add(jLabel4);
         jLabel4.setBounds(10, 10, 360, 50);
 

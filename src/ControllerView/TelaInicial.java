@@ -58,7 +58,7 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 50, 380, 90);
 
-        btnSair.setText("Sair");
+        btnSair.setLabel("Quit");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -67,7 +67,7 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().add(btnSair);
         btnSair.setBounds(500, 270, 230, 70);
 
-        btnNovoJogo.setText("Novo Jogo");
+        btnNovoJogo.setLabel("New Game");
         btnNovoJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoJogoActionPerformed(evt);
@@ -76,7 +76,7 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().add(btnNovoJogo);
         btnNovoJogo.setBounds(500, 50, 230, 70);
 
-        btnCarregarJogo.setText("Carregar Jogo");
+        btnCarregarJogo.setLabel("Load Game");
         btnCarregarJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCarregarJogoActionPerformed(evt);
@@ -88,7 +88,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mountain.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -90, 949, 525);
+        jLabel2.setBounds(0, -90, 938, 525);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

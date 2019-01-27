@@ -88,6 +88,7 @@ public class CarregarJogo extends javax.swing.JFrame {
                                        
                     telaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     telaMenu.setVisible(true);
+        
                 }
             }
         });
@@ -106,10 +107,10 @@ public class CarregarJogo extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaJogosSalvos = new javax.swing.JList<>();
+        listaJogosSalvos = new javax.swing.JList<String>();
         jLabel25 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JToggleButton();
-        btnCarregar1 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,38 +118,40 @@ public class CarregarJogo extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        listaJogosSalvos.setModel(new javax.swing.AbstractListModel<String>() {
+        listaJogosSalvos.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
+        listaJogosSalvos.setName("listaJogosSalvos"); // NOI18N
         jScrollPane1.setViewportView(listaJogosSalvos);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 90, 550, 250);
 
         jLabel25.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
-        jLabel25.setText("Carregar Jogo");
+        jLabel25.setText("Load Game");
         getContentPane().add(jLabel25);
         jLabel25.setBounds(40, -10, 550, 90);
 
-        btnVoltar.setText("Voltar");
+        btnVoltar.setText("Back");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
         getContentPane().add(btnVoltar);
-        btnVoltar.setBounds(610, 160, 140, 50);
+        btnVoltar.setBounds(610, 150, 140, 50);
 
-        btnCarregar1.setText("Carregar");
-        btnCarregar1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Load");
+        jButton1.setName("loadBtn"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCarregar1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCarregar1);
-        btnCarregar1.setBounds(610, 90, 140, 50);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(610, 90, 140, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/casa.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -163,11 +166,28 @@ public class CarregarJogo extends javax.swing.JFrame {
         telaInicial.setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnCarregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregar1ActionPerformed
-        MenuIntermediario menuIntermediario = new MenuIntermediario();
-        menuIntermediario.setVisible(true);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        SaveGame save = null;
+        try {
+            save = SalvarDAO.getSaveGamePorNome(listaJogosSalvos.getSelectedValue());
+        } catch (SQLException ex) {
+            Logger.getLogger(CarregarJogo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CarregarJogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        MenuIntermediario telaMenu = null;
+        telaMenu = new MenuIntermediario(save.getId());
+        MenuIntermediario.idPersonagem = save.getJogador().getPersonagem().getId();
+        MenuIntermediario.idSaveGame = save.getId();
+        TelaDialogo.idDialogo = save.getDialogoCheckpoint().getId();
+
+        telaMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        telaMenu.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnCarregar1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
         
@@ -213,8 +233,8 @@ public class CarregarJogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnCarregar1;
     private javax.swing.JToggleButton btnVoltar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JScrollPane jScrollPane1;

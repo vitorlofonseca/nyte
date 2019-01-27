@@ -117,7 +117,7 @@ public class AdmGerenciaDialogos extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaDialogos = new javax.swing.JList<>();
+        listaDialogos = new javax.swing.JList<String>();
         btnAdicionarDialogo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -127,10 +127,10 @@ public class AdmGerenciaDialogos extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        listaDialogos.setModel(new javax.swing.AbstractListModel<String>() {
+        listaDialogos.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         listaDialogos.setMinimumSize(new java.awt.Dimension(1000, 650));
         jScrollPane1.setViewportView(listaDialogos);
@@ -138,16 +138,16 @@ public class AdmGerenciaDialogos extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 70, 770, 420);
 
-        btnAdicionarDialogo.setText("Adicionar Item");
+        btnAdicionarDialogo.setText("Add Item");
         btnAdicionarDialogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarDialogoActionPerformed(evt);
             }
         });
         getContentPane().add(btnAdicionarDialogo);
-        btnAdicionarDialogo.setBounds(820, 70, 130, 25);
+        btnAdicionarDialogo.setBounds(820, 70, 130, 23);
 
-        jButton2.setText("Cancelar");
+        jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -157,7 +157,7 @@ public class AdmGerenciaDialogos extends javax.swing.JFrame {
         jButton2.setBounds(380, 500, 150, 60);
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
-        jLabel1.setText("Gerência de Diálogos");
+        jLabel1.setText("Story Management");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 30, 320, 30);
 

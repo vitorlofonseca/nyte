@@ -63,6 +63,8 @@ public class GerenciaItens extends javax.swing.JFrame{
     public void loadInfo() throws SQLException, ClassNotFoundException{
         Personagem personagem = null;
         
+        System.out.println(MenuIntermediario.idPersonagem);
+        
         personagem = PersonagemDAO.getPersonagemPorID(MenuIntermediario.idPersonagem);
         HashMap areasCorpo = AreaCorpoDAO.getAreasCorpo();
         
@@ -406,22 +408,22 @@ public class GerenciaItens extends javax.swing.JFrame{
                 + "             <table>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Dano +" + danoTotal
+                + "                         Damage +" + danoTotal
                 + "                     </td>"
                 + "                 </tr>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Defesa +" + defesaTotal
+                + "                         Defense +" + defesaTotal
                 + "                     </td>"
                 + "                 </tr>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Fuga +" + fugaTotal
+                + "                         Escape +" + fugaTotal
                 + "                     </td>"
                 + "                 </tr>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Negociação +" + negociacaoTotal
+                + "                         Negotiation +" + negociacaoTotal
                 + "                     </td>"
                 + "                 </tr>"
                 + "             </table>"
@@ -471,22 +473,22 @@ public class GerenciaItens extends javax.swing.JFrame{
                 + "             <table>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Dano +" + dano
+                + "                         Damage +" + dano
                 + "                     </td>"
                 + "                 </tr>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Defesa +" + defesa
+                + "                         Defense +" + defesa
                 + "                     </td>"
                 + "                 </tr>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Fuga +" + fuga
+                + "                         Escape +" + fuga
                 + "                     </td>"
                 + "                 </tr>"
                 + "                 <tr>"
                 + "                     <td>"
-                + "                         Negociação +" + negociacao
+                + "                         Negotiation +" + negociacao
                 + "                     </td>"
                 + "                 </tr>"
                 + "             </table>"
@@ -523,42 +525,41 @@ public class GerenciaItens extends javax.swing.JFrame{
         btnCancelar = new javax.swing.JButton();
         btnEquiparCabeca = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        selectItemCabeca = new javax.swing.JComboBox<>();
+        selectItemCabeca = new javax.swing.JComboBox<String>();
         btnEquiparPescoco = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        selectItemPescoco = new javax.swing.JComboBox<>();
+        selectItemPescoco = new javax.swing.JComboBox<String>();
         btnEquiparPeitoral = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        selectItemPeitoral = new javax.swing.JComboBox<>();
+        selectItemPeitoral = new javax.swing.JComboBox<String>();
         btnEquiparBracoDireito = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        selectItemBracoDireito = new javax.swing.JComboBox<>();
+        selectItemBracoDireito = new javax.swing.JComboBox<String>();
         btnEquiparBracoEsquerdo = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        selectItemBracoEsquerdo = new javax.swing.JComboBox<>();
+        selectItemBracoEsquerdo = new javax.swing.JComboBox<String>();
         btnEquiparCinturao = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        selectItemCinturao = new javax.swing.JComboBox<>();
+        selectItemCinturao = new javax.swing.JComboBox<String>();
         btnEquiparAnelEsquerdo = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        selectItemAnelEsquerdo = new javax.swing.JComboBox<>();
+        selectItemAnelEsquerdo = new javax.swing.JComboBox<String>();
         btnEquiparAnelDireito = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        selectItemAnelDireito = new javax.swing.JComboBox<>();
+        selectItemAnelDireito = new javax.swing.JComboBox<String>();
         btnEquiparPernaDireita = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        selectItemPernaDireita = new javax.swing.JComboBox<>();
+        selectItemPernaDireita = new javax.swing.JComboBox<String>();
         btnEquiparPernaEsquerda = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        selectItemPernaEsquerda = new javax.swing.JComboBox<>();
+        selectItemPernaEsquerda = new javax.swing.JComboBox<String>();
         btnEquiparBota = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        selectItemBota = new javax.swing.JComboBox<>();
+        selectItemBota = new javax.swing.JComboBox<String>();
         btnEquiparArma = new javax.swing.JButton();
-        selectItemArma = new javax.swing.JComboBox<>();
+        selectItemArma = new javax.swing.JComboBox<String>();
         btnBotaEquipado1 = new javax.swing.JButton();
         btnArmaEquipada = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -578,25 +579,26 @@ public class GerenciaItens extends javax.swing.JFrame{
         setSize(new java.awt.Dimension(660, 600));
         getContentPane().setLayout(null);
 
-        btnCabecaEquipado.setText("Capacete");
+        btnCabecaEquipado.setText("Head");
         btnCabecaEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCabecaEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnCabecaEquipado);
-        btnCabecaEquipado.setBounds(680, 90, 150, 25);
+        btnCabecaEquipado.setBounds(680, 90, 150, 23);
 
-        btnPescocoEquipado.setText("Cordão");
+        btnPescocoEquipado.setText("Neck");
+        btnPescocoEquipado.setToolTipText("");
         btnPescocoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPescocoEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnPescocoEquipado);
-        btnPescocoEquipado.setBounds(680, 140, 170, 25);
+        btnPescocoEquipado.setBounds(680, 140, 170, 23);
 
-        btnPeitoralEquipado.setText("Malha");
+        btnPeitoralEquipado.setText("Chest");
         btnPeitoralEquipado.setToolTipText("");
         btnPeitoralEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -604,54 +606,55 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnPeitoralEquipado);
-        btnPeitoralEquipado.setBounds(700, 200, 130, 25);
+        btnPeitoralEquipado.setBounds(700, 200, 130, 23);
 
-        btnBracoDireitoEquipado.setText("Braçadeira");
+        btnBracoDireitoEquipado.setText("Arm");
         btnBracoDireitoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBracoDireitoEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnBracoDireitoEquipado);
-        btnBracoDireitoEquipado.setBounds(600, 250, 150, 25);
+        btnBracoDireitoEquipado.setBounds(600, 250, 150, 23);
 
-        btnBracoEsquerdoEquipado.setText("Braçadeira");
+        btnBracoEsquerdoEquipado.setText("Arm");
         btnBracoEsquerdoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBracoEsquerdoEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnBracoEsquerdoEquipado);
-        btnBracoEsquerdoEquipado.setBounds(800, 250, 150, 25);
+        btnBracoEsquerdoEquipado.setBounds(800, 250, 150, 23);
 
-        btnCinturaoEquipado.setText("Cinto");
+        btnCinturaoEquipado.setText("Belt");
         btnCinturaoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCinturaoEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnCinturaoEquipado);
-        btnCinturaoEquipado.setBounds(690, 310, 150, 25);
+        btnCinturaoEquipado.setBounds(690, 310, 150, 23);
 
-        btnPernaDireitaEquipado.setText("Perneira");
+        btnPernaDireitaEquipado.setText("Leg");
         btnPernaDireitaEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPernaDireitaEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnPernaDireitaEquipado);
-        btnPernaDireitaEquipado.setBounds(620, 410, 140, 25);
+        btnPernaDireitaEquipado.setBounds(620, 410, 140, 23);
 
-        btnPernaEsquerdaEquipado.setText("Perneira");
+        btnPernaEsquerdaEquipado.setText("Leg");
+        btnPernaEsquerdaEquipado.setToolTipText("");
         btnPernaEsquerdaEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPernaEsquerdaEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnPernaEsquerdaEquipado);
-        btnPernaEsquerdaEquipado.setBounds(770, 410, 150, 25);
+        btnPernaEsquerdaEquipado.setBounds(770, 410, 150, 23);
 
-        btnBotaEquipado.setText("Bota");
+        btnBotaEquipado.setText("Feet");
         btnBotaEquipado.setToolTipText("");
         btnBotaEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -659,27 +662,27 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnBotaEquipado);
-        btnBotaEquipado.setBounds(710, 530, 110, 25);
+        btnBotaEquipado.setBounds(710, 530, 110, 23);
 
-        btnAnelDireitoEquipado.setText("Anel");
+        btnAnelDireitoEquipado.setText("Ring");
         btnAnelDireitoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnelDireitoEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnAnelDireitoEquipado);
-        btnAnelDireitoEquipado.setBounds(610, 340, 120, 25);
+        btnAnelDireitoEquipado.setBounds(610, 340, 120, 23);
 
-        btnAnelEsquerdoEquipado.setText("Anel");
+        btnAnelEsquerdoEquipado.setText("Ring");
         btnAnelEsquerdoEquipado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnelEsquerdoEquipadoActionPerformed(evt);
             }
         });
         getContentPane().add(btnAnelEsquerdoEquipado);
-        btnAnelEsquerdoEquipado.setBounds(820, 340, 110, 25);
+        btnAnelEsquerdoEquipado.setBounds(820, 340, 110, 23);
 
-        btnCancelar.setText("Terminar");
+        btnCancelar.setText("Finalize");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -695,20 +698,22 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparCabeca);
-        btnEquiparCabeca.setBounds(260, 60, 90, 25);
+        btnEquiparCabeca.setBounds(260, 60, 90, 23);
 
-        jLabel6.setText("Cabeça");
+        jLabel6.setText("Head");
+        jLabel6.setName(""); // NOI18N
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 70, 70, 15);
+        jLabel6.setBounds(100, 54, 50, 30);
+        jLabel6.getAccessibleContext().setAccessibleDescription("");
 
-        selectItemCabeca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capacete 1", "Capacete 2", "Capacete 3", "Capacete 4" }));
+        selectItemCabeca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Capacete 1", "Capacete 2", "Capacete 3", "Capacete 4" }));
         selectItemCabeca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectItemCabecaActionPerformed(evt);
             }
         });
         getContentPane().add(selectItemCabeca);
-        selectItemCabeca.setBounds(150, 60, 110, 24);
+        selectItemCabeca.setBounds(150, 60, 110, 20);
 
         btnEquiparPescoco.setText("Equipar");
         btnEquiparPescoco.addActionListener(new java.awt.event.ActionListener() {
@@ -717,15 +722,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparPescoco);
-        btnEquiparPescoco.setBounds(260, 100, 90, 25);
+        btnEquiparPescoco.setBounds(260, 100, 90, 23);
 
-        jLabel7.setText("Pescoço");
+        jLabel7.setText("Neck");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(80, 110, 70, 15);
+        jLabel7.setBounds(100, 94, 50, 30);
 
-        selectItemPescoco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cordão 1", "Cordão 2", "Cordão 3", "Cordão 4" }));
+        selectItemPescoco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cordão 1", "Cordão 2", "Cordão 3", "Cordão 4" }));
         getContentPane().add(selectItemPescoco);
-        selectItemPescoco.setBounds(150, 100, 110, 24);
+        selectItemPescoco.setBounds(150, 100, 110, 20);
 
         btnEquiparPeitoral.setText("Equipar");
         btnEquiparPeitoral.addActionListener(new java.awt.event.ActionListener() {
@@ -734,15 +739,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparPeitoral);
-        btnEquiparPeitoral.setBounds(260, 140, 90, 25);
+        btnEquiparPeitoral.setBounds(260, 140, 90, 23);
 
-        jLabel8.setText("Peitoral");
+        jLabel8.setText("Chest");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(80, 150, 70, 15);
+        jLabel8.setBounds(100, 134, 50, 30);
 
-        selectItemPeitoral.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malha 1", "Malha 2", "Malha 3", "Colete 1", "Colete 2", "Colete 3", " " }));
+        selectItemPeitoral.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Malha 1", "Malha 2", "Malha 3", "Colete 1", "Colete 2", "Colete 3", " " }));
         getContentPane().add(selectItemPeitoral);
-        selectItemPeitoral.setBounds(150, 140, 110, 24);
+        selectItemPeitoral.setBounds(150, 140, 110, 20);
 
         btnEquiparBracoDireito.setText("Equipar");
         btnEquiparBracoDireito.addActionListener(new java.awt.event.ActionListener() {
@@ -751,20 +756,20 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparBracoDireito);
-        btnEquiparBracoDireito.setBounds(260, 180, 90, 25);
+        btnEquiparBracoDireito.setBounds(260, 180, 90, 23);
 
-        jLabel9.setText("Braço Direito");
+        jLabel9.setText("Right Arm");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(50, 190, 100, 15);
+        jLabel9.setBounds(80, 174, 70, 30);
 
-        selectItemBracoDireito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Braçadeira 1", "Braçadeira 2", "Braçadeira 3" }));
+        selectItemBracoDireito.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Braçadeira 1", "Braçadeira 2", "Braçadeira 3" }));
         selectItemBracoDireito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectItemBracoDireitoActionPerformed(evt);
             }
         });
         getContentPane().add(selectItemBracoDireito);
-        selectItemBracoDireito.setBounds(150, 180, 110, 24);
+        selectItemBracoDireito.setBounds(150, 180, 110, 20);
 
         btnEquiparBracoEsquerdo.setText("Equipar");
         btnEquiparBracoEsquerdo.addActionListener(new java.awt.event.ActionListener() {
@@ -773,15 +778,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparBracoEsquerdo);
-        btnEquiparBracoEsquerdo.setBounds(260, 220, 90, 25);
+        btnEquiparBracoEsquerdo.setBounds(260, 220, 90, 23);
 
-        jLabel10.setText("Braço Esquerdo");
+        jLabel10.setText("Left Arm");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(40, 230, 110, 15);
+        jLabel10.setBounds(90, 214, 60, 30);
 
-        selectItemBracoEsquerdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Braçadeira 1", "Braçadeira 2", "Braçadeira 3", " " }));
+        selectItemBracoEsquerdo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Braçadeira 1", "Braçadeira 2", "Braçadeira 3", " " }));
         getContentPane().add(selectItemBracoEsquerdo);
-        selectItemBracoEsquerdo.setBounds(150, 220, 110, 24);
+        selectItemBracoEsquerdo.setBounds(150, 220, 110, 20);
 
         btnEquiparCinturao.setText("Equipar");
         btnEquiparCinturao.addActionListener(new java.awt.event.ActionListener() {
@@ -790,15 +795,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparCinturao);
-        btnEquiparCinturao.setBounds(260, 260, 90, 25);
+        btnEquiparCinturao.setBounds(260, 260, 90, 23);
 
-        jLabel11.setText("Cinturão");
+        jLabel11.setText("Belt");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(80, 270, 70, 15);
+        jLabel11.setBounds(110, 254, 40, 30);
 
-        selectItemCinturao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cinturão 1", "Cinturão 2", "Cinturão 3" }));
+        selectItemCinturao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cinturão 1", "Cinturão 2", "Cinturão 3" }));
         getContentPane().add(selectItemCinturao);
-        selectItemCinturao.setBounds(150, 260, 110, 24);
+        selectItemCinturao.setBounds(150, 260, 110, 20);
 
         btnEquiparAnelEsquerdo.setText("Equipar");
         btnEquiparAnelEsquerdo.addActionListener(new java.awt.event.ActionListener() {
@@ -807,15 +812,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparAnelEsquerdo);
-        btnEquiparAnelEsquerdo.setBounds(260, 300, 90, 25);
+        btnEquiparAnelEsquerdo.setBounds(260, 300, 90, 23);
 
-        jLabel12.setText("Anel Esquerdo");
+        jLabel12.setText("Left Ring");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(40, 310, 110, 15);
+        jLabel12.setBounds(90, 294, 60, 30);
 
-        selectItemAnelEsquerdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
+        selectItemAnelEsquerdo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
         getContentPane().add(selectItemAnelEsquerdo);
-        selectItemAnelEsquerdo.setBounds(150, 300, 110, 24);
+        selectItemAnelEsquerdo.setBounds(150, 300, 110, 20);
 
         btnEquiparAnelDireito.setText("Equipar");
         btnEquiparAnelDireito.addActionListener(new java.awt.event.ActionListener() {
@@ -824,15 +829,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparAnelDireito);
-        btnEquiparAnelDireito.setBounds(260, 340, 90, 25);
+        btnEquiparAnelDireito.setBounds(260, 340, 90, 23);
 
-        jLabel13.setText("Anel Direito");
+        jLabel13.setText("Right Ring");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(60, 350, 90, 15);
+        jLabel13.setBounds(80, 334, 70, 30);
 
-        selectItemAnelDireito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
+        selectItemAnelDireito.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Anel 1", "Anel 2", "Anel 3", "Anel 4" }));
         getContentPane().add(selectItemAnelDireito);
-        selectItemAnelDireito.setBounds(150, 340, 110, 24);
+        selectItemAnelDireito.setBounds(150, 340, 110, 20);
 
         btnEquiparPernaDireita.setText("Equipar");
         btnEquiparPernaDireita.addActionListener(new java.awt.event.ActionListener() {
@@ -841,15 +846,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparPernaDireita);
-        btnEquiparPernaDireita.setBounds(260, 380, 90, 25);
+        btnEquiparPernaDireita.setBounds(260, 380, 90, 23);
 
-        jLabel14.setText("Perna Direita");
+        jLabel14.setText("Right Leg");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(50, 390, 100, 15);
+        jLabel14.setBounds(90, 374, 60, 30);
 
-        selectItemPernaDireita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perneira 1", "Perneira 2", "Perneira 3", " " }));
+        selectItemPernaDireita.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perneira 1", "Perneira 2", "Perneira 3", " " }));
         getContentPane().add(selectItemPernaDireita);
-        selectItemPernaDireita.setBounds(150, 380, 110, 24);
+        selectItemPernaDireita.setBounds(150, 380, 110, 20);
 
         btnEquiparPernaEsquerda.setText("Equipar");
         btnEquiparPernaEsquerda.addActionListener(new java.awt.event.ActionListener() {
@@ -858,15 +863,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparPernaEsquerda);
-        btnEquiparPernaEsquerda.setBounds(260, 420, 90, 25);
+        btnEquiparPernaEsquerda.setBounds(260, 420, 90, 23);
 
-        jLabel15.setText("Perna Esquerda");
+        jLabel15.setText("Left Leg");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(40, 430, 110, 15);
+        jLabel15.setBounds(90, 414, 60, 30);
 
-        selectItemPernaEsquerda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perneira 1", "Perneira 2", "Perneira 3" }));
+        selectItemPernaEsquerda.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perneira 1", "Perneira 2", "Perneira 3" }));
         getContentPane().add(selectItemPernaEsquerda);
-        selectItemPernaEsquerda.setBounds(150, 420, 110, 24);
+        selectItemPernaEsquerda.setBounds(150, 420, 110, 20);
 
         btnEquiparBota.setText("Equipar");
         btnEquiparBota.addActionListener(new java.awt.event.ActionListener() {
@@ -875,15 +880,15 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparBota);
-        btnEquiparBota.setBounds(260, 460, 90, 25);
+        btnEquiparBota.setBounds(260, 460, 90, 23);
 
-        jLabel16.setText("Bota");
+        jLabel16.setText("Feet");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(100, 470, 50, 15);
+        jLabel16.setBounds(110, 454, 40, 30);
 
-        selectItemBota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Calçado 1", "Calçado 2", "Calçado 3", "Calçado 4" }));
+        selectItemBota.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Calçado 1", "Calçado 2", "Calçado 3", "Calçado 4" }));
         getContentPane().add(selectItemBota);
-        selectItemBota.setBounds(150, 460, 110, 24);
+        selectItemBota.setBounds(150, 460, 110, 20);
 
         btnEquiparArma.setText("Equipar");
         btnEquiparArma.addActionListener(new java.awt.event.ActionListener() {
@@ -892,48 +897,44 @@ public class GerenciaItens extends javax.swing.JFrame{
             }
         });
         getContentPane().add(btnEquiparArma);
-        btnEquiparArma.setBounds(260, 500, 90, 25);
+        btnEquiparArma.setBounds(260, 500, 90, 23);
 
-        selectItemArma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arco", "Fuzil", "Espada", "Adaga" }));
+        selectItemArma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Arco", "Fuzil", "Espada", "Adaga" }));
         getContentPane().add(selectItemArma);
-        selectItemArma.setBounds(150, 500, 110, 24);
+        selectItemArma.setBounds(150, 500, 110, 20);
 
         btnBotaEquipado1.setText("BotaX");
         btnBotaEquipado1.setToolTipText("");
         getContentPane().add(btnBotaEquipado1);
-        btnBotaEquipado1.setBounds(710, 530, 110, 25);
+        btnBotaEquipado1.setBounds(710, 530, 110, 23);
 
-        btnArmaEquipada.setText("Arma");
+        btnArmaEquipada.setText("Weapon");
         btnArmaEquipada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArmaEquipadaActionPerformed(evt);
             }
         });
         getContentPane().add(btnArmaEquipada);
-        btnArmaEquipada.setBounds(840, 460, 130, 25);
-
-        jLabel3.setText("Equipada");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(760, 465, 80, 20);
+        btnArmaEquipada.setBounds(840, 460, 130, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corpo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(600, 60, 380, 540);
 
-        jLabel17.setText("              Arma");
+        jLabel17.setText("Weapon");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(40, 505, 100, 20);
+        jLabel17.setBounds(90, 495, 50, 30);
         getContentPane().add(jPanel1);
         jPanel1.setBounds(590, 50, 390, 530);
 
         lblInfoItemTitulo.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        lblInfoItemTitulo.setText("Item");
+        lblInfoItemTitulo.setText("Item Attributes");
         getContentPane().add(lblInfoItemTitulo);
-        lblInfoItemTitulo.setBounds(380, 240, 200, 16);
+        lblInfoItemTitulo.setBounds(380, 240, 200, 20);
 
-        lblPontosItem.setText("<html> \t<body> \t\t<table> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDano +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tDefesa +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tFuga +0 \t\t\t\t</td> \t\t\t</tr> \t\t\t<tr> \t\t\t\t<td> \t\t\t\t\tNegociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        lblPontosItem.setText("<html> \t<body><table><tr><td>Damage +0</td></tr><tr><td>Defense +0</td></tr><tr><td>Escape +0</td></tr><tr><td>Negotiation +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
         getContentPane().add(lblPontosItem);
-        lblPontosItem.setBounds(380, 270, 114, 94);
+        lblPontosItem.setBounds(380, 270, 130, 110);
 
         jLabel19.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         jLabel19.setText("Total Itens");
@@ -941,9 +942,9 @@ public class GerenciaItens extends javax.swing.JFrame{
         jLabel19.setBounds(380, 60, 190, 20);
 
         lblPontosTotaisItensEquipados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblPontosTotaisItensEquipados.setText("<html> \t<body><table><tr><td>Dano +0</td></tr><tr><td>Defesa +0</td></tr><tr><td>Fuga +0</td></tr><tr><td>Negociação +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
+        lblPontosTotaisItensEquipados.setText("<html> \t<body><table><tr><td>Damage +0</td></tr><tr><td>Defense +0</td></tr><tr><td>Escape +0</td></tr><tr><td>Negotiation +0 \t\t\t\t</td> \t\t\t</tr> \t\t</table> \t</body> </html>");
         getContentPane().add(lblPontosTotaisItensEquipados);
-        lblPontosTotaisItensEquipados.setBounds(380, 90, 114, 94);
+        lblPontosTotaisItensEquipados.setBounds(380, 90, 120, 110);
         getContentPane().add(jPanel2);
         jPanel2.setBounds(370, 50, 210, 170);
         getContentPane().add(jPanel3);
@@ -1012,25 +1013,27 @@ public class GerenciaItens extends javax.swing.JFrame{
             ItemPersonagem itemPersonagemEquipado = ItemPersonagemDAO.getItemPorPersonagemEItem(PersonagemDAO.getPersonagemPorID(MenuIntermediario.idPersonagem), item);
             
             itemPersonagemEquipado.setEquipado(1);
+            
             ItemPersonagemDAO.alterarItemPersonagem(itemPersonagemEquipado);
 
             switch(botao.getText()){
                 
-                case "Capacete":
-                case "Cordão":
-                case "Malha":
-                case "Braçadeira":
-                case "Cinto":
-                case "Anel":
-                case "Perneira":
-                case "Arma":
-                case "Bota":
+                case "Head":
+                case "Neck":
+                case "Chest":
+                case "Arm":
+                case "Belt":
+                case "Ring":
+                case "Leg":
+                case "Weapon":
+                case "Feet":
                 
                     break;
                     
                 default:
                     ItemPersonagem itemPersonagemNaoEquipado = ItemPersonagemDAO.getItemPorPersonagemEItem(PersonagemDAO.getPersonagemPorID(MenuIntermediario.idPersonagem), ItemDAO.getItemPorNome(botao.getText()));
-
+                    System.out.println(botao.getText());
+                    
                     itemPersonagemNaoEquipado.setEquipado(0);
                     ItemPersonagemDAO.alterarItemPersonagem(itemPersonagemNaoEquipado);
                     break;
@@ -1263,7 +1266,6 @@ public class GerenciaItens extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

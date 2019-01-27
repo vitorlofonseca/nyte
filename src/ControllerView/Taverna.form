@@ -75,7 +75,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cantarell" size="15" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Soma Atributos Itens"/>
+            <Property name="text" type="java.lang.String" value="Sum of item attributes"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -85,7 +85,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblSomaAtributosItens">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt; &#x9;&#x9;&lt;table&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Dano +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Defesa +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Fuga +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Negocia&#xe7;&#xe3;o +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt; &#x9;&#x9;&lt;table&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Damage +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Defense +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Escape +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Negotiation +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -108,7 +108,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblPrecoItem">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
+            <Property name="text" type="java.lang.String" value="Price:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -131,11 +131,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblCaracteristicasItem1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt; &#x9;&#x9;&lt;table&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Dano +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Defesa +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Fuga +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Negocia&#xe7;&#xe3;o +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt; &#x9;&lt;body&gt; &#x9;&#x9;&lt;table&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Damage +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Defense +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Escape +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&#x9;&lt;tr&gt; &#x9;&#x9;&#x9;&#x9;&lt;td&gt; &#x9;&#x9;&#x9;&#x9;&#x9;Negotiation +0 &#x9;&#x9;&#x9;&#x9;&lt;/td&gt; &#x9;&#x9;&#x9;&lt;/tr&gt; &#x9;&#x9;&lt;/table&gt; &#x9;&lt;/body&gt; &lt;/html&gt;"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="50" width="-1" height="-1"/>
+              <AbsoluteConstraints x="20" y="40" width="140" height="120"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -143,7 +143,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnMenuIntermediario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenuIntermediarioActionPerformed"/>
@@ -156,7 +156,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnFinalizar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Finalizar"/>
+        <Property name="text" type="java.lang.String" value="Finalize"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalizarActionPerformed"/>
@@ -213,7 +213,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cantarell" size="15" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Filtrar Itens Por"/>
+            <Property name="text" type="java.lang.String" value="Filter Items By"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -243,7 +243,8 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="btnFiltrar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Filtrar"/>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Filter"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFiltrarActionPerformed"/>
@@ -259,7 +260,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="8" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Clique duas vezes no item &lt;br&gt;para adicion&#xe1;-lo ao carrinho&lt;/body&gt;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;Double-click in item &lt;br&gt;to add it in the cart&lt;/body&gt;&lt;/html&gt;"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -285,11 +286,8 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="Dinheiro:"/>
+            <Property name="text" type="java.lang.String" value="Money:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -302,11 +300,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="&#xa8;0"/>
+            <Property name="name" type="java.lang.String" value="lblDinheiroDisponivel" noResource="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -332,7 +328,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cantarell" size="15" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Carrinho"/>
+            <Property name="text" type="java.lang.String" value="Cart"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -358,10 +354,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="48" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Taverna"/>
+            <Property name="text" type="java.lang.String" value="Tavern"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

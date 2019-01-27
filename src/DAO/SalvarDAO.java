@@ -98,7 +98,7 @@ public class SalvarDAO {
  
         //Executa a query de seleção
         java.sql.Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery("select * from tbl_save_game where nome like '"+saveGameString+"';");
+        ResultSet rs = st.executeQuery("select * from tbl_save_game where nome like '"+saveGameString+"' order by id limit 1;");
 
         Dialogo dialogo;
         Jogador jogador;
@@ -146,8 +146,7 @@ public class SalvarDAO {
         int idSave = rs.getInt("id");
         
         
-        return idSave;
-           
+        return idSave;           
     }
          
           //personagem = PersonagemDAO.getPersonagemPorID(personagem.getId());

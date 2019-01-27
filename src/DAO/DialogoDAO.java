@@ -71,6 +71,28 @@ public class DialogoDAO {
         return dialogo;
     }
     
+    public static Dialogo getPrimeiroDialogo() throws SQLException, ClassNotFoundException{           
+        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_dialogo order by id limit 1;");
+
+        Dialogo dialogo = new Dialogo();
+        
+        //Lista os alunos no console
+        while (rs.next()) {
+
+            dialogo.setId(rs.getInt("id"));
+            dialogo.setTexto(rs.getString("texto"));
+            dialogo.setIdDialogoAnterior(rs.getInt("id_dialogo_anterior"));
+            dialogo.setIdProximoDialogo(rs.getInt("id_proximo_dialogo"));
+            dialogo.setAdversidade(AdversidadeDAO.getAdversidadePorID(rs.getInt("id_adversidade")));
+            
+        }
+
+        return dialogo;
+    }
     
     public static void incluirDialogo(Dialogo dialogo) throws SQLException, ClassNotFoundException{           
                

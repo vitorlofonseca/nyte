@@ -43,7 +43,7 @@ public class PersonagemDAO {
             personagem.setNome(rs.getString("nome"));
             personagem.setIdade(rs.getInt("idade"));
             personagem.setLevel(rs.getInt("lvl"));
-            personagem.setDinheiro(rs.getInt("dinheiro"));
+            personagem.setDinheiro(rs.getFloat("dinheiro"));
             
             povoado = PovoadoDAO.getPovoadoPorId(rs.getInt("id_povoado"));
             

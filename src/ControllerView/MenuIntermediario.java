@@ -76,11 +76,11 @@ public class MenuIntermediario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Bem Vindo! ");
+        jLabel2.setText("Welcome! ");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(160, 10, 400, 50);
 
-        btnSalvarJogo.setText("Salvar Jogo");
+        btnSalvarJogo.setText("Save Game");
         btnSalvarJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarJogoActionPerformed(evt);
@@ -89,7 +89,7 @@ public class MenuIntermediario extends javax.swing.JFrame {
         getContentPane().add(btnSalvarJogo);
         btnSalvarJogo.setBounds(370, 90, 150, 40);
 
-        btnArmario.setText("Taverna");
+        btnArmario.setText("Tavern");
         btnArmario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnArmarioActionPerformed(evt);
@@ -98,7 +98,7 @@ public class MenuIntermediario extends javax.swing.JFrame {
         getContentPane().add(btnArmario);
         btnArmario.setBounds(30, 220, 150, 40);
 
-        btnTelaInicial.setText("Voltar Menu");
+        btnTelaInicial.setText("Back");
         btnTelaInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTelaInicialActionPerformed(evt);
@@ -107,7 +107,7 @@ public class MenuIntermediario extends javax.swing.JFrame {
         getContentPane().add(btnTelaInicial);
         btnTelaInicial.setBounds(370, 220, 150, 40);
 
-        btnGerenciaItens.setText("Equipamentos");
+        btnGerenciaItens.setText("Equipment");
         btnGerenciaItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGerenciaItensActionPerformed(evt);
@@ -117,7 +117,7 @@ public class MenuIntermediario extends javax.swing.JFrame {
         btnGerenciaItens.setBounds(30, 90, 150, 40);
 
         btnDialogo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnDialogo.setText("Jornada!");
+        btnDialogo.setText("Story!");
         btnDialogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDialogoActionPerformed(evt);

@@ -73,13 +73,13 @@ public class AdmGerenciaDialogo extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         tituloTela.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
-        tituloTela.setText("Cadastro Dialogo");
+        tituloTela.setText("Insert Dialogue");
         getContentPane().add(tituloTela);
-        tituloTela.setBounds(40, 10, 320, 25);
+        tituloTela.setBounds(40, 10, 320, 32);
 
-        jLabel2.setText("Texto");
+        jLabel2.setText("Text");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 70, 140, 15);
+        jLabel2.setBounds(20, 70, 140, 14);
 
         txtTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,11 +95,11 @@ public class AdmGerenciaDialogo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtIdProximoDialogo);
-        txtIdProximoDialogo.setBounds(160, 260, 230, 19);
+        txtIdProximoDialogo.setBounds(160, 260, 230, 20);
 
-        jLabel8.setText("id adversidade");
+        jLabel8.setText("enemy id");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 320, 140, 15);
+        jLabel8.setBounds(20, 320, 140, 14);
 
         txtIdAdversidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,9 +107,9 @@ public class AdmGerenciaDialogo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtIdAdversidade);
-        txtIdAdversidade.setBounds(160, 320, 230, 19);
+        txtIdAdversidade.setBounds(160, 320, 230, 20);
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Save");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -118,7 +118,7 @@ public class AdmGerenciaDialogo extends javax.swing.JFrame {
         getContentPane().add(btnSalvar);
         btnSalvar.setBounds(60, 360, 122, 40);
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cancel");
         btnCancelar.setToolTipText("");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,13 +128,13 @@ public class AdmGerenciaDialogo extends javax.swing.JFrame {
         getContentPane().add(btnCancelar);
         btnCancelar.setBounds(230, 360, 122, 40);
 
-        jLabel10.setText("id próximo diálogo");
+        jLabel10.setText("next dialogue id");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(20, 260, 140, 15);
+        jLabel10.setBounds(20, 260, 140, 14);
 
-        jLabel9.setText("id diálogo anterior");
+        jLabel9.setText("previous dialogue id");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 290, 140, 15);
+        jLabel9.setBounds(20, 290, 140, 14);
 
         txtIdDialogoAnterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +142,7 @@ public class AdmGerenciaDialogo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtIdDialogoAnterior);
-        txtIdDialogoAnterior.setBounds(160, 290, 230, 19);
+        txtIdDialogoAnterior.setBounds(160, 290, 230, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

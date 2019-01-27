@@ -64,7 +64,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnAdicionarDialogo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adicionar Item"/>
+        <Property name="text" type="java.lang.String" value="Add Item"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdicionarDialogoActionPerformed"/>
@@ -77,7 +77,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -93,7 +93,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Cantarell" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ger&#xea;ncia de Di&#xe1;logos"/>
+        <Property name="text" type="java.lang.String" value="Story Management"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

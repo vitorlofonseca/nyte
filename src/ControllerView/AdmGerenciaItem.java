@@ -105,7 +105,7 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         valorItem = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        areaCorporal = new javax.swing.JComboBox<>();
+        areaCorporal = new javax.swing.JComboBox<String>();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -124,13 +124,13 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         tituloTela.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
-        tituloTela.setText("Cadastro Item");
+        tituloTela.setText("Insert Item");
         getContentPane().add(tituloTela);
-        tituloTela.setBounds(40, 10, 320, 25);
+        tituloTela.setBounds(40, 10, 320, 32);
 
-        jLabel2.setText("Nome");
+        jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 70, 50, 15);
+        jLabel2.setBounds(60, 70, 60, 20);
 
         nomeItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,11 +138,11 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nomeItem);
-        nomeItem.setBounds(180, 70, 165, 25);
+        nomeItem.setBounds(180, 70, 165, 20);
 
-        jLabel3.setText("Área Corporal");
+        jLabel3.setText("Corporal Area");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(60, 100, 110, 15);
+        jLabel3.setBounds(60, 100, 110, 14);
 
         valorItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,15 +150,15 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
             }
         });
         getContentPane().add(valorItem);
-        valorItem.setBounds(180, 130, 165, 25);
+        valorItem.setBounds(180, 130, 165, 20);
 
-        jLabel4.setText("Valor");
+        jLabel4.setText("Price");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(60, 130, 80, 15);
+        jLabel4.setBounds(60, 130, 80, 14);
 
-        areaCorporal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        areaCorporal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(areaCorporal);
-        areaCorporal.setBounds(180, 100, 165, 25);
+        areaCorporal.setBounds(180, 100, 165, 20);
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,16 +166,16 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(160, 200, 185, 25);
+        jTextField2.setBounds(160, 200, 185, 20);
 
-        jLabel5.setText("Negociação");
+        jLabel5.setText("Negotiation");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(60, 200, 100, 15);
+        jLabel5.setBounds(60, 200, 100, 20);
 
         jLabel6.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jLabel6.setText("Combate");
+        jLabel6.setText("Fight");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(60, 170, 76, 19);
+        jLabel6.setBounds(60, 170, 44, 24);
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,11 +183,11 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField4);
-        jTextField4.setBounds(160, 230, 185, 25);
+        jTextField4.setBounds(160, 230, 185, 20);
 
-        jLabel7.setText("Defesa");
+        jLabel7.setText("Defense");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(60, 230, 70, 15);
+        jLabel7.setBounds(60, 230, 70, 14);
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,11 +195,11 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField5);
-        jTextField5.setBounds(160, 260, 185, 25);
+        jTextField5.setBounds(160, 260, 185, 20);
 
-        jLabel8.setText("Dano");
+        jLabel8.setText("Damage");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(60, 260, 70, 15);
+        jLabel8.setBounds(60, 260, 70, 14);
 
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,13 +207,13 @@ public class AdmGerenciaItem extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField6);
-        jTextField6.setBounds(160, 290, 185, 25);
+        jTextField6.setBounds(160, 290, 185, 20);
 
-        jLabel9.setText("Fuga");
+        jLabel9.setText("Escape");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(60, 290, 60, 15);
+        jLabel9.setBounds(60, 290, 60, 14);
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Save");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);

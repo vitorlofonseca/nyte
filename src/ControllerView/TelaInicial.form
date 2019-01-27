@@ -44,7 +44,7 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnSair">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sair"/>
+        <Property name="label" type="java.lang.String" value="Quit"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
@@ -57,7 +57,7 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnNovoJogo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Novo Jogo"/>
+        <Property name="label" type="java.lang.String" value="New Game"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoJogoActionPerformed"/>
@@ -70,7 +70,7 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnCarregarJogo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Carregar Jogo"/>
+        <Property name="label" type="java.lang.String" value="Load Game"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarregarJogoActionPerformed"/>

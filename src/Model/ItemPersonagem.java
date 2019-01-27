@@ -37,7 +37,7 @@ public class ItemPersonagem {
     }
 
     public Personagem getPersonagem() {
-        return personagem;
+        return this.personagem;
     }
 
     public void setPersonagem(Personagem personagem) {

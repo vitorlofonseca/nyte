@@ -20,19 +20,41 @@ import java.sql.Statement;
 public class JogadorDAO {
     
        
-    public static Jogador getJogadorPorID(int id) throws SQLException, ClassNotFoundException{           
+    public static Jogador getJogadorPorID(int id) throws SQLException, ClassNotFoundException{        
         
         Connection conn = Connect.conectar();
         
         java.sql.Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery("select * from tbl_jogador where id like '"+id+"';");
+        ResultSet rs = st.executeQuery("select * from tbl_jogador where id = "+id+";");
        
         Jogador jogador = new Jogador();
         
         Personagem personagem;
         
-        //Lista os alunos no console
-        while (rs.next()) {
+        while (rs.next()) {  
+
+            jogador.setId(id);
+            jogador.setNome(rs.getString("nome"));
+            
+            personagem = PersonagemDAO.getPersonagemPorID(rs.getInt("id_personagem"));
+            jogador.setPersonagem(personagem);
+                       
+        }
+        
+        return jogador;
+    }
+    
+    public static Jogador getJogadorPorIdPersonagem(int idPersonagem) throws SQLException, ClassNotFoundException{        
+        Connection conn = Connect.conectar();
+        
+        java.sql.Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery("select * from tbl_jogador where id_personagem = "+idPersonagem+";");
+       
+        Jogador jogador = new Jogador();
+        
+        Personagem personagem;
+        
+        while (rs.next()) {  
 
             jogador.setId(rs.getInt("id"));
             jogador.setNome(rs.getString("nome"));
@@ -42,10 +64,9 @@ public class JogadorDAO {
                        
         }
         
-        
-
         return jogador;
-    }
+    }    
+
     
     public static void incluirJogador(Jogador jogador) throws SQLException, ClassNotFoundException{           
         
