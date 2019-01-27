@@ -1,6 +1,10 @@
 # Nyte RPG
 
-Electronic RPG that simulates the working of classic RPGs, where stories and items are manageable. In the classic RPG, the master is the person who tell the stories, and manage all game items (weapons, armors, potions...). Nyte allow these funcionalities, making possible the player make a custom story, with custom items.
+Electronic RPG that simulates the working of classic RPGs, where stories and items are manageable. 
+
+Context: In the classic RPG, the master is the person who tell the stories, and manage all game items (weapons, armors, potions...). 
+
+Solution: Nyte allow these possibilities cited above, making possible the player make a custom story with different flows. The user can too create custom items, attributing to them different characteristics, prices, and power, that have influence in stories adversities.
 
 ### Screens
 
@@ -31,4 +35,5 @@ Electronic RPG that simulates the working of classic RPGs, where stories and ite
 
 ### Next Goals
   - To complete master screen, to items and stories management.
+  - To make a screen to management of story adversities (enemies, problems, etc)
   - To make some alterations in game working
